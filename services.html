@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services — NextUp Capital</title>
+  <meta name="description" content="Starter Build $1,497 — everything you need to launch and get funded. Add-ons and Build Your Own available." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --black: #080808; --dark: #0f0f0f; --dark-2: #161616; --dark-3: #1e1e1e; --dark-4: #252525;
+      --white: #ffffff; --off-white: #f8f5ef;
+      --gold: #b8932a; --gold-2: #c9a84c; --gold-3: #e8c96a;
+      --gold-pale: rgba(184,147,42,0.1); --gold-border: rgba(184,147,42,0.25);
+      --gold-shadow: 0 8px 40px rgba(184,147,42,0.15), 0 2px 8px rgba(184,147,42,0.08);
+      --text-light: rgba(248,245,239,0.6); --text-mid: rgba(248,245,239,0.8);
+      --border: rgba(248,245,239,0.07); --border-gold: rgba(184,147,42,0.25);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { overflow-x: hidden; max-width: 100%; scroll-behavior: smooth; }
+    body { background: var(--black); color: var(--off-white); font-family: 'Inter', sans-serif; font-weight: 400; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.4rem 3rem; display: flex; align-items: center; justify-content: space-between; background: rgba(8,8,8,0.9); backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 1.3rem; color: var(--off-white); text-decoration: none; }
+    .nav-logo span { color: var(--gold-2); }
+    .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+    .nav-links a { color: rgba(248,245,239,0.45); text-decoration: none; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.8px; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--off-white); }
+    .nav-credit { color: var(--gold-2) !important; border: 1px solid var(--gold-border) !important; padding: 0.45rem 1rem; border-radius: 2px; font-size: 0.72rem !important; transition: all 0.2s !important; }
+    .nav-credit:hover { background: var(--gold-pale) !important; }
+    .nav-btn { background: var(--gold-2) !important; color: var(--black) !important; padding: 0.55rem 1.4rem; border-radius: 2px; font-size: 0.72rem !important; letter-spacing: 1px !important; font-weight: 600 !important; transition: all 0.2s !important; }
+    .nav-btn:hover { background: var(--gold-3) !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1px; background: var(--off-white); transition: all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; top: 65px; left: 0; right: 0; background: var(--dark); border-bottom: 1px solid var(--gold-border); box-shadow: 0 8px 32px rgba(0,0,0,0.5); z-index: 99; padding: 1.5rem; }
+    .mobile-menu.open { display: block; }
+    .mobile-menu ul { list-style: none; margin-bottom: 1.5rem; }
+    .mobile-menu ul li { border-bottom: 1px solid var(--border); }
+    .mobile-menu ul li a { display: block; padding: 0.9rem 0; font-size: 0.88rem; font-weight: 500; color: var(--text-mid); text-decoration: none; transition: color 0.2s; }
+    .mobile-menu ul li a:hover { color: var(--gold-2); }
+    .mobile-credit { color: var(--gold-2) !important; font-weight: 600 !important; }
+    .mobile-cta { display: block; width: 100%; background: var(--gold-2); color: var(--black); padding: 0.9rem; border-radius: 2px; font-size: 0.78rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; text-decoration: none; text-align: center; transition: all 0.2s; }
+    .mobile-cta:hover { background: var(--gold-3); }
+
+    /* BUTTONS */
+    .btn-gold { background: var(--gold-2); color: var(--black); padding: 0.85rem 2rem; border-radius: 2px; font-size: 0.76rem; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; text-decoration: none; border: none; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.4rem; }
+    .btn-gold:hover { background: var(--gold-3); transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: var(--gold-2); padding: 0.85rem 2rem; border-radius: 2px; font-size: 0.76rem; font-weight: 500; letter-spacing: 0.8px; text-transform: uppercase; text-decoration: none; border: 1px solid var(--gold-border); cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.4rem; }
+    .btn-outline:hover { background: var(--gold-pale); }
+    .btn-full { width: 100%; justify-content: center; }
+    .btn-sm { padding: 0.6rem 1.3rem !important; font-size: 0.7rem !important; }
+
+    /* SHARED */
+    .mono-tag { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: var(--gold-2); letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1.25rem; }
+    .mono-tag::before { content: ''; width: 16px; height: 1px; background: var(--gold-2); }
+    .display-h { font-family: 'Cormorant Garamond', serif; font-weight: 300; line-height: 1.1; color: var(--off-white); }
+    .display-h em { font-style: italic; color: var(--gold-2); }
+    .gold-bar { height: 1px; background: linear-gradient(90deg, transparent, var(--gold-2), transparent); margin: 0; }
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* PAGE HEADER */
+    .page-header { padding: clamp(7rem,12vw,11rem) clamp(1.5rem,5vw,6rem) clamp(4rem,6vw,6rem); position: relative; overflow: hidden; border-bottom: 1px solid var(--border); }
+    .page-header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 60% 40%, rgba(184,147,42,0.07) 0%, transparent 60%); pointer-events: none; }
+    .page-header-inner { max-width: 1200px; margin: 0 auto; position: relative; }
+    .page-header h1 { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(2.8rem, 6vw, 5rem); line-height: 1.0; letter-spacing: -0.02em; margin-bottom: 1.25rem; color: var(--off-white); }
+    .page-header h1 em { font-style: italic; color: var(--gold-2); display: block; }
+    .page-header p { font-size: 0.92rem; color: var(--text-light); max-width: 500px; line-height: 1.85; margin-bottom: 2.5rem; }
+    .page-nav { display: flex; gap: 0; border: 1px solid var(--gold-border); border-radius: 2px; overflow: hidden; width: fit-content; flex-wrap: wrap; }
+    .page-nav a { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(248,245,239,0.4); text-decoration: none; padding: 0.65rem 1.25rem; border-right: 1px solid var(--gold-border); background: transparent; transition: all 0.2s; white-space: nowrap; }
+    .page-nav a:last-child { border-right: none; }
+    .page-nav a:hover, .page-nav a.active { background: var(--gold-pale); color: var(--gold-2); }
+
+    /* SECTION WRAPPER */
+    .section-wrap { max-width: 1200px; margin: 0 auto; }
+
+    /* ===================== */
+    /* STARTER BUILD SECTION */
+    /* ===================== */
+    .starter-section { padding: clamp(4rem,7vw,8rem) clamp(1.5rem,5vw,6rem); border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+    .starter-section::before { content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(184,147,42,0.06) 0%, transparent 65%); border-radius: 50%; animation: floatOrb 16s ease-in-out infinite; pointer-events: none; }
+
+    .starter-header { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; margin-bottom: 3rem; flex-wrap: wrap; }
+    .starter-price { text-align: right; flex-shrink: 0; }
+    .starter-price-num { font-family: 'Cormorant Garamond', serif; font-size: 4rem; font-weight: 700; color: var(--gold-2); line-height: 1; }
+    .starter-price-label { font-size: 0.72rem; color: var(--text-light); margin-top: 0.25rem; }
+
+    .starter-card { background: var(--dark-2); border: 1px solid var(--gold-border); border-radius: 3px; overflow: hidden; box-shadow: var(--gold-shadow); backdrop-filter: blur(12px); }
+    .starter-card-bar { height: 3px; background: linear-gradient(90deg, transparent, var(--gold-2), var(--gold-3), var(--gold-2), transparent); background-size: 200% 100%; animation: shimmer 3s linear infinite; }
+    .starter-bonus { display: flex; align-items: center; gap: 0.75rem; padding: 1rem 2.5rem; background: rgba(184,147,42,0.08); border-bottom: 1px solid var(--gold-border); font-size: 0.82rem; color: var(--gold-2); font-weight: 500; }
+    .starter-body { padding: 2.5rem; display: grid; grid-template-columns: repeat(3,1fr); gap: 2.5rem; }
+    .starter-group-title { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-2); margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--gold-border); }
+    .check-row { display: flex; align-items: flex-start; gap: 0.65rem; padding: 0.5rem 0; border-bottom: 1px solid rgba(248,245,239,0.04); }
+    .check-row:last-child { border-bottom: none; }
+    .check-row::before { content: '✓'; color: var(--gold-2); font-size: 0.68rem; margin-top: 2px; flex-shrink: 0; }
+    .check-row .cr-name { font-size: 0.82rem; color: var(--off-white); font-weight: 500; }
+    .check-row .cr-desc { font-size: 0.72rem; color: var(--text-light); margin-top: 0.1rem; line-height: 1.4; }
+    .starter-footer { padding: 1.5rem 2.5rem; border-top: 1px solid var(--border); background: rgba(184,147,42,0.03); display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }
+    .starter-footer-note { font-size: 0.72rem; color: var(--text-light); }
+
+    /* ============== */
+    /* ADD-ONS        */
+    /* ============== */
+    .addons-section { padding: clamp(4rem,7vw,8rem) clamp(1.5rem,5vw,6rem); border-bottom: 1px solid var(--border); background: var(--dark); position: relative; overflow: hidden; background-image: radial-gradient(rgba(184,147,42,0.05) 1px, transparent 1px); background-size: 32px 32px; }
+    .addons-section::after { content: ''; position: absolute; bottom: -150px; left: -150px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(184,147,42,0.06) 0%, transparent 65%); border-radius: 50%; animation: floatOrb 20s ease-in-out infinite reverse; pointer-events: none; }
+
+    .recommended-bar { display: flex; align-items: center; gap: 0.75rem; background: rgba(184,147,42,0.06); border: 1px solid var(--gold-border); border-radius: 2px; padding: 0.85rem 1.25rem; font-size: 0.78rem; color: var(--text-mid); margin-bottom: 2.5rem; }
+    .recommended-bar strong { color: var(--gold-2); }
+
+    .addons-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--gold-border); border: 1px solid var(--gold-border); box-shadow: var(--gold-shadow); position: relative; }
+    .addon-card { background: var(--dark); padding: 2.5rem; display: flex; flex-direction: column; transition: background 0.3s; }
+    .addon-card:hover { background: var(--dark-2); }
+    .addon-card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 2rem; }
+    .addon-card-top h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 700; color: var(--off-white); margin-bottom: 0.3rem; }
+    .addon-card-top p { font-size: 0.78rem; color: var(--text-light); max-width: 300px; line-height: 1.6; }
+    .addon-price { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 700; color: var(--gold-2); line-height: 1; text-align: right; white-space: nowrap; flex-shrink: 0; }
+    .addon-price-label { font-size: 0.65rem; color: var(--text-light); text-align: right; margin-top: 0.2rem; }
+    .dash-row { display: flex; align-items: flex-start; gap: 0.65rem; padding: 0.5rem 0; border-bottom: 1px solid rgba(248,245,239,0.04); }
+    .dash-row:last-child { border-bottom: none; }
+    .dash-row::before { content: '—'; color: var(--gold-2); font-size: 0.62rem; margin-top: 2px; flex-shrink: 0; }
+    .dash-row .dr-name { font-size: 0.82rem; color: var(--off-white); font-weight: 500; }
+    .dash-row .dr-desc { font-size: 0.72rem; color: var(--text-light); margin-top: 0.1rem; line-height: 1.4; }
+    .addon-card-footer { margin-top: auto; padding-top: 2rem; }
+
+    /* ============== */
+    /* BYO            */
+    /* ============== */
+    .byo-section { padding: clamp(4rem,7vw,8rem) clamp(1.5rem,5vw,6rem); border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+    .byo-section::before { content: ''; position: absolute; top: 50%; right: -200px; transform: translateY(-50%); width: 500px; height: 500px; background: radial-gradient(circle, rgba(184,147,42,0.05) 0%, transparent 65%); border-radius: 50%; animation: floatOrb 18s ease-in-out infinite; pointer-events: none; }
+
+    .byo-callout { display: flex; align-items: flex-start; gap: 1rem; background: rgba(184,147,42,0.06); border: 1px solid var(--gold-border); border-radius: 2px; padding: 1.25rem 1.5rem; margin-bottom: 3rem; }
+    .byo-callout p { font-size: 0.82rem; color: var(--text-mid); line-height: 1.7; }
+    .byo-callout strong { color: var(--gold-2); }
+
+    .byo-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--gold-border); border: 1px solid var(--gold-border); box-shadow: var(--gold-shadow); margin-bottom: 1.5rem; }
+    .byo-card { background: var(--dark-2); padding: 2rem 1.75rem; display: flex; flex-direction: column; transition: background 0.3s; }
+    .byo-card:hover { background: var(--dark-3); }
+    .byo-price { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 700; color: var(--gold-2); line-height: 1; margin-bottom: 0.4rem; }
+    .byo-name { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 700; color: var(--off-white); margin-bottom: 0.2rem; }
+    .byo-sub { font-size: 0.72rem; color: var(--text-light); margin-bottom: 1.25rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--border); }
+    .byo-items { list-style: none; display: flex; flex-direction: column; gap: 0; flex: 1; margin-bottom: 1.5rem; }
+    .byo-item { display: flex; flex-direction: column; padding: 0.45rem 0; border-bottom: 1px solid rgba(248,245,239,0.04); }
+    .byo-item:last-child { border-bottom: none; }
+    .byo-item-name { font-size: 0.78rem; color: var(--off-white); display: flex; align-items: center; gap: 0.5rem; }
+    .byo-item-name::before { content: '✓'; color: var(--gold-2); font-size: 0.65rem; flex-shrink: 0; }
+    .byo-item-desc { font-size: 0.7rem; color: var(--text-light); padding-left: 1.1rem; margin-top: 0.1rem; line-height: 1.4; }
+
+    /* COURSE + DIY GRID */
+    .bottom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--gold-border); border: 1px solid var(--gold-border); box-shadow: var(--gold-shadow); }
+    .bottom-card { padding: 2.5rem 3rem; display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: center; }
+    .bottom-card.light { background: var(--dark-2); }
+    .bottom-card.dark-card { background: var(--dark-3); position: relative; overflow: hidden; }
+    .bottom-card.dark-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 80% 50%, rgba(184,147,42,0.08) 0%, transparent 60%); pointer-events: none; }
+    .bottom-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 700; color: var(--off-white); margin-bottom: 0.5rem; }
+    .bottom-card p { font-size: 0.8rem; color: var(--text-light); line-height: 1.75; margin-bottom: 1.25rem; max-width: 400px; }
+    .bottom-features { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+    .bottom-features li { font-size: 0.76rem; color: var(--text-mid); display: flex; align-items: center; gap: 0.5rem; }
+    .bottom-features li::before { content: '✓'; color: var(--gold-2); font-size: 0.68rem; flex-shrink: 0; }
+    .bottom-price { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 700; color: var(--gold-2); line-height: 1; text-align: center; }
+    .bottom-price-label { font-size: 0.68rem; color: var(--text-light); text-align: center; margin-top: 0.25rem; margin-bottom: 1.5rem; }
+    .bottom-right { text-align: center; flex-shrink: 0; position: relative; }
+
+    /* CART BAR */
+    .cart-bar { display: none; position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%); background: var(--dark-2); border: 1px solid var(--gold-border); border-radius: 100px; padding: 0.85rem 1.5rem; align-items: center; gap: 1.5rem; z-index: 200; box-shadow: 0 8px 40px rgba(0,0,0,0.6); white-space: nowrap; }
+    .cart-bar.visible { display: flex; }
+    .cart-bar-text { font-size: 0.78rem; color: var(--text-light); }
+    .cart-bar-total { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 700; color: var(--gold-2); }
+    .cart-div { width: 1px; height: 20px; background: var(--border); }
+
+    /* CTA */
+    .cta-section { padding: clamp(5rem,8vw,9rem) clamp(1.5rem,5vw,6rem); text-align: center; position: relative; overflow: hidden; background: var(--dark); border-top: 1px solid var(--border); }
+    .cta-section::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 700px; height: 400px; background: radial-gradient(ellipse, rgba(184,147,42,0.08) 0%, transparent 65%); pointer-events: none; }
+    .cta-inner { position: relative; max-width: 600px; margin: 0 auto; }
+    .cta-inner h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 300; line-height: 1.1; margin-bottom: 1rem; color: var(--off-white); }
+    .cta-inner h2 em { font-style: italic; color: var(--gold-2); }
+    .cta-inner p { font-size: 0.88rem; color: var(--text-light); line-height: 1.85; max-width: 440px; margin: 0 auto 2.5rem; }
+    .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* FOOTER */
+    footer { background: var(--dark); border-top: 1px solid var(--border); padding: clamp(3rem,5vw,5rem) clamp(1.5rem,5vw,6rem) 2.5rem; }
+    .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 4rem; padding-bottom: 3.5rem; border-bottom: 1px solid var(--border); margin-bottom: 2rem; max-width: 1200px; margin-left: auto; margin-right: auto; }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 1.2rem; color: var(--off-white); text-decoration: none; display: block; margin-bottom: 0.85rem; }
+    .footer-logo span { color: var(--gold-2); }
+    .footer-desc { font-size: 0.78rem; color: var(--text-light); line-height: 1.75; max-width: 230px; }
+    .footer-col h5 { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-light); margin-bottom: 1.1rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.55rem; }
+    .footer-col ul li a { color: var(--text-mid); text-decoration: none; font-size: 0.8rem; transition: color 0.2s; }
+    .footer-col ul li a:hover { color: var(--gold-2); }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; max-width: 1200px; margin: 0 auto; }
+    .footer-legal { font-size: 0.7rem; color: var(--text-light); line-height: 1.6; }
+    .footer-social { display: flex; gap: 0.6rem; }
+    .footer-social a { width: 32px; height: 32px; border-radius: 2px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--text-light); text-decoration: none; font-size: 0.68rem; font-weight: 600; transition: all 0.2s; }
+    .footer-social a:hover { border-color: var(--gold-border); color: var(--gold-2); }
+
+    /* ANIMATIONS */
+    @keyframes marqueeScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+    @keyframes floatOrb { 0%, 100% { transform: translate(0,0) scale(1); } 33% { transform: translate(-30px,-40px) scale(1.05); } 66% { transform: translate(20px,-20px) scale(0.95); } }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .starter-body { grid-template-columns: 1fr; }
+      .addons-grid { grid-template-columns: 1fr; }
+      .byo-grid { grid-template-columns: 1fr 1fr; }
+      .bottom-grid { grid-template-columns: 1fr; }
+      .bottom-card { grid-template-columns: 1fr; gap: 2rem; }
+      .bottom-right { text-align: left; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 1.1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .byo-grid { grid-template-columns: 1fr; }
+      .starter-header { flex-direction: column; align-items: flex-start; }
+      .starter-price { text-align: left; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .addon-card-top { flex-direction: column; }
+      .page-nav { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">NextUp <span>Capital</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html" class="active">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="https://nextupenterprise.com" target="_blank" class="nav-credit">Credit Repair</a></li>
+    <li><a href="#starter" class="nav-btn">Get Started</a></li>
+  </ul>
+  <button class="hamburger" id="hamburgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="https://nextupenterprise.com" target="_blank" class="mobile-credit">Credit Repair ↗</a></li>
+  </ul>
+  <a href="#starter" class="mobile-cta">Get Started →</a>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-inner reveal">
+    <div class="mono-tag">Services & Pricing</div>
+    <h1>Everything you need.<em>Nothing you don't.</em></h1>
+    <p>Start with the Starter Build — the foundation every funded business needs. Add what makes sense for your stage. Skip what doesn't.</p>
+    <div class="page-nav">
+      <a href="#starter" class="active">Starter Build</a>
+      <a href="#addons">Add-Ons</a>
+      <a href="#byo">Build Your Own</a>
+      <a href="#resources">Resources</a>
+    </div>
+  </div>
+</div>
+
+<!-- MARQUEE -->
+<div style="border-top:1px solid rgba(248,245,239,0.07); border-bottom:1px solid rgba(248,245,239,0.07); background:var(--dark); padding:0.9rem 0; overflow:hidden; width:100%;">
+  <div style="display:flex; white-space:nowrap; width:max-content; animation:marqueeScroll 28s linear infinite;">
+    <span style="display:inline-flex;align-items:center;gap:1.25rem;padding:0 2rem;font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--gold-2);letter-spacing:1.5px;text-transform:uppercase;flex-shrink:0;">Starter Build <span style="width:4px;height:4px;border-radius:50%;background:var(--gold-2);display:inline-block;"></span></span>
+    <span style="display:inline-flex;align-items:center;gap:1.25rem;padding:0 2rem;font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--gold-2);letter-spacing:1.5px;text-transform:uppercase;flex-shrink:0;">LLC Formation <span style="width:4px;height:4px;border-radius:50%;background:var(--gold-2);display:inline-block;"></span></span>
+    <span style="display:inline-flex;align-items:center;gap:1.25rem;padding:0 2rem;font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--gold-2);letter-spacing:1.5px;text-transform:uppercase;flex-shrink:0;">EIN Setup <span style="width:4px;height:4px;border-radius:50%;background:var(--gold-2);display:inline-block;"></span></span>
+    <span style="display:inline-flex;align-items:center;gap:1.25rem;padding:0 2rem;font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--gold-2);letter-spacing:1.5px;text-transform:uppercase;flex-shrink:0;">Brand & Website <span style="width:4px;height:4px;border-radius:50%;background:var(--gold-2);display:inline-block;"></span></span>
+    <span style="display:inline-flex;align-items:center;gap:1.25rem;padding:0 2rem;font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--gold-2);letter-spacing:1.5px;text-transform:uppercase;flex-shrink:0;">Funding Positioning <span style="width:4px;height:4px;border-radius:50%;background:var(--gold-2);display:inline-block;"></span></span>
+    <span style="display:inline-flex;align-items:center;gap:1.25rem;padding:0 2rem;font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--gold-2);letter-spacing:1.5px;text-transform:uppercase;flex-shrink:0;">Business Credit <span style="width:4px;height:4px;border-radius:50%;background:var(--gold-2);display:inline-block;"></span></span>
+    <span style="display:inline-flex;align-items:center;gap:1.25rem;padding:0 2rem;font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--gold-2);letter-spacing:1.5px;text-transform:uppercase;flex-shrink:0;">Systems & Automation <span style="width:4px;height:4px;border-radius:50%;background:var(--gold-2);display:inline-block;"></span></span>
+    <span style="display:inline-flex;align-items:center;gap:1.25rem;padding:0 2rem;font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--gold-2);letter-spacing:1.5px;text-transform:uppercase;flex-shrink:0;">Credit Repair Included <span style="width:4px;height:4px;border-radius:50%;background:var(--gold-2);display:inline-block;"></span></span>
+    <span style="display:inline-flex;align-items:center;gap:1.25rem;padding:0 2rem;font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--gold-2);letter-spacing:1.5px;text-transform:uppercase;flex-shrink:0;">Done For You <span style="width:4px;height:4px;border-radius:50%;background:var(--gold-2);display:inline-block;"></span></span>
+    <span style="display:inline-flex;align-items:center;gap:1.25rem;padding:0 2rem;font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--gold-2);letter-spacing:1.5px;text-transform:uppercase;flex-shrink:0;">Starter Build <span style="width:4px;height:4px;border-radius:50%;background:var(--gold-2);display:inline-block;"></span></span>
+    <span style="display:inline-flex;align-items:center;gap:1.25rem;padding:0 2rem;font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--gold-2);letter-spacing:1.5px;text-transform:uppercase;flex-shrink:0;">LLC Formation <span style="width:4px;height:4px;border-radius:50%;background:var(--gold-2);display:inline-block;"></span></span>
+    <span style="display:inline-flex;align-items:center;gap:1.25rem;padding:0 2rem;font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--gold-2);letter-spacing:1.5px;text-transform:uppercase;flex-shrink:0;">EIN Setup <span style="width:4px;height:4px;border-radius:50%;background:var(--gold-2);display:inline-block;"></span></span>
+    <span style="display:inline-flex;align-items:center;gap:1.25rem;padding:0 2rem;font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--gold-2);letter-spacing:1.5px;text-transform:uppercase;flex-shrink:0;">Brand & Website <span style="width:4px;height:4px;border-radius:50%;background:var(--gold-2);display:inline-block;"></span></span>
+    <span style="display:inline-flex;align-items:center;gap:1.25rem;padding:0 2rem;font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--gold-2);letter-spacing:1.5px;text-transform:uppercase;flex-shrink:0;">Funding Positioning <span style="width:4px;height:4px;border-radius:50%;background:var(--gold-2);display:inline-block;"></span></span>
+    <span style="display:inline-flex;align-items:center;gap:1.25rem;padding:0 2rem;font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--gold-2);letter-spacing:1.5px;text-transform:uppercase;flex-shrink:0;">Business Credit <span style="width:4px;height:4px;border-radius:50%;background:var(--gold-2);display:inline-block;"></span></span>
+    <span style="display:inline-flex;align-items:center;gap:1.25rem;padding:0 2rem;font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--gold-2);letter-spacing:1.5px;text-transform:uppercase;flex-shrink:0;">Systems & Automation <span style="width:4px;height:4px;border-radius:50%;background:var(--gold-2);display:inline-block;"></span></span>
+    <span style="display:inline-flex;align-items:center;gap:1.25rem;padding:0 2rem;font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--gold-2);letter-spacing:1.5px;text-transform:uppercase;flex-shrink:0;">Credit Repair Included <span style="width:4px;height:4px;border-radius:50%;background:var(--gold-2);display:inline-block;"></span></span>
+    <span style="display:inline-flex;align-items:center;gap:1.25rem;padding:0 2rem;font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--gold-2);letter-spacing:1.5px;text-transform:uppercase;flex-shrink:0;">Done For You <span style="width:4px;height:4px;border-radius:50%;background:var(--gold-2);display:inline-block;"></span></span>
+  </div>
+</div>
+
+<!-- STARTER BUILD -->
+<section class="starter-section" id="starter">
+  <div class="section-wrap">
+    <div class="starter-header reveal">
+      <div>
+        <div class="mono-tag">The Core Offer</div>
+        <h2 class="display-h" style="font-size:clamp(1.8rem,3vw,2.8rem);">Starter Build — <em>done for you.</em></h2>
+        <p style="font-size:0.85rem; color:var(--text-light); max-width:500px; line-height:1.75; margin-top:0.75rem;">The minimum required to qualify for business funding. Every piece your business needs — structured, branded, and positioned from day one.</p>
+      </div>
+      <div class="starter-price reveal">
+        <div class="starter-price-num">$1,497</div>
+        <div class="starter-price-label">one-time investment</div>
+      </div>
+    </div>
+
+    <div class="starter-card reveal">
+      <div class="starter-card-bar"></div>
+      <div class="starter-bonus">★ &nbsp;6 Months Credit Repair Included Free — $497 Value</div>
+      <div class="starter-body">
+        <div>
+          <div class="starter-group-title">Legal Formation & Structure</div>
+          <div class="check-row"><div><div class="cr-name">LLC Registration</div><div class="cr-desc">Legally establishes your entity. State filing fees not included.</div></div></div>
+          <div class="check-row"><div><div class="cr-name">EIN Setup</div><div class="cr-desc">Required for business banking, taxes & funding.</div></div></div>
+          <div class="check-row"><div><div class="cr-name">Registered Agent — 1 Year</div><div class="cr-desc">Keeps your LLC compliant with your state.</div></div></div>
+          <div class="check-row"><div><div class="cr-name">Operating Agreement</div><div class="cr-desc">Required by most banks to open a business account.</div></div></div>
+          <div class="check-row"><div><div class="cr-name">Meeting Minutes</div><div class="cr-desc">Required for state compliance.</div></div></div>
+          <div class="check-row"><div><div class="cr-name">Company Binder</div><div class="cr-desc">All key documents organized for banks & lenders.</div></div></div>
+        </div>
+        <div>
+          <div class="starter-group-title">Brand & Web Presence</div>
+          <div class="check-row"><div><div class="cr-name">Custom Logo & Brand Identity</div><div class="cr-desc">Professional brand that builds immediate trust.</div></div></div>
+          <div class="check-row"><div><div class="cr-name">Premium 2–4 Page Website</div><div class="cr-desc">Your online storefront. Domain cost not included.</div></div></div>
+          <div class="check-row"><div><div class="cr-name">Domain Setup</div><div class="cr-desc">We configure & connect. Registration cost passed to you.</div></div></div>
+          <div class="check-row"><div><div class="cr-name">Professional Business Email</div><div class="cr-desc">Branded email for credibility with clients & lenders.</div></div></div>
+          <div class="check-row"><div><div class="cr-name">Online Booking Integration</div><div class="cr-desc">Let clients schedule directly on your site.</div></div></div>
+        </div>
+        <div>
+          <div class="starter-group-title">Presence, Funding & Bonus</div>
+          <div class="check-row"><div><div class="cr-name">Google Business Profile</div><div class="cr-desc">Get found on Google Search & Maps.</div></div></div>
+          <div class="check-row"><div><div class="cr-name">Business Phone Setup</div><div class="cr-desc">Required for funding. Avg ~$40/mo you pay direct.</div></div></div>
+          <div class="check-row"><div><div class="cr-name">Virtual Address Setup</div><div class="cr-desc">Required for funding. Avg ~$14–$20/mo you pay direct.</div></div></div>
+          <div class="check-row"><div><div class="cr-name">Funding Positioning</div><div class="cr-desc">Structured for $10K–$75K funding opportunities.</div></div></div>
+          <div class="check-row" style="background:rgba(184,147,42,0.04); border-radius:2px; padding:0.5rem 0.75rem;"><div><div class="cr-name" style="color:var(--gold-2);">★ 6 Months Credit Repair — FREE</div><div class="cr-desc">Disputes, guidance, portal access & real human support. $497 value.</div></div></div>
+        </div>
+      </div>
+      <div class="starter-footer">
+        <div class="starter-footer-note">State filing fees & domain registration not included — passed to you at cost. No markup.</div>
+        <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+          <button class="btn-gold" data-item="starter" data-price="1497" data-name="Starter Build">Add to Cart — $1,497 →</button>
+          <a href="contact.html" class="btn-outline">Free Strategy Call</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ADD-ONS -->
+<section class="addons-section" id="addons">
+  <div class="section-wrap">
+    <div class="reveal" style="margin-bottom:2rem;">
+      <div class="mono-tag">Starter Build Add-Ons</div>
+      <h2 class="display-h" style="font-size:clamp(1.8rem,3vw,2.8rem); margin-bottom:0.75rem;">Ready to scale? <em>Add what you need.</em></h2>
+      <p style="font-size:0.85rem; color:var(--text-light); max-width:500px; line-height:1.75;">Stack these on top of your Starter Build as your business grows. No need to buy both at once — add when the time is right.</p>
+    </div>
+    <div class="recommended-bar reveal">
+      <span style="color:var(--gold-2);">★</span>
+      <span><strong>Recommended with Starter Build.</strong> These services are designed to build on your foundation for the best results.</span>
+    </div>
+    <div class="addons-grid reveal">
+
+      <!-- SYSTEMS -->
+      <div class="addon-card">
+        <div class="addon-card-top">
+          <div>
+            <div class="mono-tag" style="margin-bottom:0.5rem;">Done For You Setup</div>
+            <h3>Systems & Automation</h3>
+            <p>Your business on autopilot. CRM, booking, email automation, onboarding, and reviews — all connected. Website upgraded to a fully integrated platform.</p>
+          </div>
+          <div>
+            <div class="addon-price">$997</div>
+            <div class="addon-price-label">one-time</div>
+          </div>
+        </div>
+        <div style="flex:1;">
+          <div class="dash-row"><div><div class="dr-name">CRM Setup</div><div class="dr-desc">Organize leads, clients & follow-ups in one place.</div></div></div>
+          <div class="dash-row"><div><div class="dr-name">Booking Calendar Integration</div><div class="dr-desc">Clients book 24/7 without you lifting a finger.</div></div></div>
+          <div class="dash-row"><div><div class="dr-name">Email Automation Sequences</div><div class="dr-desc">Follow-ups & nurturing — set once, runs forever.</div></div></div>
+          <div class="dash-row"><div><div class="dr-name">Client Onboarding System</div><div class="dr-desc">Forms, agreements & workflows for seamless onboarding.</div></div></div>
+          <div class="dash-row"><div><div class="dr-name">Appointment & Review Automation</div><div class="dr-desc">Reminders reduce no-shows. Reviews build reputation.</div></div></div>
+          <div class="dash-row"><div><div class="dr-name">Sales Pipeline Setup</div><div class="dr-desc">Never lose track of a lead or client again.</div></div></div>
+          <div class="dash-row"><div><div class="dr-name">Lead Capture Form Integration</div><div class="dr-desc">Every inquiry auto-logged, tagged & followed up.</div></div></div>
+          <div class="dash-row"><div><div class="dr-name">Social Media & SMS Follow-Up</div><div class="dr-desc">Multi-channel follow-up running on autopilot.</div></div></div>
+          <div class="dash-row"><div><div class="dr-name">Website Upgraded to Full System</div><div class="dr-desc">Site rebuilt on platform so everything connects. ~$27/mo subscription paid by you.</div></div></div>
+        </div>
+        <div class="addon-card-footer">
+          <button class="btn-gold btn-full" data-item="automation" data-price="997" data-name="Systems & Automation Bundle">Add to Cart — $997 →</button>
+        </div>
+      </div>
+
+      <!-- BUSINESS CREDIT -->
+      <div class="addon-card">
+        <div class="addon-card-top">
+          <div>
+            <div class="mono-tag" style="margin-bottom:0.5rem;">$75K–$250K+ Funding</div>
+            <h3>Business Credit & Funding</h3>
+            <p>Build real credit under your EIN and position for serious funding. Courses and a curated net-30 list included free.</p>
+          </div>
+          <div>
+            <div class="addon-price">$997</div>
+            <div class="addon-price-label">one-time</div>
+          </div>
+        </div>
+        <div style="flex:1;">
+          <div class="dash-row"><div><div class="dr-name">DUNS Number Setup</div><div class="dr-desc">Establishes your EIN credit profile with business bureaus.</div></div></div>
+          <div class="dash-row"><div><div class="dr-name">Business Credit Bureau Registration</div><div class="dr-desc">Verified across all three major commercial bureaus.</div></div></div>
+          <div class="dash-row"><div><div class="dr-name">Business Credit Monitoring</div><div class="dr-desc">Track activity & growth across all major bureaus.</div></div></div>
+          <div class="dash-row"><div><div class="dr-name">Net-30 Vendor Account Setup</div><div class="dr-desc">Start building trade lines under your EIN.</div></div></div>
+          <div class="dash-row"><div><div class="dr-name">Free Curated Net-30 Account List</div><div class="dr-desc">Accounts that report to major bureaus — the list pros use.</div></div></div>
+          <div class="dash-row"><div><div class="dr-name">Business Banking Positioning</div><div class="dr-desc">Maintain a profile that looks strong to lenders.</div></div></div>
+          <div class="dash-row"><div><div class="dr-name">Tradeline Reporting Setup</div><div class="dr-desc">Accounts actively reporting payment history to bureaus.</div></div></div>
+          <div class="dash-row"><div><div class="dr-name">Business Credit Card Positioning</div><div class="dr-desc">EIN-only card guidance — no personal guarantee needed.</div></div></div>
+          <div class="dash-row"><div><div class="dr-name">Fundability Checklist & Audit</div><div class="dr-desc">Full review against what lenders actually check.</div></div></div>
+          <div class="dash-row"><div><div class="dr-name">Advanced Funding Positioning</div><div class="dr-desc">Structured for $75K–$250K+ in funding opportunities.</div></div></div>
+        </div>
+        <div class="addon-card-footer">
+          <button class="btn-gold btn-full" data-item="credit" data-price="997" data-name="Business Credit & Funding Bundle">Add to Cart — $997 →</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- BUILD YOUR OWN -->
+<section class="byo-section" id="byo">
+  <div class="section-wrap">
+    <div class="reveal" style="margin-bottom:2rem;">
+      <div class="mono-tag">Build Your Own</div>
+      <h2 class="display-h" style="font-size:clamp(1.8rem,3vw,2.8rem); margin-bottom:0.75rem;">Already have some pieces? <em>Only pay for what you need.</em></h2>
+      <p style="font-size:0.85rem; color:var(--text-light); max-width:500px; line-height:1.75;">Got an LLC already? Just need a website? Pick exactly what applies to your situation.</p>
+    </div>
+    <div class="byo-callout reveal">
+      <span style="color:var(--gold-2); font-size:1rem; flex-shrink:0;">💡</span>
+      <p>Building individually adds up fast. The Starter Build at <strong>$1,497</strong> covers Legal Formation ($597) + Brand & Web ($697) + Online Presence ($297) — and includes <strong>6 months credit repair free ($497 value).</strong></p>
+    </div>
+    <div class="byo-grid reveal">
+
+      <div class="byo-card">
+        <div class="byo-price">$597</div>
+        <div class="byo-name">Legal Formation Bundle</div>
+        <div class="byo-sub">Everything to legally establish your business</div>
+        <ul class="byo-items">
+          <li class="byo-item"><div class="byo-item-name">LLC Registration</div><div class="byo-item-desc">State filing fees not included</div></li>
+          <li class="byo-item"><div class="byo-item-name">EIN Setup</div><div class="byo-item-desc">For banking, taxes & funding</div></li>
+          <li class="byo-item"><div class="byo-item-name">Registered Agent — 1 Year</div><div class="byo-item-desc">Stay compliant</div></li>
+          <li class="byo-item"><div class="byo-item-name">Operating Agreement</div><div class="byo-item-desc">Required by most banks</div></li>
+          <li class="byo-item"><div class="byo-item-name">Meeting Minutes</div><div class="byo-item-desc">State compliance</div></li>
+          <li class="byo-item"><div class="byo-item-name">Company Binder</div><div class="byo-item-desc">All docs organized</div></li>
+        </ul>
+        <button class="btn-gold btn-full" data-item="legal" data-price="597" data-name="Legal Formation Bundle">Add — $597 →</button>
+      </div>
+
+      <div class="byo-card">
+        <div class="byo-price">$697</div>
+        <div class="byo-name">Brand & Web Bundle</div>
+        <div class="byo-sub">Professional brand and web presence</div>
+        <ul class="byo-items">
+          <li class="byo-item"><div class="byo-item-name">Custom Logo & Brand Identity</div><div class="byo-item-desc">Builds trust immediately</div></li>
+          <li class="byo-item"><div class="byo-item-name">Premium 2–4 Page Website</div><div class="byo-item-desc">Domain cost not included</div></li>
+          <li class="byo-item"><div class="byo-item-name">Domain Setup</div><div class="byo-item-desc">Registration cost passed to you</div></li>
+          <li class="byo-item"><div class="byo-item-name">Professional Business Email</div><div class="byo-item-desc">Branded for credibility</div></li>
+          <li class="byo-item"><div class="byo-item-name">Online Booking Integration</div><div class="byo-item-desc">Clients book on your site</div></li>
+        </ul>
+        <button class="btn-gold btn-full" data-item="brand" data-price="697" data-name="Brand & Web Bundle">Add — $697 →</button>
+      </div>
+
+      <div class="byo-card">
+        <div class="byo-price">$297</div>
+        <div class="byo-name">Online Presence Bundle</div>
+        <div class="byo-sub">Required for funding qualification</div>
+        <ul class="byo-items">
+          <li class="byo-item"><div class="byo-item-name">Google Business Profile</div><div class="byo-item-desc">Found on Google & Maps</div></li>
+          <li class="byo-item"><div class="byo-item-name">Business Phone Setup</div><div class="byo-item-desc">~$40/mo you pay direct</div></li>
+          <li class="byo-item"><div class="byo-item-name">Virtual Address Setup</div><div class="byo-item-desc">~$14–$20/mo you pay direct</div></li>
+          <li class="byo-item"><div class="byo-item-name">Business Email Setup</div><div class="byo-item-desc">Included with bundle</div></li>
+        </ul>
+        <button class="btn-gold btn-full" data-item="presence" data-price="297" data-name="Online Presence Bundle">Add — $297 →</button>
+      </div>
+
+      <div class="byo-card">
+        <div class="byo-price">$197</div>
+        <div class="byo-name">Payment & Invoicing Setup</div>
+        <div class="byo-sub">Accept payments and send invoices</div>
+        <ul class="byo-items">
+          <li class="byo-item"><div class="byo-item-name">Payment Processor Setup</div><div class="byo-item-desc">Cards, ACH & digital payments. Processor fees paid by you.</div></li>
+          <li class="byo-item"><div class="byo-item-name">Invoice System Setup</div><div class="byo-item-desc">Professional invoicing for clients & lenders</div></li>
+        </ul>
+        <button class="btn-gold btn-full" data-item="payment" data-price="197" data-name="Payment & Invoicing Setup">Add — $197 →</button>
+      </div>
+
+    </div>
+
+    <!-- COURSE + DIY KIT -->
+    <div class="bottom-grid reveal" id="resources">
+
+      <div class="bottom-card light">
+        <div style="position:relative;">
+          <div class="mono-tag" style="margin-bottom:0.75rem;">Self-Paced · Instant Access</div>
+          <h3>Personal & Business Credit + Business Structuring Course</h3>
+          <p>The same strategies professionals charge thousands to teach. Build your personal and business credit the right way and structure your LLC for maximum fundability.</p>
+          <ul class="bottom-features">
+            <li>Build personal credit the right way</li>
+            <li>Build business credit under your EIN</li>
+            <li>Structure your LLC for maximum fundability</li>
+            <li>Professional strategies — self-paced, instant access</li>
+          </ul>
+        </div>
+        <div class="bottom-right">
+          <div class="bottom-price">$297</div>
+          <div class="bottom-price-label">one-time · instant access</div>
+          <button class="btn-gold btn-full" data-item="course" data-price="297" data-name="Personal & Business Credit + Business Structuring Course">Get the Course →</button>
+        </div>
+      </div>
+
+      <div class="bottom-card dark-card">
+        <div style="position:relative;">
+          <div class="mono-tag" style="margin-bottom:0.75rem; color:var(--gold-2);">From NextUp Enterprise · Instant PDF</div>
+          <h3>DIY Credit Repair Kit</h3>
+          <p>21 sections and 80 ready-to-use dispute letters based on FCRA, FDCPA, HIPAA & TILA. Built for the person who wants to be hands-on.</p>
+          <ul class="bottom-features">
+            <li>80 ready-to-use letters — fill in & mail</li>
+            <li>Covers collections, charge-offs, repos, evictions & medical debt</li>
+            <li>FCRA, FDCPA, HIPAA & TILA consumer protection laws</li>
+            <li>Executive contact directory for major banks & bureaus</li>
+            <li>21 sections · 83 pages · step-by-step system</li>
+          </ul>
+        </div>
+        <div class="bottom-right" style="position:relative;">
+          <div class="bottom-price">$47</div>
+          <div class="bottom-price-label">one-time · instant PDF download</div>
+          <a href="https://payhip.com/b/QRCnr" target="_blank" class="btn-gold btn-full">Get the DIY Kit →</a>
+          <div style="font-size:0.65rem; color:var(--text-light); margin-top:0.75rem; text-align:center;">⚡ Download immediately after purchase</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CART BAR -->
+<div class="cart-bar" id="cartBar">
+  <div class="cart-bar-text"><span id="cartCount">0 items</span> in cart</div>
+  <div class="cart-div"></div>
+  <div class="cart-bar-total" id="cartTotal">$0</div>
+  <a href="#" class="btn-gold btn-sm" id="checkoutBtn" style="border-radius:100px;">Checkout →</a>
+</div>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-inner reveal">
+    <div class="mono-tag" style="justify-content:center; color:var(--gold-2);">Not Sure Where to Start?</div>
+    <h2>Let's figure it out <em>together.</em></h2>
+    <p>Book a free 15-minute strategy call. We'll go over your situation and tell you exactly what you need — no pressure, no fluff.</p>
+    <div class="cta-btns">
+      <a href="contact.html" class="btn-gold">Book a Free Strategy Call →</a>
+      <a href="index.html" class="btn-outline">Back to Home</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div><a href="index.html" class="footer-logo">NextUp <span>Capital</span></a><p class="footer-desc">Business formation, branding, and funding positioning — done for you.</p></div>
+    <div class="footer-col"><h5>Navigate</h5><ul><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="footer-col"><h5>Services</h5><ul><li><a href="#starter">Starter Build</a></li><li><a href="#addons">Systems & Automation</a></li><li><a href="#addons">Business Credit</a></li><li><a href="#byo">Build Your Own</a></li></ul></div>
+    <div class="footer-col"><h5>Connect</h5><ul><li><a href="https://nextupenterprise.com" target="_blank">NextUp Enterprise</a></li><li><a href="https://www.facebook.com/Nextupenterprise" target="_blank">Facebook</a></li><li><a href="https://www.instagram.com/nextupenterprise/" target="_blank">Instagram</a></li><li><a href="https://www.youtube.com/@Nextupenterprise" target="_blank">YouTube</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-legal">© 2026 NextUp Capital LLC. All rights reserved.<br>State filing fees and domain registration costs not included. Funding results vary.</p>
+    <div class="footer-social"><a href="https://www.facebook.com/Nextupenterprise" target="_blank">FB</a><a href="https://www.instagram.com/nextupenterprise/" target="_blank">IG</a><a href="https://www.youtube.com/@Nextupenterprise" target="_blank">YT</a></div>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (hamburgerBtn && mobileMenu) {
+    hamburgerBtn.addEventListener('click', () => { hamburgerBtn.classList.toggle('open'); mobileMenu.classList.toggle('open'); });
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hamburgerBtn.classList.remove('open'); mobileMenu.classList.remove('open'); }));
+    document.addEventListener('click', (e) => { if (!hamburgerBtn.contains(e.target) && !mobileMenu.contains(e.target)) { hamburgerBtn.classList.remove('open'); mobileMenu.classList.remove('open'); } });
+  }
+
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Cart
+  const BYO_ITEMS = {
+    starter: { name: 'Starter Build', price: 1497 },
+    automation: { name: 'Systems & Automation Bundle', price: 997 },
+    credit: { name: 'Business Credit & Funding Bundle', price: 997 },
+    legal: { name: 'Legal Formation Bundle', price: 597 },
+    brand: { name: 'Brand & Web Bundle', price: 697 },
+    presence: { name: 'Online Presence Bundle', price: 297 },
+    payment: { name: 'Payment & Invoicing Setup', price: 197 },
+    course: { name: 'Personal & Business Credit + Business Structuring Course', price: 297 },
+  };
+  let cart = {};
+
+  function updateCart() {
+    const total = Object.values(cart).reduce((s, i) => s + i.price, 0);
+    const count = Object.keys(cart).length;
+    document.getElementById('cartCount').textContent = count + ' item' + (count !== 1 ? 's' : '');
+    document.getElementById('cartTotal').textContent = '$' + total.toLocaleString();
+    document.getElementById('cartBar').classList.toggle('visible', count > 0);
+    Object.keys(BYO_ITEMS).forEach(id => {
+      const btn = document.querySelector('[data-item="' + id + '"]');
+      if (!btn) return;
+      if (cart[id]) {
+        btn.textContent = '✓ Added — $' + BYO_ITEMS[id].price;
+        btn.style.background = 'rgba(184,147,42,0.2)';
+        btn.style.color = 'var(--gold-3)';
+        btn.style.border = '1px solid var(--gold-border)';
+      } else {
+        const labels = { starter:'Add to Cart — $1,497 →', automation:'Add to Cart — $997 →', credit:'Add to Cart — $997 →', legal:'Add — $597 →', brand:'Add — $697 →', presence:'Add — $297 →', payment:'Add — $197 →', course:'Get the Course →' };
+        btn.textContent = labels[id] || 'Add';
+        btn.style.background = '';
+        btn.style.color = '';
+        btn.style.border = '';
+      }
+    });
+  }
+
+  document.querySelectorAll('[data-item]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.getAttribute('data-item');
+      if (cart[id]) { delete cart[id]; } else { cart[id] = BYO_ITEMS[id]; }
+      updateCart();
+    });
+  });
+
+  document.getElementById('checkoutBtn').addEventListener('click', async (e) => {
+    e.preventDefault();
+    const items = Object.values(cart);
+    if (!items.length) return;
+    const btn = document.getElementById('checkoutBtn');
+    btn.textContent = 'Redirecting...';
+    try {
+      const res = await fetch('/.netlify/functions/create-checkout', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ items }) });
+      const data = await res.json();
+      if (data.url) window.location.href = data.url;
+    } catch (err) {
+      btn.textContent = 'Error — Try Again';
+      setTimeout(() => btn.textContent = 'Checkout →', 2000);
+    }
+  });
+</script>
+</body>
+</html>

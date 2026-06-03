@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — NextUp Capital</title>
+  <meta name="description" content="Meet Yordyn Gonzalez — founder of NextUp Capital and NextUp Enterprise. The story behind the mission." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --black: #080808; --dark: #0f0f0f; --dark-2: #161616; --dark-3: #1e1e1e; --dark-4: #252525;
+      --white: #ffffff; --off-white: #f8f5ef;
+      --gold: #b8932a; --gold-2: #c9a84c; --gold-3: #e8c96a;
+      --gold-pale: rgba(184,147,42,0.1); --gold-border: rgba(184,147,42,0.25);
+      --gold-shadow: 0 8px 40px rgba(184,147,42,0.15), 0 2px 8px rgba(184,147,42,0.08);
+      --text-light: rgba(248,245,239,0.6); --text-mid: rgba(248,245,239,0.8);
+      --border: rgba(248,245,239,0.07);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { overflow-x: hidden; max-width: 100%; scroll-behavior: smooth; }
+    body { background: var(--black); color: var(--off-white); font-family: 'Inter', sans-serif; font-weight: 400; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.4rem 3rem; display: flex; align-items: center; justify-content: space-between; background: rgba(8,8,8,0.9); backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 1.3rem; color: var(--off-white); text-decoration: none; }
+    .nav-logo span { color: var(--gold-2); }
+    .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+    .nav-links a { color: rgba(248,245,239,0.45); text-decoration: none; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.8px; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--off-white); }
+    .nav-credit { color: var(--gold-2) !important; border: 1px solid var(--gold-border) !important; padding: 0.45rem 1rem; border-radius: 2px; font-size: 0.72rem !important; transition: all 0.2s !important; }
+    .nav-credit:hover { background: var(--gold-pale) !important; }
+    .nav-btn { background: var(--gold-2) !important; color: var(--black) !important; padding: 0.55rem 1.4rem; border-radius: 2px; font-size: 0.72rem !important; letter-spacing: 1px !important; font-weight: 600 !important; transition: all 0.2s !important; }
+    .nav-btn:hover { background: var(--gold-3) !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1px; background: var(--off-white); transition: all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; top: 65px; left: 0; right: 0; background: var(--dark); border-bottom: 1px solid var(--gold-border); box-shadow: 0 8px 32px rgba(0,0,0,0.5); z-index: 99; padding: 1.5rem; }
+    .mobile-menu.open { display: block; }
+    .mobile-menu ul { list-style: none; margin-bottom: 1.5rem; }
+    .mobile-menu ul li { border-bottom: 1px solid var(--border); }
+    .mobile-menu ul li a { display: block; padding: 0.9rem 0; font-size: 0.88rem; font-weight: 500; color: var(--text-mid); text-decoration: none; transition: color 0.2s; }
+    .mobile-menu ul li a:hover { color: var(--gold-2); }
+    .mobile-credit { color: var(--gold-2) !important; font-weight: 600 !important; }
+    .mobile-cta { display: block; width: 100%; background: var(--gold-2); color: var(--black); padding: 0.9rem; border-radius: 2px; font-size: 0.78rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; text-decoration: none; text-align: center; transition: all 0.2s; }
+    .mobile-cta:hover { background: var(--gold-3); }
+
+    .btn-gold { background: var(--gold-2); color: var(--black); padding: 0.85rem 2rem; border-radius: 2px; font-size: 0.76rem; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; text-decoration: none; border: none; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.4rem; }
+    .btn-gold:hover { background: var(--gold-3); transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: var(--gold-2); padding: 0.85rem 2rem; border-radius: 2px; font-size: 0.76rem; font-weight: 500; letter-spacing: 0.8px; text-transform: uppercase; text-decoration: none; border: 1px solid var(--gold-border); cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.4rem; }
+    .btn-outline:hover { background: var(--gold-pale); }
+
+    .mono-tag { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: var(--gold-2); letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1.25rem; }
+    .mono-tag::before { content: ''; width: 16px; height: 1px; background: var(--gold-2); }
+    .section-wrap { max-width: 1200px; margin: 0 auto; }
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* PAGE HEADER */
+    .page-header { padding: clamp(7rem,12vw,11rem) clamp(1.5rem,5vw,6rem) clamp(4rem,6vw,6rem); position: relative; overflow: hidden; border-bottom: 1px solid var(--border); }
+    .page-header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 60% 40%, rgba(184,147,42,0.07) 0%, transparent 60%); pointer-events: none; }
+    .page-header h1 { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(2.8rem, 6vw, 5rem); line-height: 1.0; letter-spacing: -0.02em; margin-bottom: 1.25rem; color: var(--off-white); }
+    .page-header h1 em { font-style: italic; color: var(--gold-2); display: block; }
+    .page-header p { font-size: 0.92rem; color: var(--text-light); max-width: 500px; line-height: 1.85; }
+
+    /* STORY */
+    .story-section { display: grid; grid-template-columns: 1fr 1.2fr; border-bottom: 1px solid var(--border); overflow: hidden; }
+    .story-left { padding: clamp(4rem,6vw,7rem) clamp(1.5rem,4vw,5rem); border-right: 1px solid var(--border); background: var(--dark-2); position: relative; overflow: hidden; }
+    .story-left::before { content: ''; position: absolute; bottom: -100px; left: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(184,147,42,0.07) 0%, transparent 65%); border-radius: 50%; animation: floatOrb 16s ease-in-out infinite; pointer-events: none; }
+    .story-right { padding: clamp(4rem,6vw,7rem) clamp(1.5rem,4vw,6rem); background: var(--dark); display: flex; flex-direction: column; justify-content: center; }
+    .story-img { width: 100%; aspect-ratio: 4/5; background: var(--dark-3); border: 1px solid var(--gold-border); border-radius: 3px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 0.75rem; color: var(--text-light); font-size: 0.75rem; margin-bottom: 1.5rem; box-shadow: var(--gold-shadow); }
+    .story-caption { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: var(--text-light); letter-spacing: 1px; }
+    .story-quote { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.2rem, 2vw, 1.75rem); font-weight: 300; font-style: italic; line-height: 1.5; color: var(--text-mid); margin-bottom: 1.75rem; border-left: 2px solid var(--gold-2); padding-left: 1.5rem; }
+    .story-quote span { color: var(--off-white); font-style: normal; font-weight: 600; }
+    .story-attr { font-size: 0.75rem; color: var(--text-light); letter-spacing: 0.5px; display: flex; align-items: center; gap: 0.75rem; margin-bottom: 2rem; }
+    .story-attr::before { content: ''; width: 20px; height: 1px; background: var(--gold-2); }
+    .story-divider { width: 36px; height: 1px; background: var(--border); margin: 2rem 0; }
+    .story-body p { font-size: 0.87rem; color: var(--text-mid); line-height: 1.85; margin-bottom: 1rem; }
+
+    /* MISSION */
+    .mission-section { padding: clamp(4rem,7vw,8rem) clamp(1.5rem,5vw,6rem); background: var(--dark); border-bottom: 1px solid var(--border); background-image: radial-gradient(rgba(184,147,42,0.05) 1px, transparent 1px); background-size: 32px 32px; position: relative; overflow: hidden; }
+    .mission-section::before { content: ''; position: absolute; top: -150px; right: -150px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(184,147,42,0.06) 0%, transparent 65%); border-radius: 50%; animation: floatOrb 18s ease-in-out infinite; pointer-events: none; }
+    .mission-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--gold-border); border: 1px solid var(--gold-border); box-shadow: var(--gold-shadow); margin-top: 3rem; }
+    .mission-item { background: var(--dark); padding: 2.5rem 2rem; transition: all 0.3s; }
+    .mission-item:hover { background: var(--dark-2); transform: translateY(-4px); }
+    .mission-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: rgba(184,147,42,0.15); line-height: 1; margin-bottom: 1.25rem; }
+    .mission-item h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--off-white); }
+    .mission-item p { font-size: 0.8rem; color: var(--text-light); line-height: 1.75; }
+
+    /* BRANDS */
+    .brands-section { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--border); overflow: hidden; }
+    .brand-left { padding: clamp(4rem,6vw,7rem) clamp(1.5rem,4vw,5rem); border-right: 1px solid var(--border); background: var(--dark-2); }
+    .brand-right { padding: clamp(4rem,6vw,7rem) clamp(1.5rem,4vw,6rem); background: var(--dark-3); }
+    .brand-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--off-white); }
+    .brand-card p { font-size: 0.85rem; color: var(--text-mid); line-height: 1.85; margin-bottom: 1.75rem; }
+    .check-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 2rem; }
+    .check-list li { display: flex; align-items: center; gap: 0.65rem; font-size: 0.82rem; color: var(--text-mid); }
+    .check-list li::before { content: '✓'; color: var(--gold-2); font-size: 0.7rem; flex-shrink: 0; }
+
+    /* STATS */
+    .stats-section { background: var(--dark-2); padding: clamp(3rem,5vw,6rem) clamp(1.5rem,5vw,6rem); border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+    .stats-section::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 700px; height: 400px; background: radial-gradient(ellipse, rgba(184,147,42,0.08) 0%, transparent 65%); animation: floatOrb2 14s ease-in-out infinite; pointer-events: none; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--gold-border); border: 1px solid var(--gold-border); box-shadow: var(--gold-shadow); position: relative; max-width: 1200px; margin: 0 auto; }
+    .stat-item { padding: 3rem 2rem; text-align: center; background: var(--dark-2); transition: background 0.3s; }
+    .stat-item:hover { background: var(--dark-3); }
+    .stat-big { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 700; color: var(--gold-2); line-height: 1; margin-bottom: 0.5rem; }
+    .stat-label { font-size: 0.75rem; color: var(--text-light); letter-spacing: 0.5px; }
+
+    /* VALUES */
+    .values-section { padding: clamp(4rem,7vw,8rem) clamp(1.5rem,5vw,6rem); background: var(--black); border-bottom: 1px solid var(--border); overflow: hidden; }
+    .values-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--gold-border); border: 1px solid var(--gold-border); box-shadow: var(--gold-shadow); margin-top: 3rem; }
+    .value-item { background: var(--dark-2); padding: 2.5rem; display: flex; gap: 1.25rem; align-items: flex-start; transition: all 0.3s; }
+    .value-item:hover { background: var(--dark-3); }
+    .value-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 2px; }
+    .value-item h5 { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--off-white); }
+    .value-item p { font-size: 0.8rem; color: var(--text-light); line-height: 1.75; }
+
+    /* CTA */
+    .cta-section { padding: clamp(5rem,8vw,9rem) clamp(1.5rem,5vw,6rem); text-align: center; position: relative; overflow: hidden; background: var(--dark); border-top: 1px solid var(--border); }
+    .cta-section::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 700px; height: 400px; background: radial-gradient(ellipse, rgba(184,147,42,0.08) 0%, transparent 65%); pointer-events: none; }
+    .cta-inner { position: relative; max-width: 600px; margin: 0 auto; }
+    .cta-inner h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 300; line-height: 1.1; margin-bottom: 1rem; color: var(--off-white); }
+    .cta-inner h2 em { font-style: italic; color: var(--gold-2); }
+    .cta-inner p { font-size: 0.88rem; color: var(--text-light); line-height: 1.85; max-width: 440px; margin: 0 auto 2.5rem; }
+    .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    footer { background: var(--dark); border-top: 1px solid var(--border); padding: clamp(3rem,5vw,5rem) clamp(1.5rem,5vw,6rem) 2.5rem; }
+    .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 4rem; padding-bottom: 3.5rem; border-bottom: 1px solid var(--border); margin-bottom: 2rem; max-width: 1200px; margin-left: auto; margin-right: auto; }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 1.2rem; color: var(--off-white); text-decoration: none; display: block; margin-bottom: 0.85rem; }
+    .footer-logo span { color: var(--gold-2); }
+    .footer-desc { font-size: 0.78rem; color: var(--text-light); line-height: 1.75; max-width: 230px; }
+    .footer-col h5 { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-light); margin-bottom: 1.1rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.55rem; }
+    .footer-col ul li a { color: var(--text-mid); text-decoration: none; font-size: 0.8rem; transition: color 0.2s; }
+    .footer-col ul li a:hover { color: var(--gold-2); }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; max-width: 1200px; margin: 0 auto; }
+    .footer-legal { font-size: 0.7rem; color: var(--text-light); line-height: 1.6; }
+    .footer-social { display: flex; gap: 0.6rem; }
+    .footer-social a { width: 32px; height: 32px; border-radius: 2px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--text-light); text-decoration: none; font-size: 0.68rem; font-weight: 600; transition: all 0.2s; }
+    .footer-social a:hover { border-color: var(--gold-border); color: var(--gold-2); }
+
+    @keyframes floatOrb { 0%, 100% { transform: translate(0,0) scale(1); } 33% { transform: translate(-30px,-40px) scale(1.05); } 66% { transform: translate(20px,-20px) scale(0.95); } }
+    @keyframes floatOrb2 { 0%, 100% { transform: translate(-50%,-50%) scale(1); } 50% { transform: translate(-50%,-50%) scale(1.1); } }
+    @keyframes marqueeScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    @media (max-width: 1024px) {
+      .story-section, .brands-section { grid-template-columns: 1fr; }
+      .story-left, .brand-left { border-right: none; border-bottom: 1px solid var(--border); }
+      .mission-grid, .values-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 1.1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .cta-btns { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">NextUp <span>Capital</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="https://nextupenterprise.com" target="_blank" class="nav-credit">Credit Repair</a></li>
+    <li><a href="services.html" class="nav-btn">Get Started</a></li>
+  </ul>
+  <button class="hamburger" id="hamburgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="https://nextupenterprise.com" target="_blank" class="mobile-credit">Credit Repair ↗</a></li>
+  </ul>
+  <a href="services.html" class="mobile-cta">Get Started →</a>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="section-wrap reveal">
+    <div class="mono-tag">About Us</div>
+    <h1>Built by someone<em>who lived it.</em></h1>
+    <p>NextUp Capital wasn't built from a business book. It was built from experience — knowing what it feels like to have the drive and not have the structure.</p>
+  </div>
+</div>
+
+
+<!-- STORY -->
+<section class="story-section">
+  <div class="story-left reveal">
+    <div class="story-img"><div style="font-size:2.5rem;">📷</div><div>Add photo here</div></div>
+    <div class="story-caption">Yordyn Gonzalez — Founder, NextUp Capital & NextUp Enterprise</div>
+  </div>
+  <div class="story-right reveal reveal-delay-1">
+    <div class="mono-tag">The Story</div>
+    <div class="story-quote">"I built this because I know what it feels like to have the drive — and not have <span>the structure.</span>"</div>
+    <div class="story-attr">Yordyn Gonzalez, Founder</div>
+    <div class="story-divider"></div>
+    <div class="story-body">
+      <p>I didn't start NextUp Capital from a business book. I started it because I lived the problem. I know what it's like to drive trucks to keep the lights on while figuring out how credit and business really work.</p>
+      <p>I made mistakes. I learned from them. And once I understood how the system actually worked — how lenders think, what banks look for, how credit really moves — everything changed.</p>
+      <p>Most entrepreneurs spend months — sometimes years — piecing together an LLC here, a website there, a logo from someone online. By the time they have everything, they've lost momentum, money, and time. And they're still not set up right for funding.</p>
+      <p>We put it all in one place. Done for you. Properly. So you can focus on building — not filing, calling, or figuring out what comes next.</p>
+      <p>And because personal credit affects your funding eligibility more than most people realize, every Starter Build includes 6 months of credit repair through NextUp Enterprise — completely free.</p>
+    </div>
+    <div style="display:flex; gap:0.85rem; flex-wrap:wrap; margin-top:2rem;">
+      <a href="services.html" class="btn-gold">See What We Offer →</a>
+      <a href="contact.html" class="btn-outline">Book a Free Call</a>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION -->
+<section class="mission-section">
+  <div class="section-wrap">
+    <div class="reveal">
+      <div class="mono-tag">The Mission</div>
+      <h2 style="font-family:'Cormorant Garamond',serif; font-weight:300; font-size:clamp(1.8rem,3vw,2.8rem); color:var(--off-white);">Built on three <em style="font-style:italic; color:var(--gold-2);">core beliefs.</em></h2>
+    </div>
+    <div class="mission-grid">
+      <div class="mission-item reveal"><div class="mission-num">01</div><h4>Structure First</h4><p>A business that isn't structured properly can't get funded, can't scale, and can't protect you. Everything we do starts with building the right foundation.</p></div>
+      <div class="mission-item reveal reveal-delay-1"><div class="mission-num">02</div><h4>No Fluff, No Waste</h4><p>You only pay for what you actually need. We don't sell bloated packages full of services you'll never use. Every dollar you spend should move you forward.</p></div>
+      <div class="mission-item reveal reveal-delay-2"><div class="mission-num">03</div><h4>Long-Term Thinking</h4><p>We're not here for a one-time transaction. We want you to come back — when you're ready for systems, credit, and bigger funding — because we got it right the first time.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<section class="brands-section">
+  <div class="brand-left reveal">
+    <div class="brand-card">
+      <div class="mono-tag">You Are Here</div>
+      <h3>NextUp <span style="color:var(--gold-2);">Capital</span></h3>
+      <p>Business formation, branding, online presence, and funding positioning. Everything a business needs to launch, look legitimate, and qualify for real funding — done for you.</p>
+      <ul class="check-list">
+        <li>LLC, EIN & Full Legal Formation</li>
+        <li>Custom Logo & Premium Website</li>
+        <li>Google Business Profile & Online Presence</li>
+        <li>Business Credit & Funding Positioning</li>
+        <li>Systems & Automation Setup</li>
+        <li>6 Months Credit Repair — FREE with every Starter Build</li>
+      </ul>
+      <a href="services.html" class="btn-gold">See All Services →</a>
+    </div>
+  </div>
+  <div class="brand-right reveal reveal-delay-1">
+    <div class="brand-card">
+      <div class="mono-tag">Sister Company</div>
+      <h3>NextUp <span style="color:var(--gold-2);">Enterprise</span></h3>
+      <p>Personal credit repair. Disputing inaccurate items, building your credit profile, and positioning you for real approvals — month by month until you hit your goals.</p>
+      <ul class="check-list">
+        <li>Disputes to all 3 credit bureaus</li>
+        <li>Monthly dispute cycles</li>
+        <li>Credit building guidance & strategy</li>
+        <li>24/7 client portal access</li>
+        <li>Real human support throughout</li>
+        <li>Starting at $125/month — cancel anytime</li>
+      </ul>
+      <a href="https://nextupenterprise.com" target="_blank" class="btn-outline">Visit NextUp Enterprise →</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-section">
+  <div class="stats-grid">
+    <div class="stat-item reveal"><div class="stat-big">150+</div><div class="stat-label">Clients Helped</div></div>
+    <div class="stat-item reveal reveal-delay-1"><div class="stat-big">$1M+</div><div class="stat-label">In Client Debt Removed</div></div>
+    <div class="stat-item reveal reveal-delay-2"><div class="stat-big">97%</div><div class="stat-label">Satisfaction Rate</div></div>
+    <div class="stat-item reveal reveal-delay-3"><div class="stat-big">2</div><div class="stat-label">Brands, One Mission</div></div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values-section">
+  <div class="section-wrap">
+    <div class="reveal">
+      <div class="mono-tag">What We Stand For</div>
+      <h2 style="font-family:'Cormorant Garamond',serif; font-weight:300; font-size:clamp(1.8rem,3vw,2.8rem); color:var(--off-white);">How we show up <em style="font-style:italic; color:var(--gold-2);">for every client.</em></h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-item reveal"><div class="value-icon">✊</div><div><h5>Honesty Over Hype</h5><p>We tell you what you actually need — not what makes us the most money. If the Starter Build is enough, we'll tell you that.</p></div></div>
+      <div class="value-item reveal reveal-delay-1"><div class="value-icon">⚡</div><div><h5>Speed With Precision</h5><p>We move fast — but we don't cut corners. A business set up wrong is worse than a business set up slow.</p></div></div>
+      <div class="value-item reveal reveal-delay-2"><div class="value-icon">🤝</div><div><h5>Real Relationships</h5><p>150+ clients helped isn't just a number — it's 150 conversations, strategies, and outcomes we take personally.</p></div></div>
+      <div class="value-item reveal reveal-delay-3"><div class="value-icon">📚</div><div><h5>Education Included</h5><p>We don't just set things up and disappear. We explain why everything matters so you can make smart decisions as you grow.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-inner reveal">
+    <div class="mono-tag" style="justify-content:center;">Ready?</div>
+    <h2>Let's build something <em>real.</em></h2>
+    <p>One investment. Everything you need to launch, look professional, and position for funding — plus 6 months of credit repair on us.</p>
+    <div class="cta-btns">
+      <a href="services.html" class="btn-gold">See the Offer →</a>
+      <a href="contact.html" class="btn-outline">Book a Free Call</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div><a href="index.html" class="footer-logo">NextUp <span>Capital</span></a><p class="footer-desc">Business formation, branding, and funding positioning — done for you.</p></div>
+    <div class="footer-col"><h5>Navigate</h5><ul><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="footer-col"><h5>Services</h5><ul><li><a href="services.html">Starter Build</a></li><li><a href="services.html#addons">Systems & Automation</a></li><li><a href="services.html#addons">Business Credit</a></li><li><a href="services.html#byo">Build Your Own</a></li></ul></div>
+    <div class="footer-col"><h5>Connect</h5><ul><li><a href="https://nextupenterprise.com" target="_blank">NextUp Enterprise</a></li><li><a href="https://www.facebook.com/Nextupenterprise" target="_blank">Facebook</a></li><li><a href="https://www.instagram.com/nextupenterprise/" target="_blank">Instagram</a></li><li><a href="https://www.youtube.com/@Nextupenterprise" target="_blank">YouTube</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-legal">© 2026 NextUp Capital LLC. All rights reserved.<br>State filing fees and domain registration costs not included. Funding results vary.</p>
+    <div class="footer-social"><a href="https://www.facebook.com/Nextupenterprise" target="_blank">FB</a><a href="https://www.instagram.com/nextupenterprise/" target="_blank">IG</a><a href="https://www.youtube.com/@Nextupenterprise" target="_blank">YT</a></div>
+  </div>
+</footer>
+
+<script>
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (hamburgerBtn && mobileMenu) {
+    hamburgerBtn.addEventListener('click', () => { hamburgerBtn.classList.toggle('open'); mobileMenu.classList.toggle('open'); });
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hamburgerBtn.classList.remove('open'); mobileMenu.classList.remove('open'); }));
+    document.addEventListener('click', (e) => { if (!hamburgerBtn.contains(e.target) && !mobileMenu.contains(e.target)) { hamburgerBtn.classList.remove('open'); mobileMenu.classList.remove('open'); } });
+  }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
