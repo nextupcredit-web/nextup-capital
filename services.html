@@ -641,16 +641,40 @@
     });
   });
 
+  // Direct Stripe links for single items
+  const STRIPE_LINKS = {
+    starter:    'https://buy.stripe.com/5kQ3cxajU8uhaj41e05Rm0b',
+    automation: 'https://buy.stripe.com/5kQbJ31No5i576Se0M5Rm0t',
+    credit:     'https://buy.stripe.com/3cI28tajU39XgHs2i45Rm0u',
+    legal:      'https://buy.stripe.com/6oUcN7eAacKxezk1e05Rm0v',
+    brand:      'https://buy.stripe.com/eVq3cxgIih0N1My3m85Rm0w',
+    presence:   'https://buy.stripe.com/fZu6oJ1No5i51My4qc5Rm0x',
+    payment:    'https://buy.stripe.com/dRm9AVeAa6m92QCf4Q5Rm0y',
+  };
+
   document.getElementById('checkoutBtn').addEventListener('click', async (e) => {
     e.preventDefault();
-    const items = Object.values(cart);
-    if (!items.length) return;
+    const keys = Object.keys(cart);
+    if (!keys.length) return;
     const btn = document.getElementById('checkoutBtn');
+
+    // Single item — go directly to Stripe, no function needed
+    if (keys.length === 1 && STRIPE_LINKS[keys[0]]) {
+      window.location.href = STRIPE_LINKS[keys[0]];
+      return;
+    }
+
+    // Multiple items — use Netlify dynamic checkout
     btn.textContent = 'Redirecting...';
     try {
-      const res = await fetch('/.netlify/functions/create-checkout', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ items }) });
+      const res = await fetch('/.netlify/functions/create-checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ items: Object.values(cart) })
+      });
       const data = await res.json();
       if (data.url) window.location.href = data.url;
+      else throw new Error('No URL');
     } catch (err) {
       btn.textContent = 'Error — Try Again';
       setTimeout(() => btn.textContent = 'Checkout →', 2000);
