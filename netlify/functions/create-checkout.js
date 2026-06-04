@@ -9,7 +9,7 @@ exports.handler = async (event) => {
     const lineItems = items.map(item => ({
       price_data: {
         currency: 'usd',
-        product_data: { name: item.name, description: item.description || '' },
+        product_data: { name: item.name },
         unit_amount: item.price * 100,
       },
       quantity: 1,
