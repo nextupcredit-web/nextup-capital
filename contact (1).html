@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — NextUp Capital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --black: #080808; --dark: #0f0f0f; --dark-2: #161616; --dark-3: #1e1e1e;
+      --off-white: #f8f5ef; --gold: #b8932a; --gold-2: #c9a84c; --gold-3: #e8c96a;
+      --gold-pale: rgba(184,147,42,0.1); --gold-border: rgba(184,147,42,0.25);
+      --gold-shadow: 0 8px 40px rgba(184,147,42,0.15), 0 2px 8px rgba(184,147,42,0.08);
+      --text-light: rgba(248,245,239,0.6); --text-mid: rgba(248,245,239,0.8);
+      --border: rgba(248,245,239,0.07);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { overflow-x: hidden; max-width: 100%; scroll-behavior: smooth; }
+    body { background: var(--black); color: var(--off-white); font-family: 'Inter', sans-serif; font-weight: 400; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.4rem 3rem; display: flex; align-items: center; justify-content: space-between; background: rgba(8,8,8,0.9); backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 1.3rem; color: var(--off-white); text-decoration: none; }
+    .nav-logo span { color: var(--gold-2); }
+    .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+    .nav-links a { color: rgba(248,245,239,0.45); text-decoration: none; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.8px; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--off-white); }
+    .nav-credit { color: var(--gold-2) !important; border: 1px solid var(--gold-border) !important; padding: 0.45rem 1rem; border-radius: 2px; font-size: 0.72rem !important; transition: all 0.2s !important; }
+    .nav-credit:hover { background: var(--gold-pale) !important; }
+    .nav-btn { background: var(--gold-2) !important; color: var(--black) !important; padding: 0.55rem 1.4rem; border-radius: 2px; font-size: 0.72rem !important; letter-spacing: 1px !important; font-weight: 600 !important; transition: all 0.2s !important; }
+    .nav-btn:hover { background: var(--gold-3) !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1px; background: var(--off-white); transition: all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; top: 65px; left: 0; right: 0; background: var(--dark); border-bottom: 1px solid var(--gold-border); box-shadow: 0 8px 32px rgba(0,0,0,0.5); z-index: 99; padding: 1.5rem; }
+    .mobile-menu.open { display: block; }
+    .mobile-menu ul { list-style: none; margin-bottom: 1.5rem; }
+    .mobile-menu ul li { border-bottom: 1px solid var(--border); }
+    .mobile-menu ul li a { display: block; padding: 0.9rem 0; font-size: 0.88rem; color: var(--text-mid); text-decoration: none; transition: color 0.2s; }
+    .mobile-menu ul li a:hover { color: var(--gold-2); }
+    .mobile-credit { color: var(--gold-2) !important; font-weight: 600 !important; }
+    .mobile-cta { display: block; width: 100%; background: var(--gold-2); color: var(--black); padding: 0.9rem; border-radius: 2px; font-size: 0.78rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; text-decoration: none; text-align: center; transition: all 0.2s; }
+    .mobile-cta:hover { background: var(--gold-3); }
+
+    .btn-gold { background: var(--gold-2); color: var(--black); padding: 0.85rem 2rem; border-radius: 2px; font-size: 0.76rem; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; text-decoration: none; border: none; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; width: 100%; }
+    .btn-gold:hover { background: var(--gold-3); }
+    .btn-outline { background: transparent; color: var(--gold-2); padding: 0.85rem 2rem; border-radius: 2px; font-size: 0.76rem; font-weight: 500; letter-spacing: 0.8px; text-transform: uppercase; text-decoration: none; border: 1px solid var(--gold-border); cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.4rem; }
+    .btn-outline:hover { background: var(--gold-pale); }
+
+    .mono-tag { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: var(--gold-2); letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1.25rem; }
+    .mono-tag::before { content: ''; width: 16px; height: 1px; background: var(--gold-2); }
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+
+    .page-header { padding: clamp(7rem,12vw,11rem) clamp(1.5rem,5vw,6rem) clamp(4rem,6vw,6rem); position: relative; overflow: hidden; border-bottom: 1px solid var(--border); }
+    .page-header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 60% 40%, rgba(184,147,42,0.07) 0%, transparent 60%); pointer-events: none; }
+    .page-header h1 { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(2.8rem, 6vw, 5rem); line-height: 1.0; letter-spacing: -0.02em; margin-bottom: 1.25rem; color: var(--off-white); }
+    .page-header h1 em { font-style: italic; color: var(--gold-2); display: block; }
+    .page-header p { font-size: 0.92rem; color: var(--text-light); max-width: 500px; line-height: 1.85; }
+
+    .contact-section { display: grid; grid-template-columns: 1fr 1.3fr; border-bottom: 1px solid var(--border); overflow: hidden; }
+    .contact-left { padding: clamp(4rem,6vw,7rem) clamp(1.5rem,4vw,5rem); border-right: 1px solid var(--border); background: var(--dark-2); position: relative; overflow: hidden; }
+    .contact-left::before { content: ''; position: absolute; bottom: -100px; left: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(184,147,42,0.07) 0%, transparent 65%); border-radius: 50%; animation: floatOrb 16s ease-in-out infinite; pointer-events: none; }
+    .contact-right { padding: clamp(4rem,6vw,7rem) clamp(1.5rem,4vw,6rem); background: var(--dark); }
+
+    .contact-info-title { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--off-white); }
+    .contact-info-title em { font-style: italic; color: var(--gold-2); }
+    .contact-info-sub { font-size: 0.85rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 2.5rem; }
+
+    .contact-item { display: flex; align-items: flex-start; gap: 1rem; padding: 1.25rem; background: var(--dark-3); border: 1px solid var(--gold-border); border-radius: 2px; margin-bottom: 1rem; transition: all 0.3s; box-shadow: var(--gold-shadow); }
+    .contact-item:hover { transform: translateY(-2px); background: var(--dark-4); }
+    .contact-item-icon { width: 38px; height: 38px; background: var(--gold-pale); border: 1px solid var(--gold-border); border-radius: 2px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; }
+    .contact-item-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-light); margin-bottom: 0.2rem; }
+    .contact-item-value { font-size: 0.85rem; color: var(--off-white); font-weight: 500; }
+    .contact-item-value a { color: var(--off-white); text-decoration: none; transition: color 0.2s; }
+    .contact-item-value a:hover { color: var(--gold-2); }
+
+    .cal-card { background: var(--dark-3); border: 1px solid var(--gold-border); border-radius: 2px; padding: 2rem; margin-top: 2rem; text-align: center; position: relative; overflow: hidden; box-shadow: var(--gold-shadow); }
+    .cal-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 50%, rgba(184,147,42,0.08) 0%, transparent 65%); pointer-events: none; }
+    .cal-card-inner { position: relative; }
+    .cal-card h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 700; color: var(--off-white); margin-bottom: 0.5rem; }
+    .cal-card p { font-size: 0.8rem; color: var(--text-light); line-height: 1.7; margin-bottom: 1.5rem; }
+    .cal-features { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-bottom: 1.5rem; }
+    .cal-feature { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: var(--gold-2); letter-spacing: 1px; background: var(--gold-pale); border: 1px solid var(--gold-border); border-radius: 100px; padding: 0.3rem 0.75rem; }
+
+    .form-title { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--off-white); }
+    .form-title em { font-style: italic; color: var(--gold-2); }
+    .form-sub { font-size: 0.85rem; color: var(--text-light); margin-bottom: 2.5rem; }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group label { display: block; font-size: 0.75rem; font-weight: 500; color: var(--text-mid); margin-bottom: 0.5rem; letter-spacing: 0.3px; }
+    .form-group input, .form-group select, .form-group textarea { width: 100%; background: var(--dark-2); border: 1px solid var(--gold-border); border-radius: 2px; padding: 0.85rem 1rem; font-family: 'Inter', sans-serif; font-size: 0.85rem; color: var(--off-white); outline: none; transition: all 0.2s; appearance: none; }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(248,245,239,0.25); }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--gold-2); background: var(--dark-3); box-shadow: 0 0 0 3px rgba(184,147,42,0.08); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-group select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c9a84c' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; cursor: pointer; }
+    .form-group select option { background: var(--dark-2); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-note { text-align: center; font-size: 0.72rem; color: var(--text-light); margin-top: 1rem; }
+    .form-success { display: none; text-align: center; padding: 3rem 2rem; }
+    .form-success .success-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .form-success h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--off-white); }
+    .form-success p { font-size: 0.85rem; color: var(--text-light); margin-bottom: 1.5rem; }
+
+    footer { background: var(--dark); border-top: 1px solid var(--border); padding: clamp(3rem,5vw,5rem) clamp(1.5rem,5vw,6rem) 2.5rem; }
+    .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 4rem; padding-bottom: 3.5rem; border-bottom: 1px solid var(--border); margin-bottom: 2rem; max-width: 1200px; margin-left: auto; margin-right: auto; }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 1.2rem; color: var(--off-white); text-decoration: none; display: block; margin-bottom: 0.85rem; }
+    .footer-logo span { color: var(--gold-2); }
+    .footer-desc { font-size: 0.78rem; color: var(--text-light); line-height: 1.75; max-width: 230px; }
+    .footer-col h5 { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-light); margin-bottom: 1.1rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.55rem; }
+    .footer-col ul li a { color: var(--text-mid); text-decoration: none; font-size: 0.8rem; transition: color 0.2s; }
+    .footer-col ul li a:hover { color: var(--gold-2); }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; max-width: 1200px; margin: 0 auto; }
+    .footer-legal { font-size: 0.7rem; color: var(--text-light); line-height: 1.6; }
+    .footer-social { display: flex; gap: 0.6rem; }
+    .footer-social a { width: 32px; height: 32px; border-radius: 2px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--text-light); text-decoration: none; font-size: 0.68rem; font-weight: 600; transition: all 0.2s; }
+    .footer-social a:hover { border-color: var(--gold-border); color: var(--gold-2); }
+
+    @keyframes floatOrb { 0%, 100% { transform: translate(0,0) scale(1); } 33% { transform: translate(-30px,-40px) scale(1.05); } 66% { transform: translate(20px,-20px) scale(0.95); } }
+    @keyframes marqueeScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    @media (max-width: 1024px) {
+      .contact-section { grid-template-columns: 1fr; }
+      .contact-left { border-right: none; border-bottom: 1px solid var(--border); }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 1.1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">NextUp <span>Capital</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+    <li><a href="https://nextupenterprise.com" target="_blank" class="nav-credit">Credit Repair</a></li>
+    <li><a href="services.html" class="nav-btn">Get Started</a></li>
+  </ul>
+  <button class="hamburger" id="hamburgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="https://nextupenterprise.com" target="_blank" class="mobile-credit">Credit Repair ↗</a></li>
+  </ul>
+  <a href="services.html" class="mobile-cta">Get Started →</a>
+</div>
+
+<div class="page-header">
+  <div style="max-width:1200px; margin:0 auto; position:relative;" class="reveal">
+    <div class="mono-tag">Get In Touch</div>
+    <h1>Let's figure out<em>your next move.</em></h1>
+    <p>Book a free strategy call or send us a message. We'll go over your situation and tell you exactly what you need — no pressure, no fluff.</p>
+  </div>
+</div>
+
+<!-- MARQUEE -->
+<div style="border-top:1px solid rgba(248,245,239,0.07); border-bottom:1px solid rgba(248,245,239,0.07); background:var(--dark); padding:0.9rem 0; overflow:hidden; width:100%;">
+  <div style="display:flex; white-space:nowrap; width:max-content; animation:marqueeScroll 28s linear infinite;">
+    <span style="display:inline-flex;align-items:center;gap:1.25rem;padding:0 2rem;font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--gold-2);letter-spacing:1.5px;text-transform:uppercase;flex-shrink:0;">Free Strategy Call <span style="width:4px;height:4px;border-radius:50%;background:var(--gold-2);display:inline-block;"></span></span>
+    <span style="display:inline-flex;align-items:center;gap:1.25rem;padding:0 2rem;font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--gold-2);letter-spacing:1.5px;text-transform:uppercase;flex-shrink:0;">No Pressure <span style="width:4px;height:4px;border-radius:50%;background:var(--gold-2);display:inline-block;"></span></span>
+    <span style="display:inline-flex;align-items:center;gap:1.25rem;padding:0 2rem;font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--gold-2);letter-spacing:1.5px;text-transform:uppercase;flex-shrink:0;">Real People <span style="width:4px;height:4px;border-radius:50%;background:var(--gold-2);display:inline-block;"></span></span>
+    <span style="display:inline-flex;align-items:center;gap:1.25rem;padding:0 2rem;font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--gold-2);letter-spacing:1.5px;text-transform:uppercase;flex-shrink:0;">Real Answers <span style="width:4px;height:4px;border-radius:50%;background:var(--gold-2);display:inline-block;"></span></span>
+    <span style="display:inline-flex;align-items:center;gap:1.25rem;padding:0 2rem;font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--gold-2);letter-spacing:1.5px;text-transform:uppercase;flex-shrink:0;">570-203-1530 <span style="width:4px;height:4px;border-radius:50%;background:var(--gold-2);display:inline-block;"></span></span>
+    <span style="display:inline-flex;align-items:center;gap:1.25rem;padding:0 2rem;font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--gold-2);letter-spacing:1.5px;text-transform:uppercase;flex-shrink:0;">1 Business Day Response <span style="width:4px;height:4px;border-radius:50%;background:var(--gold-2);display:inline-block;"></span></span>
+    <span style="display:inline-flex;align-items:center;gap:1.25rem;padding:0 2rem;font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--gold-2);letter-spacing:1.5px;text-transform:uppercase;flex-shrink:0;">Free Strategy Call <span style="width:4px;height:4px;border-radius:50%;background:var(--gold-2);display:inline-block;"></span></span>
+    <span style="display:inline-flex;align-items:center;gap:1.25rem;padding:0 2rem;font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--gold-2);letter-spacing:1.5px;text-transform:uppercase;flex-shrink:0;">No Pressure <span style="width:4px;height:4px;border-radius:50%;background:var(--gold-2);display:inline-block;"></span></span>
+    <span style="display:inline-flex;align-items:center;gap:1.25rem;padding:0 2rem;font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--gold-2);letter-spacing:1.5px;text-transform:uppercase;flex-shrink:0;">Real People <span style="width:4px;height:4px;border-radius:50%;background:var(--gold-2);display:inline-block;"></span></span>
+    <span style="display:inline-flex;align-items:center;gap:1.25rem;padding:0 2rem;font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--gold-2);letter-spacing:1.5px;text-transform:uppercase;flex-shrink:0;">Real Answers <span style="width:4px;height:4px;border-radius:50%;background:var(--gold-2);display:inline-block;"></span></span>
+    <span style="display:inline-flex;align-items:center;gap:1.25rem;padding:0 2rem;font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--gold-2);letter-spacing:1.5px;text-transform:uppercase;flex-shrink:0;">570-203-1530 <span style="width:4px;height:4px;border-radius:50%;background:var(--gold-2);display:inline-block;"></span></span>
+    <span style="display:inline-flex;align-items:center;gap:1.25rem;padding:0 2rem;font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--gold-2);letter-spacing:1.5px;text-transform:uppercase;flex-shrink:0;">1 Business Day Response <span style="width:4px;height:4px;border-radius:50%;background:var(--gold-2);display:inline-block;"></span></span>
+  </div>
+</div>
+
+<section class="contact-section">
+  <div class="contact-left reveal">
+    <div class="mono-tag">Reach Us Directly</div>
+    <div class="contact-info-title">Real people. <em>Real answers.</em></div>
+    <div class="contact-info-sub">We're not a chatbot. If you have questions, want to talk through your situation, or just need to know where to start — reach out.</div>
+    <div class="contact-item">
+      <div class="contact-item-icon">📧</div>
+      <div><div class="contact-item-label">Email</div><div class="contact-item-value"><a href="mailto:support@nextupcapitalgroup.com">support@nextupcapitalgroup.com</a></div></div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-item-icon">📞</div>
+      <div><div class="contact-item-label">Phone</div><div class="contact-item-value"><a href="tel:5702031530">570-203-1530</a></div></div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-item-icon">📍</div>
+      <div><div class="contact-item-label">Address</div><div class="contact-item-value">222 Wilkes Barre Twp Blvd #253<br>Wilkes Barre, PA 18702</div></div>
+    </div>
+    <div class="cal-card">
+      <div class="cal-card-inner">
+        <h4>Book a Free Strategy Call</h4>
+        <p>15 minutes. We'll review your situation, answer your questions, and map out exactly what you need to launch and get funded.</p>
+        <div class="cal-features">
+          <span class="cal-feature">Free</span>
+          <span class="cal-feature">15–30 min</span>
+          <span class="cal-feature">Video or phone</span>
+          <span class="cal-feature">No pressure</span>
+        </div>
+        <a href="https://calendly.com/nextupcredit/business-strategy-call-free-consultation" target="_blank" class="btn-gold">Book Your Free Call →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-right reveal reveal-delay-1">
+    <div class="form-title">Send us a <em>message.</em></div>
+    <div class="form-sub">Fill out the form and we'll get back to you within 1 business day.</div>
+    <form id="contactForm" action="https://formspree.io/f/xrevprgk" method="POST">
+      <div class="form-row">
+        <div class="form-group"><label>First Name</label><input type="text" name="firstName" placeholder="First Name" required /></div>
+        <div class="form-group"><label>Last Name</label><input type="text" name="lastName" placeholder="Last Name" required /></div>
+      </div>
+      <div class="form-group"><label>Email Address</label><input type="email" name="email" placeholder="you@yourbusiness.com" required /></div>
+      <div class="form-group"><label>Phone Number</label><input type="tel" name="phone" placeholder="(570) 000-0000" /></div>
+      <div class="form-group">
+        <label>What are you interested in?</label>
+        <select name="interest" required>
+          <option value="" disabled selected>Select a service</option>
+          <option value="starter-build">Starter Build</option>
+          <option value="systems-automation">Systems & Automation Add-On</option>
+          <option value="business-credit">Business Credit & Funding Add-On</option>
+          <option value="build-your-own">Build Your Own</option>
+          <option value="credit-repair">Credit Repair (NextUp Enterprise)</option>
+          <option value="not-sure">Not sure yet — need guidance</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Tell us about your situation</label><textarea name="message" placeholder="Where are you at? Do you have an LLC already? What kind of business are you building? What's your funding goal?" required></textarea></div>
+      <button type="submit" class="btn-gold">Send Message →</button>
+      <p class="form-note">We typically respond within 1 business day.</p>
+    </form>
+    <div class="form-success" id="formSuccess">
+      <div class="success-icon">✅</div>
+      <h4>Message received!</h4>
+      <p>We'll get back to you within 1 business day.</p>
+      <a href="https://calendly.com/nextupcredit/business-strategy-call-free-consultation" target="_blank" class="btn-outline" style="margin-top:0.5rem; justify-content:center;">Book a Free Call →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div><a href="index.html" class="footer-logo">NextUp <span>Capital</span></a><p class="footer-desc">Business formation, branding, and funding positioning — done for you.</p></div>
+    <div class="footer-col"><h5>Navigate</h5><ul><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="footer-col"><h5>Services</h5><ul><li><a href="services.html">Starter Build</a></li><li><a href="services.html#addons">Systems & Automation</a></li><li><a href="services.html#addons">Business Credit</a></li><li><a href="services.html#byo">Build Your Own</a></li></ul></div>
+    <div class="footer-col"><h5>Connect</h5><ul><li><a href="https://nextupenterprise.com" target="_blank">NextUp Enterprise</a></li><li><a href="https://www.facebook.com/Nextupenterprise" target="_blank">Facebook</a></li><li><a href="https://www.instagram.com/nextupenterprise/" target="_blank">Instagram</a></li><li><a href="https://www.youtube.com/@Nextupenterprise" target="_blank">YouTube</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-legal">© 2026 NextUp Capital LLC. All rights reserved.<br>State filing fees and Funding results vary.</p>
+    <div class="footer-social"><a href="https://www.facebook.com/Nextupenterprise" target="_blank">FB</a><a href="https://www.instagram.com/nextupenterprise/" target="_blank">IG</a><a href="https://www.youtube.com/@Nextupenterprise" target="_blank">YT</a></div>
+  </div>
+</footer>
+
+<script>
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (hamburgerBtn && mobileMenu) {
+    hamburgerBtn.addEventListener('click', () => { hamburgerBtn.classList.toggle('open'); mobileMenu.classList.toggle('open'); });
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hamburgerBtn.classList.remove('open'); mobileMenu.classList.remove('open'); }));
+    document.addEventListener('click', (e) => { if (!hamburgerBtn.contains(e.target) && !mobileMenu.contains(e.target)) { hamburgerBtn.classList.remove('open'); mobileMenu.classList.remove('open'); } });
+  }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  const form = document.getElementById('contactForm');
+  const success = document.getElementById('formSuccess');
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      try {
+        const res = await fetch('https://formspree.io/f/xrevprgk', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(form)
+        });
+        if (res.ok) {
+          form.style.display = 'none';
+          success.style.display = 'block';
+        }
+      } catch (err) {
+        form.style.display = 'none';
+        success.style.display = 'block';
+      }
+    });
+  }
+</script>
+</body>
+</html>
