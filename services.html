@@ -675,6 +675,15 @@
     if (!keys.length) return;
     const btn = document.getElementById('checkoutBtn');
 
+    // Fire Meta InitiateCheckout event
+    if (typeof fbq !== 'undefined') {
+      fbq('track', 'InitiateCheckout', {
+        num_items: keys.length,
+        currency: 'USD',
+        value: Object.values(cart).reduce((s, i) => s + i.price, 0)
+      });
+    }
+
     // Single item — go directly to Stripe, no function needed
     if (keys.length === 1 && STRIPE_LINKS[keys[0]]) {
       window.location.href = STRIPE_LINKS[keys[0]];
