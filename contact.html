@@ -168,6 +168,7 @@
     <li><a href="https://nextupenterprise.com" target="_blank" class="nav-credit">Credit Repair</a></li>
     <li><a href="services.html" class="nav-btn">Get Started</a></li>
   </ul>
+  <button id="langToggle" onclick="toggleLang()" style="background:transparent; border:1px solid rgba(184,147,42,0.4); color:var(--gold-2); font-family:'DM Mono',monospace; font-size:0.65rem; letter-spacing:2px; padding:0.4rem 0.85rem; border-radius:2px; cursor:pointer; transition:all 0.2s; margin-right:0.75rem;">ES</button>
   <button class="hamburger" id="hamburgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
@@ -320,6 +321,31 @@
       }
     });
   }
+</script>
+
+<script src="translations.js"></script>
+<script>
+let currentLang = localStorage.getItem('lang') || 'en';
+
+function applyLang(lang) {
+  const t = TRANSLATIONS[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key]) el.textContent = t[key];
+  });
+  const btn = document.getElementById('langToggle');
+  if (btn) btn.textContent = t['lang_btn'];
+  localStorage.setItem('lang', lang);
+  currentLang = lang;
+}
+
+function toggleLang() {
+  applyLang(currentLang === 'en' ? 'es' : 'en');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (currentLang === 'es') applyLang('es');
+});
 </script>
 </body>
 </html>

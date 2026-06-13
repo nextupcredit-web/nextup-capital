@@ -273,60 +273,61 @@
 <nav>
   <a href="index.html" class="nav-logo">NextUp <span>Capital</span></a>
   <ul class="nav-links">
-    <li><a href="index.html" class="active">Home</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="contact.html">Contact</a></li>
-    <li><a href="https://nextupenterprise.com" target="_blank" class="nav-credit">Credit Repair</a></li>
-    <li><a href="services.html" class="nav-btn">Get Started</a></li>
+    <li><a href="index.html" class="active" data-i18n="nav_home">Home</a></li>
+    <li><a href="services.html" data-i18n="nav_services">Services</a></li>
+    <li><a href="about.html" data-i18n="nav_about">About</a></li>
+    <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+    <li><a href="https://nextupenterprise.com" target="_blank" class="nav-credit" data-i18n="nav_credit">Credit Repair</a></li>
+    <li><a href="services.html" class="nav-btn" data-i18n="nav_get_started">Get Started</a></li>
   </ul>
+  <button id="langToggle" onclick="toggleLang()" style="background:transparent; border:1px solid rgba(184,147,42,0.4); color:var(--gold-2); font-family:'DM Mono',monospace; font-size:0.65rem; letter-spacing:2px; padding:0.4rem 0.85rem; border-radius:2px; cursor:pointer; transition:all 0.2s; margin-right:0.75rem;">ES</button>
   <button class="hamburger" id="hamburgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
   <ul>
     <li><a href="index.html">Home</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="contact.html">Contact</a></li>
+    <li><a href="services.html" data-i18n="nav_services">Services</a></li>
+    <li><a href="about.html" data-i18n="nav_about">About</a></li>
+    <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
     <li><a href="https://nextupenterprise.com" target="_blank" class="mobile-credit">Credit Repair ↗</a></li>
   </ul>
-  <a href="services.html" class="mobile-cta">Get Started →</a>
+  <a href="services.html" class="mobile-cta" data-i18n="nav_get_started">Get Started →</a>
 </div>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
     <div>
-      <div class="mono-tag reveal">Business Formation & Funding</div>
-      <h1 class="reveal">Build the business<em>that funds your future.</em></h1>
-      <p class="hero-sub reveal">Everything you need to launch properly, get seen, and qualify for real business funding — done for you. One investment. Every piece in place before you apply.</p>
+      <div class="mono-tag reveal" data-i18n="hero_tag">Business Formation & Funding</div>
+      <h1 class="reveal"><span data-i18n="hero_h1">Build the business</span><em data-i18n="hero_h1_em">that funds your future.</em></h1>
+      <p class="hero-sub reveal" data-i18n="hero_sub">Everything you need to launch properly, get seen, and qualify for real business funding — done for you. One investment. Every piece in place before you apply.</p>
       <div class="hero-btns reveal">
-        <a href="services.html" class="btn-gold">View Services →</a>
-        <a href="contact.html" class="btn-outline">Free Strategy Call</a>
+        <a href="services.html" class="btn-gold" data-i18n="hero_btn_services">View Services →</a>
+        <a href="contact.html" class="btn-outline" data-i18n="hero_btn_call">Free Strategy Call</a>
       </div>
     </div>
     <div class="reveal">
-      <div class="hero-offer-label">Core Offer — Done For You</div>
+      <div class="hero-offer-label" data-i18n="hero_offer_label">Core Offer — Done For You</div>
       <div class="offer-card">
         <div class="offer-card-bar"></div>
         <div class="offer-card-body">
-          <div class="offer-name">Starter Build</div>
-          <div class="offer-desc">The minimum required to qualify for business funding</div>
-          <div class="offer-bonus">★ &nbsp;6 Months Credit Repair Included — $497 Value</div>
+          <div class="offer-name" data-i18n="offer_name">Starter Build</div>
+          <div class="offer-desc" data-i18n="offer_desc">The minimum required to qualify for business funding</div>
+          <div class="offer-bonus" data-i18n="offer_bonus">★ &nbsp;6 Months Credit Repair Included — $497 Value</div>
           <ul class="offer-items">
-            <li>LLC Registration, EIN & Registered Agent (1 Year)</li>
-            <li>Operating Agreement, Meeting Minutes & Company Binder</li>
-            <li>Custom Logo & Brand Identity</li>
-            <li>Premium 2–4 Page Website & Domain Setup</li>
-            <li>Google Business Profile Setup & Optimization</li>
-            <li>Business Phone & Virtual Address Setup</li>
-            <li>Professional Business Email</li>
-            <li>Funding Positioning — $10K to $75K</li>
+            <li data-i18n="offer_item_1">LLC Registration, EIN & Registered Agent (1 Year)</li>
+            <li data-i18n="offer_item_2">Operating Agreement, Meeting Minutes & Company Binder</li>
+            <li data-i18n="offer_item_3">Custom Logo & Brand Identity</li>
+            <li data-i18n="offer_item_4">Premium 2–4 Page Website & Domain Setup</li>
+            <li data-i18n="offer_item_5">Google Business Profile Setup & Optimization</li>
+            <li data-i18n="offer_item_6">Business Phone & Virtual Address Setup</li>
+            <li data-i18n="offer_item_7">Professional Business Email</li>
+            <li data-i18n="offer_item_8">Funding Positioning — $10K to $75K</li>
           </ul>
         </div>
         <div class="offer-card-footer">
           <div class="offer-footer-note">State filing fee for LLC not included</div>
-          <a href="services.html" class="btn-gold btn-sm">Get Started →</a>
+          <a href="services.html" class="btn-gold btn-sm" data-i18n="offer_btn">Get Started →</a>
         </div>
       </div>
     </div>
@@ -523,7 +524,7 @@
 <footer>
   <div class="footer-top">
     <div><a href="index.html" class="footer-logo">NextUp <span>Capital</span></a><p class="footer-desc">Business formation, branding, and funding positioning — done for you.</p></div>
-    <div class="footer-col"><h5>Navigate</h5><ul><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="footer-col"><h5>Navigate</h5><ul><li><a href="index.html">Home</a></li><li><a href="services.html" data-i18n="nav_services">Services</a></li><li><a href="about.html" data-i18n="nav_about">About</a></li><li><a href="contact.html" data-i18n="nav_contact">Contact</a></li></ul></div>
     <div class="footer-col"><h5>Services</h5><ul><li><a href="services.html">Starter Build</a></li><li><a href="services.html#addons">Systems & Automation</a></li><li><a href="services.html#addons">Business Credit</a></li><li><a href="services.html#byo">Build Your Own</a></li></ul></div>
     <div class="footer-col"><h5>Connect</h5><ul><li><a href="https://nextupenterprise.com" target="_blank">NextUp Enterprise</a></li><li><a href="https://www.facebook.com/Nextupenterprise" target="_blank">Facebook</a></li><li><a href="https://www.instagram.com/nextupenterprise/" target="_blank">Instagram</a></li><li><a href="https://www.youtube.com/@Nextupenterprise" target="_blank">YouTube</a></li></ul></div>
   </div>
@@ -545,6 +546,31 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
   }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+<script src="translations.js"></script>
+<script>
+let currentLang = localStorage.getItem('lang') || 'en';
+
+function applyLang(lang) {
+  const t = TRANSLATIONS[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key]) el.textContent = t[key];
+  });
+  document.getElementById('langToggle').textContent = t['lang_btn'];
+  localStorage.setItem('lang', lang);
+  currentLang = lang;
+}
+
+function toggleLang() {
+  applyLang(currentLang === 'en' ? 'es' : 'en');
+}
+
+// Apply on load
+document.addEventListener('DOMContentLoaded', () => {
+  if (currentLang === 'es') applyLang('es');
+});
 </script>
 </body>
 </html>
