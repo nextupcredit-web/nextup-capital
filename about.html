@@ -118,6 +118,27 @@
     .value-item:hover { background: var(--dark-3); }
     .value-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 2px; }
     .value-item h5 { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--off-white); }
+
+    /* OUR WORK SHOWCASE */
+    .work-section { padding: clamp(4rem,7vw,8rem) clamp(1.5rem,5vw,6rem); background: var(--black); border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+    .work-section::before { content: ''; position: absolute; top: -200px; left: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(184,147,42,0.05) 0%, transparent 65%); border-radius: 50%; animation: floatOrb 20s ease-in-out infinite; pointer-events: none; }
+    .work-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 3rem; }
+    .work-card { background: var(--dark-2); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.35s; position: relative; }
+    .work-card:hover { transform: translateY(-6px); border-color: rgba(184,147,42,0.35); box-shadow: 0 20px 50px -20px rgba(184,147,42,0.25); }
+    .work-preview { height: 200px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--dark-3), var(--dark)); border-bottom: 1px solid var(--border); }
+    .work-preview::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(184,147,42,0.08) 1px, transparent 1px); background-size: 22px 22px; opacity: 0.6; }
+    .work-preview-logo { position: relative; z-index: 1; font-family: 'Cormorant Garamond', serif; font-weight: 700; text-align: center; letter-spacing: 1px; padding: 0 1.5rem; }
+    .work-badge { position: absolute; top: 1rem; left: 1rem; z-index: 2; background: rgba(8,8,8,0.7); border: 1px solid rgba(184,147,42,0.35); color: var(--gold-2); font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 1.5px; text-transform: uppercase; padding: 0.3rem 0.7rem; border-radius: 2px; backdrop-filter: blur(6px); }
+    .work-body { padding: 1.75rem; display: flex; flex-direction: column; flex: 1; }
+    .work-category { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: var(--gold-2); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.6rem; }
+    .work-body h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 700; color: var(--off-white); margin-bottom: 0.65rem; }
+    .work-body p { font-size: 0.82rem; color: var(--text-light); line-height: 1.75; margin-bottom: 1.25rem; flex: 1; }
+    .work-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.5rem; }
+    .work-tag { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: var(--text-light); border: 1px solid var(--border); padding: 0.25rem 0.6rem; border-radius: 2px; letter-spacing: 0.5px; }
+    .work-link { font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 600; color: var(--gold-2); text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; transition: gap 0.2s; }
+    .work-link:hover { gap: 0.7rem; }
+    @media (max-width: 900px) { .work-grid { grid-template-columns: 1fr; } }
+
     .value-item p { font-size: 0.8rem; color: var(--text-light); line-height: 1.75; }
 
     /* CTA */
@@ -292,6 +313,90 @@
         <li data-i18n="cross_feat_6">Starting at $125/month — cancel anytime</li>
       </ul>
       <a href="https://nextupenterprise.com" target="_blank" class="btn-outline" data-i18n="cross_btn">Visit NextUp Enterprise →</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- OUR WORK -->
+<section class="work-section">
+  <div class="section-wrap">
+    <div class="reveal">
+      <div class="mono-tag" data-i18n="work_tag">Our Work</div>
+      <h2 style="font-family:'Cormorant Garamond',serif; font-weight:300; font-size:clamp(1.8rem,3vw,2.8rem); color:var(--off-white);"><span data-i18n="work_h2">Real businesses,</span> <em style="font-style:italic; color:var(--gold-2);" data-i18n="work_h2_em">built from scratch.</em></h2>
+      <p style="font-size:0.85rem; color:var(--text-light); max-width:560px; line-height:1.75; margin-top:0.75rem;" data-i18n="work_intro">A look at some of the businesses we've launched and leveled up — from full legal formation and branding to custom websites and booking systems.</p>
+    </div>
+    <div class="work-grid">
+
+      <!-- Venegas Wealth Group -->
+      <div class="work-card reveal">
+        <div class="work-preview">
+          <div class="work-badge" data-i18n="work_badge_built">Built From Scratch</div>
+          <div class="work-preview-logo">
+            <div style="font-size:1.6rem; letter-spacing:2px; color:var(--off-white);">VENEGAS</div>
+            <div style="font-size:0.95rem; letter-spacing:3px; color:var(--gold-2); margin-top:0.25rem;">WEALTH GROUP</div>
+          </div>
+        </div>
+        <div class="work-body">
+          <div class="work-category" data-i18n="work_v_category">Real Estate Investment · Chicago, IL</div>
+          <h3>Venegas Wealth Group</h3>
+          <p data-i18n="work_v_desc">A complete buildout from the ground up — LLC formation, brand identity, and a premium website for a Chicago real estate investment firm specializing in buy &amp; hold, fix &amp; flip, and property management.</p>
+          <div class="work-tags">
+            <span class="work-tag" data-i18n="work_tag_llc">LLC Formation</span>
+            <span class="work-tag" data-i18n="work_tag_brand">Branding</span>
+            <span class="work-tag" data-i18n="work_tag_web">Website</span>
+            <span class="work-tag" data-i18n="work_tag_funding">Funding Positioning</span>
+          </div>
+          <a href="https://venegaswealthgroup.com" target="_blank" class="work-link" data-i18n="work_visit">Visit Site →</a>
+        </div>
+      </div>
+
+      <!-- RiseUp Consulting -->
+      <div class="work-card reveal reveal-delay-1">
+        <div class="work-preview">
+          <div class="work-badge" data-i18n="work_badge_built">Built From Scratch</div>
+          <div class="work-preview-logo">
+            <div style="font-size:1.8rem; letter-spacing:2px; color:var(--off-white);">RiseUp</div>
+            <div style="font-size:0.8rem; letter-spacing:3px; color:var(--gold-2); margin-top:0.25rem;">CONSULTING</div>
+          </div>
+        </div>
+        <div class="work-body">
+          <div class="work-category" data-i18n="work_r_category">Credit &amp; Business Consulting · Scranton, PA</div>
+          <h3>RiseUp Consulting</h3>
+          <p data-i18n="work_r_desc">A bilingual (English/Spanish) website built for a credit counseling and business management consulting firm — pairing personal credit guidance with hands-on business consulting under one roof.</p>
+          <div class="work-tags">
+            <span class="work-tag" data-i18n="work_tag_brand">Branding</span>
+            <span class="work-tag" data-i18n="work_tag_web">Website</span>
+            <span class="work-tag" data-i18n="work_tag_bilingual">Bilingual EN/ES</span>
+            <span class="work-tag" data-i18n="work_tag_booking">Booking Integration</span>
+          </div>
+          <a href="https://riseupsolution.com" target="_blank" class="work-link" data-i18n="work_visit">Visit Site →</a>
+        </div>
+      </div>
+
+      <!-- Atlantis Barbershop -->
+      <div class="work-card reveal reveal-delay-2">
+        <div class="work-preview">
+          <div class="work-badge" data-i18n="work_badge_revamp">Website &amp; Booking System</div>
+          <div class="work-preview-logo">
+            <div style="font-size:1.8rem; letter-spacing:2px; color:var(--off-white);">ATLANTIS</div>
+            <div style="font-size:0.8rem; letter-spacing:3px; color:var(--gold-2); margin-top:0.25rem;">BARBERSHOP</div>
+          </div>
+        </div>
+        <div class="work-body">
+          <div class="work-category" data-i18n="work_a_category">Barbershop · Forty Fort, PA</div>
+          <h3>Atlantis Barbershop</h3>
+          <p data-i18n="work_a_desc">A vibrant, bilingual website and online booking system for an established 5-star barbershop — complete with service menus, gallery, podcast integration, and a built-in shop for grooming products.</p>
+          <div class="work-tags">
+            <span class="work-tag" data-i18n="work_tag_web">Website</span>
+            <span class="work-tag" data-i18n="work_tag_booking">Online Booking</span>
+            <span class="work-tag" data-i18n="work_tag_bilingual">Bilingual EN/ES</span>
+            <span class="work-tag" data-i18n="work_tag_ecom">E-Commerce</span>
+          </div>
+          <a href="https://atlantisbarbershop.com" target="_blank" class="work-link" data-i18n="work_visit">Visit Site →</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -485,6 +590,21 @@ const T = {
     abt_v4_h:"Education Included", abt_v4_p:"We don't just set things up and disappear. We explain why everything matters so you can make smart decisions as you grow.",
     abt_cta_tag:"Ready?",
     abt_cta_h2:"Let's build something", abt_cta_h2_em:"real.",
+    work_tag:"Our Work",
+    work_h2:"Real businesses,", work_h2_em:"built from scratch.",
+    work_intro:"A look at some of the businesses we've launched and leveled up — from full legal formation and branding to custom websites and booking systems.",
+    work_badge_built:"Built From Scratch",
+    work_badge_revamp:"Website & Booking System",
+    work_v_category:"Real Estate Investment · Chicago, IL",
+    work_v_desc:"A complete buildout from the ground up — LLC formation, brand identity, and a premium website for a Chicago real estate investment firm specializing in buy & hold, fix & flip, and property management.",
+    work_r_category:"Credit & Business Consulting · Scranton, PA",
+    work_r_desc:"A bilingual (English/Spanish) website built for a credit counseling and business management consulting firm — pairing personal credit guidance with hands-on business consulting under one roof.",
+    work_a_category:"Barbershop · Forty Fort, PA",
+    work_a_desc:"A vibrant, bilingual website and online booking system for an established 5-star barbershop — complete with service menus, gallery, podcast integration, and a built-in shop for grooming products.",
+    work_tag_llc:"LLC Formation", work_tag_brand:"Branding", work_tag_web:"Website",
+    work_tag_funding:"Funding Positioning", work_tag_bilingual:"Bilingual EN/ES",
+    work_tag_booking:"Booking Integration", work_tag_ecom:"E-Commerce",
+    work_visit:"Visit Site →",
     lang_btn:"ES"
   },
   es: {
@@ -608,6 +728,21 @@ const T = {
     abt_v4_h:"Educación Incluida", abt_v4_p:"No solo configuramos las cosas y desaparecemos. Explicamos por qué todo importa para que puedas tomar decisiones inteligentes mientras creces.",
     abt_cta_tag:"¿Listo?",
     abt_cta_h2:"Construyamos algo", abt_cta_h2_em:"real.",
+    work_tag:"Nuestro Trabajo",
+    work_h2:"Negocios reales,", work_h2_em:"construidos desde cero.",
+    work_intro:"Un vistazo a algunos de los negocios que hemos lanzado y mejorado — desde formación legal completa y marca hasta sitios web personalizados y sistemas de reservas.",
+    work_badge_built:"Construido Desde Cero",
+    work_badge_revamp:"Sitio Web y Sistema de Reservas",
+    work_v_category:"Inversión Inmobiliaria · Chicago, IL",
+    work_v_desc:"Una construcción completa desde cero — formación de LLC, identidad de marca y un sitio web premium para una firma de inversión inmobiliaria de Chicago especializada en compra y retención, compra-renovación-venta, y administración de propiedades.",
+    work_r_category:"Consultoría de Crédito y Negocios · Scranton, PA",
+    work_r_desc:"Un sitio web bilingüe (inglés/español) construido para una firma de asesoría de crédito y consultoría de gestión empresarial — combinando orientación de crédito personal con consultoría práctica de negocios bajo un mismo techo.",
+    work_a_category:"Barbería · Forty Fort, PA",
+    work_a_desc:"Un sitio web vibrante y bilingüe con sistema de reservas en línea para una barbería establecida de 5 estrellas — completo con menús de servicios, galería, integración de podcast y tienda de productos de cuidado personal.",
+    work_tag_llc:"Formación de LLC", work_tag_brand:"Marca", work_tag_web:"Sitio Web",
+    work_tag_funding:"Posicionamiento para Financiamiento", work_tag_bilingual:"Bilingüe EN/ES",
+    work_tag_booking:"Integración de Reservas", work_tag_ecom:"Comercio Electrónico",
+    work_visit:"Visitar Sitio →",
     lang_btn:"EN"
   }
 };
