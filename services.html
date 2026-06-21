@@ -568,11 +568,10 @@
     payment:    'https://buy.stripe.com/5kQbJ31No5i576Se0M5Rm0t',
   };
 
-  document.getElementById('checkoutBtn').addEventListener('click', async (e) => {
+  document.getElementById('checkoutBtn').addEventListener('click', (e) => {
     e.preventDefault();
     const keys = Object.keys(cart);
     if (!keys.length) return;
-    const btn = document.getElementById('checkoutBtn');
 
     // Fire Meta InitiateCheckout event
     if (typeof fbq !== 'undefined') {
@@ -583,27 +582,9 @@
       });
     }
 
-    // Single item — go directly to Stripe, no function needed
-    if (keys.length === 1 && STRIPE_LINKS[keys[0]]) {
-      window.location.href = STRIPE_LINKS[keys[0]];
-      return;
-    }
-
-    // Multiple items — use Netlify dynamic checkout
-    btn.textContent = 'Redirecting...';
-    try {
-      const res = await fetch('/.netlify/functions/create-checkout', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ items: Object.values(cart) })
-      });
-      const data = await res.json();
-      if (data.url) window.location.href = data.url;
-      else throw new Error('No URL');
-    } catch (err) {
-      btn.textContent = 'Error — Try Again';
-      setTimeout(() => btn.textContent = 'Checkout →', 2000);
-    }
+    // Save cart to sessionStorage and go to checkout page
+    try { sessionStorage.setItem('nextup_cart', JSON.stringify(cart)); } catch(e) {}
+    window.location.href = 'checkout.html?cart=' + keys.join(',');
   });
 </script>
 
