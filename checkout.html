@@ -32,66 +32,76 @@
     .nav-back:hover{color:var(--gold-2);}
     .lang-btn{background:transparent;border:1px solid rgba(184,147,42,0.4);color:var(--gold-2);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:2px;padding:0.35rem 0.75rem;border-radius:2px;cursor:pointer;}
 
-    .checkout-wrap{max-width:1060px;margin:0 auto;padding:5.5rem 1.25rem 3rem;display:grid;grid-template-columns:1fr 360px;gap:2rem;align-items:start;}
-    @media(max-width:780px){
-      .checkout-wrap{grid-template-columns:1fr;padding:5rem 1rem 3rem;}
-      .summary-panel{order:-1;position:static;}
+    /* LAYOUT */
+    .page-wrap{max-width:1060px;margin:0 auto;padding:5.5rem 1.25rem 3rem;display:grid;grid-template-columns:1fr 340px;gap:2rem;align-items:start;}
+    @media(max-width:800px){
+      .page-wrap{grid-template-columns:1fr;padding:5rem 1rem 3rem;gap:1.5rem;}
+      .summary-panel{order:-1;position:static !important;top:auto !important;}
       .nav-back{display:none;}
     }
+    @media(max-width:400px){
+      .page-wrap{padding:4.5rem 0.75rem 2.5rem;}
+    }
 
-    /* FORM PANEL */
-    .form-panel{background:var(--dark-2);border:1px solid var(--border);border-radius:6px;padding:1.75rem;}
-    @media(max-width:480px){.form-panel{padding:1.25rem;}}
+    /* FORM */
+    .form-panel{background:var(--dark-2);border:1px solid var(--border);border-radius:6px;padding:1.75rem;min-width:0;}
+    @media(max-width:480px){.form-panel{padding:1.25rem;border-radius:4px;}}
     .form-panel h2{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:1.6rem;margin-bottom:0.25rem;}
     .form-sub{font-size:0.78rem;color:var(--text-light);margin-bottom:1.5rem;padding-bottom:1.25rem;border-bottom:1px solid var(--border);}
 
-    .field-row{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:0.75rem;}
-    @media(max-width:400px){.field-row{grid-template-columns:1fr;}}
+    .field-row{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;}
+    @media(max-width:420px){.field-row{grid-template-columns:1fr;}}
     .field{display:flex;flex-direction:column;gap:0.35rem;margin-bottom:0.75rem;}
-    .field label{font-size:0.7rem;font-weight:600;letter-spacing:0.5px;color:var(--text-mid);}
-    .field input{background:var(--dark-3);border:1px solid var(--border);border-radius:3px;padding:0.7rem 0.9rem;color:var(--off-white);font-family:'Inter',sans-serif;font-size:16px;outline:none;transition:border-color 0.2s;-webkit-appearance:none;}
+    .field label{font-size:0.7rem;font-weight:600;letter-spacing:0.5px;color:var(--text-mid);text-transform:uppercase;}
+    .field input{background:var(--dark-3);border:1px solid var(--border);border-radius:3px;padding:0.75rem 0.9rem;color:var(--off-white);font-family:'Inter',sans-serif;font-size:16px;outline:none;transition:border-color 0.2s;-webkit-appearance:none;width:100%;}
     .field input:focus{border-color:rgba(184,147,42,0.5);}
     .field input::placeholder{color:var(--text-light);}
 
-    /* Stripe Payment Element container */
-    .payment-element-wrap{background:var(--dark-3);border:1px solid var(--border);border-radius:3px;padding:1rem;margin-bottom:1rem;min-height:60px;}
-    .payment-element-label{font-size:0.7rem;font-weight:600;letter-spacing:0.5px;color:var(--text-mid);margin-bottom:0.6rem;}
+    .section-divider{font-size:0.7rem;font-weight:600;letter-spacing:0.5px;color:var(--text-mid);text-transform:uppercase;margin:1.25rem 0 0.75rem;display:flex;align-items:center;gap:0.5rem;}
+    .section-divider::after{content:'';flex:1;height:1px;background:var(--border);}
 
-    #card-errors{color:#e87070;font-size:0.75rem;margin-bottom:0.75rem;min-height:1em;}
+    /* Stripe Payment Element */
+    #payment-element{min-height:50px;}
+    .payment-wrap{background:var(--dark-3);border:1px solid var(--border);border-radius:3px;padding:1rem;margin-bottom:1rem;transition:border-color 0.2s;}
 
-    .pay-btn{width:100%;background:linear-gradient(135deg,var(--gold) 0%,var(--gold-2) 100%);color:#000;font-family:'Inter',sans-serif;font-weight:700;font-size:0.9rem;border:none;border-radius:3px;padding:1rem;cursor:pointer;transition:all 0.2s;min-height:50px;touch-action:manipulation;display:flex;align-items:center;justify-content:center;gap:0.5rem;}
-    .pay-btn:hover:not(:disabled){box-shadow:0 8px 25px rgba(184,147,42,0.35);}
-    .pay-btn:disabled{opacity:0.55;cursor:not-allowed;}
-    .spinner{display:none;width:18px;height:18px;border:2px solid rgba(0,0,0,0.3);border-top-color:#000;border-radius:50%;animation:spin 0.7s linear infinite;}
+    /* Status messages */
+    #form-status{font-size:0.78rem;margin-bottom:0.75rem;min-height:1.2em;padding:0 0.25rem;}
+    #form-status.error{color:#e87070;}
+    #form-status.loading{color:var(--text-light);}
+    #form-status.success{color:#7ecb7e;}
+
+    .pay-btn{width:100%;background:linear-gradient(135deg,var(--gold) 0%,var(--gold-2) 100%);color:#000;font-family:'Inter',sans-serif;font-weight:700;font-size:0.9rem;border:none;border-radius:3px;padding:1rem;cursor:pointer;transition:all 0.2s;min-height:52px;touch-action:manipulation;display:flex;align-items:center;justify-content:center;gap:0.5rem;}
+    .pay-btn:hover:not(:disabled){box-shadow:0 8px 25px rgba(184,147,42,0.3);}
+    .pay-btn:disabled{opacity:0.5;cursor:not-allowed;}
+    .spinner{display:none;width:18px;height:18px;border:2px solid rgba(0,0,0,0.25);border-top-color:#000;border-radius:50%;animation:spin 0.7s linear infinite;flex-shrink:0;}
     .pay-btn.loading .btn-text{display:none;}
-    .pay-btn.loading .spinner{display:inline-block;}
+    .pay-btn.loading .spinner{display:block;}
     @keyframes spin{to{transform:rotate(360deg);}}
 
     .secure-note{display:flex;align-items:center;justify-content:center;gap:0.4rem;margin-top:0.85rem;font-size:0.68rem;color:var(--text-light);}
-    .payment-methods-note{text-align:center;margin-top:0.6rem;font-size:0.68rem;color:var(--text-light);}
+    .pm-note{text-align:center;margin-top:0.5rem;font-size:0.67rem;color:var(--text-light);letter-spacing:0.3px;}
 
     /* SUMMARY */
-    .summary-panel{background:var(--dark);border:1px solid var(--gold-border);border-radius:6px;padding:1.5rem;position:sticky;top:5.5rem;}
+    .summary-panel{background:var(--dark);border:1px solid var(--gold-border);border-radius:6px;padding:1.5rem;position:sticky;top:5.5rem;min-width:0;}
+    @media(max-width:800px){.summary-panel{padding:1.25rem;}}
     .summary-panel h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.2rem;margin-bottom:1rem;padding-bottom:0.85rem;border-bottom:1px solid var(--border);}
-    .cart-items{margin-bottom:1.25rem;}
-    .cart-item{display:flex;align-items:flex-start;justify-content:space-between;gap:0.75rem;padding:0.75rem 0;border-bottom:1px solid var(--border);}
+    .cart-items{margin-bottom:1rem;}
+    .cart-item{display:flex;align-items:flex-start;justify-content:space-between;gap:0.75rem;padding:0.7rem 0;border-bottom:1px solid var(--border);}
     .cart-item:last-child{border-bottom:none;}
     .item-info{flex:1;min-width:0;}
-    .item-name{font-size:0.82rem;font-weight:600;margin-bottom:0.15rem;line-height:1.3;}
-    .item-remove{font-size:0.68rem;color:var(--text-light);background:none;border:none;cursor:pointer;padding:0;text-decoration:underline;touch-action:manipulation;}
+    .item-name{font-size:0.82rem;font-weight:600;margin-bottom:0.15rem;line-height:1.3;word-break:break-word;}
+    .item-remove{font-size:0.68rem;color:var(--text-light);background:none;border:none;cursor:pointer;padding:0;text-decoration:underline;touch-action:manipulation;display:block;}
     .item-remove:hover{color:#e87070;}
-    .item-price{font-family:'DM Mono',monospace;font-size:0.85rem;color:var(--gold-2);white-space:nowrap;}
+    .item-price{font-family:'DM Mono',monospace;font-size:0.85rem;color:var(--gold-2);white-space:nowrap;padding-top:2px;}
     .empty-cart{text-align:center;padding:1.5rem 0;color:var(--text-light);font-size:0.82rem;}
     .empty-cart a{color:var(--gold-2);text-decoration:none;}
     .summary-totals{border-top:1px solid var(--border);padding-top:0.85rem;}
     .total-row{display:flex;justify-content:space-between;font-size:0.8rem;color:var(--text-mid);margin-bottom:0.4rem;}
     .total-final{display:flex;justify-content:space-between;align-items:baseline;margin-top:0.65rem;padding-top:0.65rem;border-top:1px solid var(--border);}
-    .total-final .price{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold-2);}
+    .total-label{font-size:0.9rem;font-weight:600;}
+    .total-price{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold-2);}
     .add-more{display:block;text-align:center;margin-top:1rem;font-size:0.72rem;color:var(--text-light);text-decoration:none;border:1px solid var(--border);border-radius:3px;padding:0.6rem;transition:all 0.2s;}
     .add-more:hover{border-color:var(--gold-border);color:var(--gold-2);}
-
-    /* loading overlay while Stripe initializes */
-    .stripe-loading{font-size:0.75rem;color:var(--text-light);text-align:center;padding:1rem 0;}
   </style>
 </head>
 <body>
@@ -104,12 +114,12 @@
   </div>
 </nav>
 
-<div class="checkout-wrap" id="checkoutWrap">
+<div class="page-wrap" id="checkoutWrap">
 
-  <!-- LEFT: PAYMENT FORM -->
+  <!-- PAYMENT FORM -->
   <div class="form-panel">
     <h2 data-i18n="co_title">Complete Your Order</h2>
-    <p class="form-sub" data-i18n="co_sub">Secure checkout — powered by Stripe. Card info never touches our servers.</p>
+    <p class="form-sub" data-i18n="co_sub">Secure checkout powered by Stripe. Your card info never touches our servers.</p>
 
     <div class="field-row">
       <div class="field">
@@ -130,14 +140,12 @@
       <input type="tel" id="phone" placeholder="(570) 000-0000" autocomplete="tel"/>
     </div>
 
-    <!-- Stripe Payment Element — handles card + Apple Pay + Google Pay + Klarna + Affirm -->
-    <div class="payment-element-label" data-i18n="co_card">Payment</div>
-    <div class="payment-element-wrap" id="paymentElementWrap">
-      <div class="stripe-loading" id="stripeLoading">Loading secure payment form...</div>
+    <div class="section-divider" data-i18n="co_card">Payment Method</div>
+    <div class="payment-wrap">
       <div id="payment-element"></div>
     </div>
 
-    <div id="card-errors"></div>
+    <div id="form-status"></div>
 
     <button class="pay-btn" id="payBtn" disabled>
       <span class="btn-text" id="payBtnText">Pay $0</span>
@@ -148,10 +156,10 @@
       <svg width="11" height="13" viewBox="0 0 12 14" fill="none"><path d="M6 0L1 2.5V6.5C1 9.61 3.14 12.53 6 13.5C8.86 12.53 11 9.61 11 6.5V2.5L6 0Z" fill="currentColor"/></svg>
       <span data-i18n="co_secure">Secured by Stripe · 256-bit SSL</span>
     </div>
-    <div class="payment-methods-note" data-i18n="co_bnpl_note">Apple Pay · Google Pay · Klarna · Affirm · Afterpay · Card</div>
+    <div class="pm-note" data-i18n="co_bnpl_note">Apple Pay · Google Pay · Klarna · Affirm · Afterpay · Card</div>
   </div>
 
-  <!-- RIGHT: ORDER SUMMARY -->
+  <!-- ORDER SUMMARY -->
   <div class="summary-panel">
     <h3 data-i18n="co_summary">Order Summary</h3>
     <div class="cart-items" id="cartItems">
@@ -161,7 +169,10 @@
     </div>
     <div class="summary-totals" id="summaryTotals" style="display:none;">
       <div class="total-row"><span data-i18n="co_subtotal">Subtotal</span><span id="subtotalAmt">$0</span></div>
-      <div class="total-final"><span data-i18n="co_total">Total</span><span class="price" id="totalAmt">$0</span></div>
+      <div class="total-final">
+        <span class="total-label" data-i18n="co_total">Total</span>
+        <span class="total-price" id="totalAmt">$0</span>
+      </div>
     </div>
     <a href="services.html" class="add-more" data-i18n="co_add_more">+ Add more services</a>
   </div>
@@ -178,7 +189,7 @@ const PRODUCTS = {
 };
 
 let cart = {};
-let stripe, elements, paymentElement;
+let stripeInstance, stripeElements, paymentEl, initialized = false;
 
 // ── CART ──────────────────────────────────────────────────────────────────────
 function loadCart() {
@@ -189,11 +200,20 @@ function loadCart() {
     try { sessionStorage.setItem('nextup_cart', JSON.stringify(cart)); } catch(e) {}
     return;
   }
-  try { const s = sessionStorage.getItem('nextup_cart'); if (s) cart = JSON.parse(s); } catch(e) {}
+  try {
+    const s = sessionStorage.getItem('nextup_cart');
+    if (s) cart = JSON.parse(s);
+  } catch(e) {}
 }
 
 function getTotal() {
   return Object.values(cart).reduce((s, i) => s + i.price, 0);
+}
+
+function setStatus(msg, type) {
+  const el = document.getElementById('form-status');
+  el.textContent = msg;
+  el.className = type || '';
 }
 
 function renderCart() {
@@ -209,16 +229,22 @@ function renderCart() {
   }
   empty.style.display = 'none'; totals.style.display = 'block';
 
-  const removeLabel = (typeof T !== 'undefined' && T[currentLang]) ? (T[currentLang]['co_remove'] || 'Remove') : 'Remove';
+  const removeLabel = (typeof T !== 'undefined' && T[currentLang]) ? (T[currentLang].co_remove || 'Remove') : 'Remove';
   items.forEach(([id, item]) => {
     const div = document.createElement('div');
     div.className = 'cart-item';
-    div.innerHTML = `<div class="item-info"><div class="item-name">${item.name}</div><button class="item-remove">${removeLabel}</button></div><div class="item-price">$${item.price.toLocaleString()}</div>`;
+    div.innerHTML = `
+      <div class="item-info">
+        <div class="item-name">${item.name}</div>
+        <button class="item-remove">${removeLabel}</button>
+      </div>
+      <div class="item-price">$${item.price.toLocaleString()}</div>`;
     div.querySelector('.item-remove').addEventListener('click', () => {
       delete cart[id];
       try { sessionStorage.setItem('nextup_cart', JSON.stringify(cart)); } catch(e) {}
       renderCart();
-      if (elements) elements.update({ amount: getTotal() * 100 });
+      // Re-initialize Stripe with new amount
+      if (initialized) { initialized = false; initStripe(); }
     });
     container.appendChild(div);
   });
@@ -230,40 +256,53 @@ function renderCart() {
 }
 
 function updatePayBtn(total) {
-  const t = (typeof T !== 'undefined' && T[currentLang]) ? T[currentLang] : null;
   document.getElementById('payBtnText').textContent = total > 0
     ? 'Pay $' + total.toLocaleString()
-    : (t && t['co_select'] ? t['co_select'] : 'Select items to continue');
-  document.getElementById('payBtn').disabled = (total === 0 || !paymentElement);
+    : 'Select items to continue';
+  document.getElementById('payBtn').disabled = (total === 0 || !initialized);
 }
 
-// ── STRIPE PAYMENT ELEMENT ────────────────────────────────────────────────────
+// ── STRIPE ────────────────────────────────────────────────────────────────────
 async function initStripe() {
   const total = getTotal();
   if (total === 0) return;
+  if (initialized) return;
 
-  stripe = Stripe('pk_live_51QNNKlHSxovrmkeFqjkLNzJfPqTB7k7CNBDE2cFgKhAtJcviFe3G4rGVqJIBUYkLLxdUe2V3Q1WZ0x7PO9kN7ID600pIEkdX7');
+  setStatus('Loading payment form...', 'loading');
 
-  // Create PaymentIntent on server
+  stripeInstance = Stripe('pk_live_51QNNKlHSxovrmkeFqjkLNzJfPqTB7k7CNBDE2cFgKhAtJcviFe3G4rGVqJIBUYkLLxdUe2V3Q1WZ0x7PO9kN7ID600pIEkdX7');
+
   let clientSecret;
   try {
     const res = await fetch('/.netlify/functions/create-payment-intent', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ items: Object.values(cart), email: '', name: '' })
+      body: JSON.stringify({
+        items: Object.values(cart),
+        email: '',
+        name: ''
+      })
     });
-    const data = await res.json();
-    if (!res.ok || data.error) throw new Error(data.error || 'Server error ' + res.status);
-    if (!data.clientSecret) throw new Error('No client secret returned');
+
+    const text = await res.text();
+    let data;
+    try { data = JSON.parse(text); }
+    catch(e) { throw new Error('Server returned invalid response: ' + text.substring(0, 100)); }
+
+    if (!res.ok) throw new Error(data.error || 'Server error ' + res.status);
+    if (!data.clientSecret) throw new Error('No client secret in response');
+
     clientSecret = data.clientSecret;
   } catch(err) {
-    document.getElementById('stripeLoading').textContent = 'Could not load payment form: ' + err.message;
-    document.getElementById('stripeLoading').style.color = '#e87070';
+    setStatus('Payment setup failed: ' + err.message, 'error');
     return;
   }
 
-  // Mount Stripe Payment Element (handles ALL payment methods automatically)
-  elements = stripe.elements({
+  // Clear the payment element container before mounting
+  const container = document.getElementById('payment-element');
+  container.innerHTML = '';
+
+  stripeElements = stripeInstance.elements({
     clientSecret,
     appearance: {
       theme: 'night',
@@ -273,71 +312,70 @@ async function initStripe() {
         colorText: '#f8f5ef',
         colorDanger: '#e87070',
         fontFamily: 'Inter, sans-serif',
-        spacingUnit: '4px',
         borderRadius: '3px',
       },
       rules: {
-        '.Input': { border: '1px solid rgba(248,245,239,0.07)', backgroundColor: '#1e1e1e' },
+        '.Input': { border: '1px solid rgba(248,245,239,0.07)' },
         '.Input:focus': { border: '1px solid rgba(201,168,76,0.5)' },
         '.Tab': { border: '1px solid rgba(248,245,239,0.07)', backgroundColor: '#161616' },
-        '.Tab--selected': { border: '1px solid rgba(201,168,76,0.5)', backgroundColor: '#1e1e1e' },
-        '.Label': { color: 'rgba(248,245,239,0.75)', fontSize: '11px', letterSpacing: '0.5px' },
+        '.Tab--selected': { border: '1px solid rgba(201,168,76,0.5)' },
+        '.Label': { fontSize: '11px', letterSpacing: '0.5px', textTransform: 'uppercase' },
       }
     }
   });
 
-  paymentElement = elements.create('payment', {
-    layout: { type: 'tabs', defaultCollapsed: false },
+  paymentEl = stripeElements.create('payment', {
     wallets: { applePay: 'auto', googlePay: 'auto' }
   });
 
-  paymentElement.mount('#payment-element');
-  paymentElement.on('ready', () => {
-    document.getElementById('stripeLoading').style.display = 'none';
+  paymentEl.mount('#payment-element');
+
+  paymentEl.on('ready', () => {
+    setStatus('');
+    initialized = true;
     updatePayBtn(getTotal());
   });
-  paymentElement.on('change', e => {
-    document.getElementById('card-errors').textContent = e.error ? e.error.message : '';
+
+  paymentEl.on('change', e => {
+    if (e.error) setStatus(e.error.message, 'error');
+    else setStatus('');
   });
 }
 
 // ── SUBMIT ────────────────────────────────────────────────────────────────────
 document.getElementById('payBtn').addEventListener('click', async () => {
-  if (!stripe || !elements || !paymentElement) return;
+  if (!stripeInstance || !stripeElements || !paymentEl) {
+    setStatus('Payment form not ready. Please wait.', 'error'); return;
+  }
 
   const firstName = document.getElementById('firstName').value.trim();
   const lastName  = document.getElementById('lastName').value.trim();
   const email     = document.getElementById('email').value.trim();
-  const errEl     = document.getElementById('card-errors');
 
-  if (!firstName || !lastName) { errEl.textContent = 'Please enter your full name.'; return; }
-  if (!email || !email.includes('@')) { errEl.textContent = 'Please enter a valid email.'; return; }
-  errEl.textContent = '';
+  if (!firstName || !lastName) { setStatus('Please enter your full name.', 'error'); return; }
+  if (!email || !email.includes('@')) { setStatus('Please enter a valid email.', 'error'); return; }
+  setStatus('');
 
   const btn = document.getElementById('payBtn');
   btn.classList.add('loading'); btn.disabled = true;
 
-  const { error } = await stripe.confirmPayment({
-    elements,
+  const { error } = await stripeInstance.confirmPayment({
+    elements: stripeElements,
     confirmParams: {
       return_url: window.location.origin + '/thank-you.html',
       payment_method_data: {
-        billing_details: {
-          name: firstName + ' ' + lastName,
-          email,
-        }
+        billing_details: { name: firstName + ' ' + lastName, email }
       }
     },
     redirect: 'if_required'
   });
 
   if (error) {
-    errEl.textContent = error.message;
+    setStatus(error.message, 'error');
     btn.classList.remove('loading'); btn.disabled = false;
     return;
   }
 
-  // Payment succeeded
   if (typeof fbq !== 'undefined') fbq('track', 'Purchase', { currency: 'USD', value: getTotal() });
   sessionStorage.removeItem('nextup_cart');
   window.location.href = 'thank-you.html';
@@ -346,7 +384,9 @@ document.getElementById('payBtn').addEventListener('click', async () => {
 // ── INIT ──────────────────────────────────────────────────────────────────────
 loadCart();
 renderCart();
-if (getTotal() > 0) initStripe();
+window.addEventListener('load', () => {
+  if (getTotal() > 0) initStripe();
+});
 </script>
 
 <script>
@@ -364,8 +404,9 @@ const T = {
     offer_bonus:"★  6 Months Credit Repair Included Free — $749 Value",
     offer_item_1:"LLC Registration, EIN & Registered Agent (1 Year)",
     offer_item_2:"Operating Agreement, Meeting Minutes & Company Binder",
+    offer_item_duns:"DUNS Number Registration",
     offer_item_3:"Custom Logo & Brand Identity",
-    offer_item_4:"Premium 2–4 Page Website & Domain Setup",
+    offer_item_4:"Premium 2–4 Page Website & Domain",
     offer_item_5:"Google Business Profile Setup & Optimization",
     offer_item_6:"Business Phone & Virtual Address Setup",
     offer_item_7:"Professional Business Email",
@@ -547,8 +588,9 @@ const T = {
     offer_bonus:"★  6 Meses de Reparación de Crédito Incluidos Gratis — Valor $749",
     offer_item_1:"Registro de LLC, EIN y Agente Registrado (1 Año)",
     offer_item_2:"Acuerdo Operativo, Actas de Reunión y Carpeta de Empresa",
+    offer_item_duns:"Registro de Número DUNS",
     offer_item_3:"Logo Personalizado e Identidad de Marca",
-    offer_item_4:"Sitio Web Premium de 2–4 Páginas y Configuración de Dominio",
+    offer_item_4:"Sitio Web Premium de 2–4 Páginas y Dominio",
     offer_item_5:"Configuración y Optimización de Perfil de Google Business",
     offer_item_6:"Configuración de Teléfono Empresarial y Dirección Virtual",
     offer_item_7:"Correo Electrónico Empresarial Profesional",
