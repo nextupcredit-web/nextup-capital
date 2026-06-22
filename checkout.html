@@ -366,7 +366,14 @@ async function createPaymentIntent(total, email, name) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ items, email: email || '', name: name || '' })
   });
-  return res.json();
+  const data = await res.json().catch(() => ({ error: 'Invalid response from server.' }));
+  if (!res.ok || data.error) {
+    return { error: data.error || 'Server error ' + res.status };
+  }
+  if (!data.clientSecret) {
+    return { error: 'Payment setup failed — please try again or contact support.' };
+  }
+  return data;
 }
 
 function showError(msg) {
@@ -402,6 +409,7 @@ document.getElementById('payBtn').addEventListener('click', async () => {
   const total = getTotal();
   const { clientSecret, error: serverError } = await createPaymentIntent(total, email, firstName + ' ' + lastName);
   if (serverError) { showError(serverError); return; }
+  if (!clientSecret) { showError('Payment setup failed. Please try again.'); return; }
 
   const { paymentIntent, error } = await stripe.confirmCardPayment(clientSecret, {
     payment_method: {
