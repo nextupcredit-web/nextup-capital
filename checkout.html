@@ -15,7 +15,7 @@
   <style>
     :root{
       --black:#080808;--dark:#0f0f0f;--dark-2:#161616;--dark-3:#1e1e1e;
-      --off-white:#f8f5ef;--gold:#b8932a;--gold-2:#c9a84c;--gold-3:#e8c96a;
+      --off-white:#f8f5ef;--gold:#b8932a;--gold-2:#c9a84c;
       --gold-border:rgba(184,147,42,0.25);
       --text-light:rgba(248,245,239,0.5);--text-mid:rgba(248,245,239,0.75);
       --border:rgba(248,245,239,0.07);
@@ -24,88 +24,74 @@
     html,body{overflow-x:hidden;-webkit-text-size-adjust:100%;}
     body{background:var(--black);color:var(--off-white);font-family:'Inter',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh;}
 
-    /* NAV */
     nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;background:rgba(8,8,8,0.97);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);}
     .nav-logo{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.2rem;color:var(--off-white);text-decoration:none;}
     .nav-logo span{color:var(--gold-2);}
     .nav-right{display:flex;align-items:center;gap:0.75rem;}
-    .nav-back{font-size:0.72rem;color:var(--text-light);text-decoration:none;transition:color 0.2s;white-space:nowrap;}
+    .nav-back{font-size:0.72rem;color:var(--text-light);text-decoration:none;transition:color 0.2s;}
     .nav-back:hover{color:var(--gold-2);}
-    .lang-btn{background:transparent;border:1px solid rgba(184,147,42,0.4);color:var(--gold-2);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:2px;padding:0.35rem 0.75rem;border-radius:2px;cursor:pointer;transition:all 0.2s;}
+    .lang-btn{background:transparent;border:1px solid rgba(184,147,42,0.4);color:var(--gold-2);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:2px;padding:0.35rem 0.75rem;border-radius:2px;cursor:pointer;}
 
-    /* LAYOUT */
-    .checkout-wrap{max-width:1080px;margin:0 auto;padding:5.5rem 1.25rem 3rem;display:grid;grid-template-columns:1fr 380px;gap:2rem;align-items:start;}
-
-    /* MOBILE: summary first, then form */
-    @media(max-width:800px){
+    .checkout-wrap{max-width:1060px;margin:0 auto;padding:5.5rem 1.25rem 3rem;display:grid;grid-template-columns:1fr 360px;gap:2rem;align-items:start;}
+    @media(max-width:780px){
       .checkout-wrap{grid-template-columns:1fr;padding:5rem 1rem 3rem;}
       .summary-panel{order:-1;position:static;}
-      nav{padding:0.9rem 1rem;}
       .nav-back{display:none;}
     }
 
     /* FORM PANEL */
     .form-panel{background:var(--dark-2);border:1px solid var(--border);border-radius:6px;padding:1.75rem;}
-    @media(max-width:480px){.form-panel{padding:1.25rem;border-radius:4px;}}
-    .form-panel h2{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:1.65rem;margin-bottom:0.25rem;}
+    @media(max-width:480px){.form-panel{padding:1.25rem;}}
+    .form-panel h2{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:1.6rem;margin-bottom:0.25rem;}
     .form-sub{font-size:0.78rem;color:var(--text-light);margin-bottom:1.5rem;padding-bottom:1.25rem;border-bottom:1px solid var(--border);}
 
-    /* EXPRESS PAY */
-    .express-section{margin-bottom:1.5rem;}
-    .express-label{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:1.5px;color:var(--text-light);text-transform:uppercase;text-align:center;margin-bottom:0.75rem;}
-    #payment-request-btn{min-height:44px;}
-    .divider{display:flex;align-items:center;gap:0.75rem;margin:1.25rem 0;color:var(--text-light);font-size:0.72rem;}
-    .divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--border);}
-
-    /* FIELDS */
     .field-row{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:0.75rem;}
-    @media(max-width:380px){.field-row{grid-template-columns:1fr;}}
+    @media(max-width:400px){.field-row{grid-template-columns:1fr;}}
     .field{display:flex;flex-direction:column;gap:0.35rem;margin-bottom:0.75rem;}
     .field label{font-size:0.7rem;font-weight:600;letter-spacing:0.5px;color:var(--text-mid);}
-    .field input{background:var(--dark-3);border:1px solid var(--border);border-radius:3px;padding:0.7rem 0.9rem;color:var(--off-white);font-family:'Inter',sans-serif;font-size:16px;/* 16px prevents iOS zoom */outline:none;transition:border-color 0.2s;-webkit-appearance:none;appearance:none;}
+    .field input{background:var(--dark-3);border:1px solid var(--border);border-radius:3px;padding:0.7rem 0.9rem;color:var(--off-white);font-family:'Inter',sans-serif;font-size:16px;outline:none;transition:border-color 0.2s;-webkit-appearance:none;}
     .field input:focus{border-color:rgba(184,147,42,0.5);}
     .field input::placeholder{color:var(--text-light);}
 
-    /* STRIPE ELEMENTS */
-    .stripe-wrap{background:var(--dark-3);border:1px solid var(--border);border-radius:3px;padding:0.7rem 0.9rem;margin-bottom:0.75rem;transition:border-color 0.2s;}
-    .stripe-wrap.focused{border-color:rgba(184,147,42,0.5);}
-    #card-errors{color:#e87070;font-size:0.75rem;margin-bottom:0.75rem;min-height:1.1em;}
+    /* Stripe Payment Element container */
+    .payment-element-wrap{background:var(--dark-3);border:1px solid var(--border);border-radius:3px;padding:1rem;margin-bottom:1rem;min-height:60px;}
+    .payment-element-label{font-size:0.7rem;font-weight:600;letter-spacing:0.5px;color:var(--text-mid);margin-bottom:0.6rem;}
 
-    /* PAY BUTTON */
-    .pay-btn{width:100%;background:linear-gradient(135deg,var(--gold) 0%,var(--gold-2) 100%);color:#000;font-family:'Inter',sans-serif;font-weight:700;font-size:0.9rem;letter-spacing:0.5px;border:none;border-radius:3px;padding:1rem;cursor:pointer;transition:all 0.25s;min-height:50px;touch-action:manipulation;}
+    #card-errors{color:#e87070;font-size:0.75rem;margin-bottom:0.75rem;min-height:1em;}
+
+    .pay-btn{width:100%;background:linear-gradient(135deg,var(--gold) 0%,var(--gold-2) 100%);color:#000;font-family:'Inter',sans-serif;font-weight:700;font-size:0.9rem;border:none;border-radius:3px;padding:1rem;cursor:pointer;transition:all 0.2s;min-height:50px;touch-action:manipulation;display:flex;align-items:center;justify-content:center;gap:0.5rem;}
     .pay-btn:hover:not(:disabled){box-shadow:0 8px 25px rgba(184,147,42,0.35);}
-    .pay-btn:active:not(:disabled){transform:scale(0.99);}
     .pay-btn:disabled{opacity:0.55;cursor:not-allowed;}
-    .pay-btn .spinner{display:none;width:18px;height:18px;border:2px solid rgba(0,0,0,0.3);border-top-color:#000;border-radius:50%;animation:spin 0.7s linear infinite;margin:0 auto;}
+    .spinner{display:none;width:18px;height:18px;border:2px solid rgba(0,0,0,0.3);border-top-color:#000;border-radius:50%;animation:spin 0.7s linear infinite;}
     .pay-btn.loading .btn-text{display:none;}
-    .pay-btn.loading .spinner{display:block;}
+    .pay-btn.loading .spinner{display:inline-block;}
     @keyframes spin{to{transform:rotate(360deg);}}
 
-    .secure-note{display:flex;align-items:center;justify-content:center;gap:0.5rem;margin-top:0.85rem;font-size:0.68rem;color:var(--text-light);}
-    .bnpl-row{display:flex;align-items:center;justify-content:center;gap:0.6rem;margin-top:0.6rem;flex-wrap:wrap;}
-    .bnpl-badge{font-size:0.62rem;color:var(--text-light);border:1px solid var(--border);padding:0.2rem 0.55rem;border-radius:2px;white-space:nowrap;}
+    .secure-note{display:flex;align-items:center;justify-content:center;gap:0.4rem;margin-top:0.85rem;font-size:0.68rem;color:var(--text-light);}
+    .payment-methods-note{text-align:center;margin-top:0.6rem;font-size:0.68rem;color:var(--text-light);}
 
-    /* SUMMARY PANEL */
+    /* SUMMARY */
     .summary-panel{background:var(--dark);border:1px solid var(--gold-border);border-radius:6px;padding:1.5rem;position:sticky;top:5.5rem;}
-    @media(max-width:800px){.summary-panel{padding:1.25rem;}}
     .summary-panel h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.2rem;margin-bottom:1rem;padding-bottom:0.85rem;border-bottom:1px solid var(--border);}
     .cart-items{margin-bottom:1.25rem;}
     .cart-item{display:flex;align-items:flex-start;justify-content:space-between;gap:0.75rem;padding:0.75rem 0;border-bottom:1px solid var(--border);}
     .cart-item:last-child{border-bottom:none;}
     .item-info{flex:1;min-width:0;}
-    .item-name{font-size:0.82rem;font-weight:600;color:var(--off-white);margin-bottom:0.15rem;line-height:1.3;}
-    .item-remove{font-size:0.68rem;color:var(--text-light);background:none;border:none;cursor:pointer;padding:0;text-decoration:underline;transition:color 0.2s;touch-action:manipulation;}
+    .item-name{font-size:0.82rem;font-weight:600;margin-bottom:0.15rem;line-height:1.3;}
+    .item-remove{font-size:0.68rem;color:var(--text-light);background:none;border:none;cursor:pointer;padding:0;text-decoration:underline;touch-action:manipulation;}
     .item-remove:hover{color:#e87070;}
-    .item-price{font-family:'DM Mono',monospace;font-size:0.85rem;color:var(--gold-2);white-space:nowrap;padding-top:1px;}
+    .item-price{font-family:'DM Mono',monospace;font-size:0.85rem;color:var(--gold-2);white-space:nowrap;}
     .empty-cart{text-align:center;padding:1.5rem 0;color:var(--text-light);font-size:0.82rem;}
     .empty-cart a{color:var(--gold-2);text-decoration:none;}
     .summary-totals{border-top:1px solid var(--border);padding-top:0.85rem;}
     .total-row{display:flex;justify-content:space-between;font-size:0.8rem;color:var(--text-mid);margin-bottom:0.4rem;}
     .total-final{display:flex;justify-content:space-between;align-items:baseline;margin-top:0.65rem;padding-top:0.65rem;border-top:1px solid var(--border);}
-    .total-final span:first-child{font-size:0.9rem;font-weight:600;}
     .total-final .price{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold-2);}
     .add-more{display:block;text-align:center;margin-top:1rem;font-size:0.72rem;color:var(--text-light);text-decoration:none;border:1px solid var(--border);border-radius:3px;padding:0.6rem;transition:all 0.2s;}
     .add-more:hover{border-color:var(--gold-border);color:var(--gold-2);}
+
+    /* loading overlay while Stripe initializes */
+    .stripe-loading{font-size:0.75rem;color:var(--text-light);text-align:center;padding:1rem 0;}
   </style>
 </head>
 <body>
@@ -123,16 +109,8 @@
   <!-- LEFT: PAYMENT FORM -->
   <div class="form-panel">
     <h2 data-i18n="co_title">Complete Your Order</h2>
-    <p class="form-sub" data-i18n="co_sub">Secure checkout — your card info is encrypted and never stored on our servers.</p>
+    <p class="form-sub" data-i18n="co_sub">Secure checkout — powered by Stripe. Card info never touches our servers.</p>
 
-    <!-- EXPRESS PAY: Apple Pay / Google Pay -->
-    <div class="express-section" id="expressSection" style="display:none;">
-      <div class="express-label" data-i18n="co_express">Express Checkout</div>
-      <div id="payment-request-btn"></div>
-      <div class="divider" data-i18n="co_or">Or pay with card</div>
-    </div>
-
-    <!-- CONTACT INFO -->
     <div class="field-row">
       <div class="field">
         <label data-i18n="co_first">First Name</label>
@@ -152,20 +130,11 @@
       <input type="tel" id="phone" placeholder="(570) 000-0000" autocomplete="tel"/>
     </div>
 
-    <!-- CARD FIELDS -->
-    <div class="field" style="margin-top:1.25rem; margin-bottom:0;">
-      <label data-i18n="co_card">Card Number</label>
-      <div class="stripe-wrap" id="cardNumberWrap"><div id="cardNumber"></div></div>
-    </div>
-    <div class="field-row">
-      <div class="field" style="margin-bottom:0;">
-        <label data-i18n="co_exp">Expiry</label>
-        <div class="stripe-wrap" id="cardExpiryWrap"><div id="cardExpiry"></div></div>
-      </div>
-      <div class="field" style="margin-bottom:0;">
-        <label data-i18n="co_cvc">CVC</label>
-        <div class="stripe-wrap" id="cardCvcWrap"><div id="cardCvc"></div></div>
-      </div>
+    <!-- Stripe Payment Element — handles card + Apple Pay + Google Pay + Klarna + Affirm -->
+    <div class="payment-element-label" data-i18n="co_card">Payment</div>
+    <div class="payment-element-wrap" id="paymentElementWrap">
+      <div class="stripe-loading" id="stripeLoading">Loading secure payment form...</div>
+      <div id="payment-element"></div>
     </div>
 
     <div id="card-errors"></div>
@@ -179,12 +148,7 @@
       <svg width="11" height="13" viewBox="0 0 12 14" fill="none"><path d="M6 0L1 2.5V6.5C1 9.61 3.14 12.53 6 13.5C8.86 12.53 11 9.61 11 6.5V2.5L6 0Z" fill="currentColor"/></svg>
       <span data-i18n="co_secure">Secured by Stripe · 256-bit SSL</span>
     </div>
-    <div class="bnpl-row">
-      <span class="bnpl-badge">Klarna</span>
-      <span class="bnpl-badge">Affirm</span>
-      <span class="bnpl-badge">Afterpay</span>
-      <span class="bnpl-badge" data-i18n="co_bnpl_note">Buy now, pay later</span>
-    </div>
+    <div class="payment-methods-note" data-i18n="co_bnpl_note">Apple Pay · Google Pay · Klarna · Affirm · Afterpay · Card</div>
   </div>
 
   <!-- RIGHT: ORDER SUMMARY -->
@@ -214,19 +178,18 @@ const PRODUCTS = {
 };
 
 let cart = {};
+let stripe, elements, paymentElement;
 
+// ── CART ──────────────────────────────────────────────────────────────────────
 function loadCart() {
   const params = new URLSearchParams(window.location.search);
   const cartParam = params.get('cart');
   if (cartParam) {
     cartParam.split(',').forEach(id => { if (PRODUCTS[id]) cart[id] = PRODUCTS[id]; });
-    saveCart(); return;
+    try { sessionStorage.setItem('nextup_cart', JSON.stringify(cart)); } catch(e) {}
+    return;
   }
   try { const s = sessionStorage.getItem('nextup_cart'); if (s) cart = JSON.parse(s); } catch(e) {}
-}
-
-function saveCart() {
-  try { sessionStorage.setItem('nextup_cart', JSON.stringify(cart)); } catch(e) {}
 }
 
 function getTotal() {
@@ -246,157 +209,105 @@ function renderCart() {
   }
   empty.style.display = 'none'; totals.style.display = 'block';
 
-  const removeLabel = (typeof T !== 'undefined' && T[currentLang]) ? T[currentLang]['co_remove'] || 'Remove' : 'Remove';
+  const removeLabel = (typeof T !== 'undefined' && T[currentLang]) ? (T[currentLang]['co_remove'] || 'Remove') : 'Remove';
   items.forEach(([id, item]) => {
     const div = document.createElement('div');
     div.className = 'cart-item';
-    div.innerHTML = `
-      <div class="item-info">
-        <div class="item-name">${item.name}</div>
-        <button class="item-remove">${removeLabel}</button>
-      </div>
-      <div class="item-price">$${item.price.toLocaleString()}</div>`;
+    div.innerHTML = `<div class="item-info"><div class="item-name">${item.name}</div><button class="item-remove">${removeLabel}</button></div><div class="item-price">$${item.price.toLocaleString()}</div>`;
     div.querySelector('.item-remove').addEventListener('click', () => {
-      delete cart[id]; saveCart(); renderCart(); updatePaymentRequest();
+      delete cart[id];
+      try { sessionStorage.setItem('nextup_cart', JSON.stringify(cart)); } catch(e) {}
+      renderCart();
+      if (elements) elements.update({ amount: getTotal() * 100 });
     });
     container.appendChild(div);
   });
 
   const total = getTotal();
   document.getElementById('subtotalAmt').textContent = '$' + total.toLocaleString();
-  document.getElementById('totalAmt').textContent = '$' + total.toLocaleString();
+  document.getElementById('totalAmt').textContent    = '$' + total.toLocaleString();
   updatePayBtn(total);
 }
 
 function updatePayBtn(total) {
   const t = (typeof T !== 'undefined' && T[currentLang]) ? T[currentLang] : null;
   document.getElementById('payBtnText').textContent = total > 0
-    ? (t && t['co_pay'] ? t['co_pay'] + ' $' + total.toLocaleString() : 'Pay $' + total.toLocaleString())
+    ? 'Pay $' + total.toLocaleString()
     : (t && t['co_select'] ? t['co_select'] : 'Select items to continue');
-  document.getElementById('payBtn').disabled = total === 0;
+  document.getElementById('payBtn').disabled = (total === 0 || !paymentElement);
 }
 
-// ── STRIPE ────────────────────────────────────────────────────────────────────
-const stripe   = Stripe('pk_live_51QNNKlHSxovrmkeFqjkLNzJfPqTB7k7CNBDE2cFgKhAtJcviFe3G4rGVqJIBUYkLLxdUe2V3Q1WZ0x7PO9kN7ID600pIEkdX7');
-const elements = stripe.elements();
-
-const stripeStyle = {
-  base: { color:'#f8f5ef', fontFamily:'Inter, sans-serif', fontSize:'15px', fontSmoothing:'antialiased', '::placeholder':{color:'rgba(248,245,239,0.35)'} },
-  invalid: { color:'#e87070' }
-};
-
-const cardNumber = elements.create('cardNumber', { style:stripeStyle, showIcon:true });
-const cardExpiry = elements.create('cardExpiry', { style:stripeStyle });
-const cardCvc    = elements.create('cardCvc',    { style:stripeStyle });
-cardNumber.mount('#cardNumber');
-cardExpiry.mount('#cardExpiry');
-cardCvc.mount('#cardCvc');
-
-[[cardNumber,'cardNumberWrap'],[cardExpiry,'cardExpiryWrap'],[cardCvc,'cardCvcWrap']].forEach(([el,wid]) => {
-  el.on('focus',  () => document.getElementById(wid).classList.add('focused'));
-  el.on('blur',   () => document.getElementById(wid).classList.remove('focused'));
-  el.on('change', e => { document.getElementById('card-errors').textContent = e.error ? e.error.message : ''; });
-});
-
-// ── APPLE PAY / GOOGLE PAY ────────────────────────────────────────────────────
-let paymentRequest = null;
-
-function setupPaymentRequest() {
+// ── STRIPE PAYMENT ELEMENT ────────────────────────────────────────────────────
+async function initStripe() {
   const total = getTotal();
   if (total === 0) return;
 
-  paymentRequest = stripe.paymentRequest({
-    country: 'US',
-    currency: 'usd',
-    total: { label: 'NextUp Capital', amount: total * 100 },
-    requestPayerName: true,
-    requestPayerEmail: true,
-    requestPayerPhone: true,
-  });
+  stripe = Stripe('pk_live_51QNNKlHSxovrmkeFqjkLNzJfPqTB7k7CNBDE2cFgKhAtJcviFe3G4rGVqJIBUYkLLxdUe2V3Q1WZ0x7PO9kN7ID600pIEkdX7');
 
-  const prButton = elements.create('paymentRequestButton', {
-    paymentRequest,
-    style: {
-      paymentRequestButton: {
-        type: 'buy',
-        theme: 'dark',
-        height: '50px'
+  // Create PaymentIntent on server
+  let clientSecret;
+  try {
+    const res = await fetch('/.netlify/functions/create-payment-intent', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ items: Object.values(cart), email: '', name: '' })
+    });
+    const data = await res.json();
+    if (!res.ok || data.error) throw new Error(data.error || 'Server error ' + res.status);
+    if (!data.clientSecret) throw new Error('No client secret returned');
+    clientSecret = data.clientSecret;
+  } catch(err) {
+    document.getElementById('stripeLoading').textContent = 'Could not load payment form: ' + err.message;
+    document.getElementById('stripeLoading').style.color = '#e87070';
+    return;
+  }
+
+  // Mount Stripe Payment Element (handles ALL payment methods automatically)
+  elements = stripe.elements({
+    clientSecret,
+    appearance: {
+      theme: 'night',
+      variables: {
+        colorPrimary: '#c9a84c',
+        colorBackground: '#1e1e1e',
+        colorText: '#f8f5ef',
+        colorDanger: '#e87070',
+        fontFamily: 'Inter, sans-serif',
+        spacingUnit: '4px',
+        borderRadius: '3px',
+      },
+      rules: {
+        '.Input': { border: '1px solid rgba(248,245,239,0.07)', backgroundColor: '#1e1e1e' },
+        '.Input:focus': { border: '1px solid rgba(201,168,76,0.5)' },
+        '.Tab': { border: '1px solid rgba(248,245,239,0.07)', backgroundColor: '#161616' },
+        '.Tab--selected': { border: '1px solid rgba(201,168,76,0.5)', backgroundColor: '#1e1e1e' },
+        '.Label': { color: 'rgba(248,245,239,0.75)', fontSize: '11px', letterSpacing: '0.5px' },
       }
     }
   });
 
-  paymentRequest.canMakePayment().then(result => {
-    if (result) {
-      document.getElementById('expressSection').style.display = 'block';
-      prButton.mount('#payment-request-btn');
-    }
+  paymentElement = elements.create('payment', {
+    layout: { type: 'tabs', defaultCollapsed: false },
+    wallets: { applePay: 'auto', googlePay: 'auto' }
   });
 
-  paymentRequest.on('paymentmethod', async (ev) => {
-    const { clientSecret, error: serverError } = await createPaymentIntent(total, ev.payerEmail, ev.payerName);
-    if (serverError) { ev.complete('fail'); showError(serverError); return; }
-
-    const { paymentIntent, error } = await stripe.confirmCardPayment(
-      clientSecret, { payment_method: ev.paymentMethod.id }, { handleActions: false }
-    );
-    if (error) { ev.complete('fail'); showError(error.message); return; }
-    ev.complete('success');
-    if (paymentIntent.status === 'requires_action') {
-      const { error: confirmError } = await stripe.confirmCardPayment(clientSecret);
-      if (confirmError) { showError(confirmError.message); return; }
-    }
-    onPaymentSuccess(total);
+  paymentElement.mount('#payment-element');
+  paymentElement.on('ready', () => {
+    document.getElementById('stripeLoading').style.display = 'none';
+    updatePayBtn(getTotal());
+  });
+  paymentElement.on('change', e => {
+    document.getElementById('card-errors').textContent = e.error ? e.error.message : '';
   });
 }
 
-function updatePaymentRequest() {
-  const total = getTotal();
-  if (paymentRequest && total > 0) {
-    paymentRequest.update({ total: { label: 'NextUp Capital', amount: total * 100 } });
-  } else if (!paymentRequest && total > 0) {
-    setupPaymentRequest();
-  }
-}
-
-// ── PAYMENT HELPERS ───────────────────────────────────────────────────────────
-async function createPaymentIntent(total, email, name) {
-  const items = Object.values(cart);
-  const res = await fetch('/.netlify/functions/create-payment-intent', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ items, email: email || '', name: name || '' })
-  });
-  const data = await res.json().catch(() => ({ error: 'Invalid response from server.' }));
-  if (!res.ok || data.error) {
-    return { error: data.error || 'Server error ' + res.status };
-  }
-  if (!data.clientSecret) {
-    return { error: 'Payment setup failed — please try again or contact support.' };
-  }
-  return data;
-}
-
-function showError(msg) {
-  document.getElementById('card-errors').textContent = msg;
-  document.getElementById('payBtn').classList.remove('loading');
-  document.getElementById('payBtn').disabled = false;
-}
-
-function onPaymentSuccess(total) {
-  if (typeof fbq !== 'undefined') fbq('track', 'Purchase', { currency: 'USD', value: total });
-  sessionStorage.removeItem('nextup_cart');
-  window.location.href = 'thank-you.html';
-}
-
-// ── CARD SUBMIT ───────────────────────────────────────────────────────────────
+// ── SUBMIT ────────────────────────────────────────────────────────────────────
 document.getElementById('payBtn').addEventListener('click', async () => {
-  const items = Object.values(cart);
-  if (!items.length) return;
+  if (!stripe || !elements || !paymentElement) return;
 
   const firstName = document.getElementById('firstName').value.trim();
   const lastName  = document.getElementById('lastName').value.trim();
   const email     = document.getElementById('email').value.trim();
-  const phone     = document.getElementById('phone').value.trim();
   const errEl     = document.getElementById('card-errors');
 
   if (!firstName || !lastName) { errEl.textContent = 'Please enter your full name.'; return; }
@@ -406,26 +317,36 @@ document.getElementById('payBtn').addEventListener('click', async () => {
   const btn = document.getElementById('payBtn');
   btn.classList.add('loading'); btn.disabled = true;
 
-  const total = getTotal();
-  const { clientSecret, error: serverError } = await createPaymentIntent(total, email, firstName + ' ' + lastName);
-  if (serverError) { showError(serverError); return; }
-  if (!clientSecret) { showError('Payment setup failed. Please try again.'); return; }
-
-  const { paymentIntent, error } = await stripe.confirmCardPayment(clientSecret, {
-    payment_method: {
-      card: cardNumber,
-      billing_details: { name: firstName + ' ' + lastName, email, phone }
-    }
+  const { error } = await stripe.confirmPayment({
+    elements,
+    confirmParams: {
+      return_url: window.location.origin + '/thank-you.html',
+      payment_method_data: {
+        billing_details: {
+          name: firstName + ' ' + lastName,
+          email,
+        }
+      }
+    },
+    redirect: 'if_required'
   });
 
-  if (error) { showError(error.message); return; }
-  if (paymentIntent.status === 'succeeded') onPaymentSuccess(total);
+  if (error) {
+    errEl.textContent = error.message;
+    btn.classList.remove('loading'); btn.disabled = false;
+    return;
+  }
+
+  // Payment succeeded
+  if (typeof fbq !== 'undefined') fbq('track', 'Purchase', { currency: 'USD', value: getTotal() });
+  sessionStorage.removeItem('nextup_cart');
+  window.location.href = 'thank-you.html';
 });
 
 // ── INIT ──────────────────────────────────────────────────────────────────────
 loadCart();
 renderCart();
-window.addEventListener('load', setupPaymentRequest);
+if (getTotal() > 0) initStripe();
 </script>
 
 <script>
@@ -811,7 +732,6 @@ function applyLang(lang) {
   localStorage.setItem('nextup_lang', lang);
   currentLang = lang;
   renderCart();
-  updatePayBtn(getTotal());
 }
 function toggleLang() { applyLang(currentLang === 'en' ? 'es' : 'en'); }
 window.addEventListener('load', () => { if (currentLang === 'es') applyLang('es'); });
