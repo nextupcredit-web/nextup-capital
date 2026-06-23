@@ -1,7 +1,6 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 exports.handler = async (event) => {
-  // Handle CORS preflight
   const headers = {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
@@ -19,11 +18,8 @@ exports.handler = async (event) => {
 
   try {
     let body;
-    try {
-      body = JSON.parse(event.body);
-    } catch(e) {
-      return { statusCode: 400, headers, body: JSON.stringify({ error: 'Invalid JSON body' }) };
-    }
+    try { body = JSON.parse(event.body); }
+    catch(e) { return { statusCode: 400, headers, body: JSON.stringify({ error: 'Invalid JSON body' }) }; }
 
     const { items, email, name } = body;
 
@@ -36,8 +32,9 @@ exports.handler = async (event) => {
     const paymentIntent = await stripe.paymentIntents.create({
       amount,
       currency: 'usd',
-      // Do NOT set automatic_payment_methods when using Payment Element
-      payment_method_types: ['card'],
+      // automatic_payment_methods lets Stripe show ALL methods enabled in your dashboard
+      // including Klarna, Affirm, Afterpay, Apple Pay, Google Pay, card
+      automatic_payment_methods: { enabled: true },
       receipt_email: email && email.includes('@') ? email : undefined,
       metadata: {
         customer_name: name || '',
