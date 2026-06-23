@@ -325,7 +325,7 @@ async function initStripe() {
   });
 
   paymentEl = stripeElements.create('payment', {
-    wallets: { applePay: 'auto', googlePay: 'auto' }
+    layout: { type: 'tabs', defaultCollapsed: false },
   });
 
   paymentEl.mount('#payment-element');
