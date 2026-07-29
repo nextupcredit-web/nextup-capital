@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>You're In — NextUp Capital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1553461379770085');fbq('track','PageView');fbq('track','Purchase',{currency:'USD',value:1500});</script>
+  <style>
+    :root{--black:#080808;--dark:#0f0f0f;--dark-2:#161616;--off-white:#f8f5ef;--gold:#b8932a;--gold-2:#c9a84c;--gold-border:rgba(184,147,42,0.25);--text-light:rgba(248,245,239,0.5);--text-mid:rgba(248,245,239,0.75);--border:rgba(248,245,239,0.07);}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{background:var(--black);color:var(--off-white);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh;}
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 1.5rem;height:64px;display:flex;align-items:center;justify-content:space-between;background:rgba(8,8,8,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.2rem;color:var(--off-white);text-decoration:none;}
+    .nav-logo span{color:var(--gold-2);}
+
+    .page{max-width:720px;margin:0 auto;padding:7rem 1.5rem 5rem;text-align:center;}
+    @media(max-width:500px){.page{padding:6rem 1.25rem 4rem;}}
+
+    .badge{font-size:3rem;margin-bottom:1.5rem;display:block;}
+    .tag{font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--gold-2);letter-spacing:2.5px;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:0.6rem;margin-bottom:1.25rem;}
+    .tag::before,.tag::after{content:'';width:20px;height:1px;background:var(--gold-2);}
+    h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2.5rem,5vw,3.8rem);line-height:1.05;margin-bottom:1rem;}
+    h1 em{font-style:italic;color:var(--gold-2);}
+    .sub{font-size:0.9rem;color:var(--text-mid);max-width:500px;margin:0 auto 3rem;line-height:1.8;}
+
+    /* STEPS */
+    .steps{background:var(--dark-2);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:3rem;text-align:left;}
+    .steps-bar{height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-2),transparent);}
+    .steps-title{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;padding:1.25rem 1.75rem 0.75rem;color:var(--text-mid);}
+    .step{display:flex;gap:1.1rem;padding:1.1rem 1.75rem;border-bottom:1px solid var(--border);align-items:flex-start;}
+    .step:last-child{border-bottom:none;}
+    @media(max-width:480px){.step{padding:1rem 1.25rem;}.steps-title{padding:1.1rem 1.25rem 0.65rem;}}
+    .step-circle{width:30px;height:30px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--text-light);flex-shrink:0;margin-top:2px;}
+    .step-circle.done{background:rgba(184,147,42,0.15);border-color:var(--gold-border);color:var(--gold-2);}
+    .step-circle.current{background:var(--gold-2);border-color:var(--gold-2);color:#000;font-weight:700;}
+    .step.active{background:rgba(184,147,42,0.03);}
+    .step-here{font-family:'DM Mono',monospace;font-size:0.58rem;color:var(--gold-2);letter-spacing:1px;margin-bottom:0.2rem;}
+    .step h5{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:700;margin-bottom:0.15rem;}
+    .step p{font-size:0.78rem;color:var(--text-light);line-height:1.6;}
+
+    /* CALENDLY PLACEHOLDER */
+    .cal-card{background:var(--dark-2);border:1px solid var(--gold-border);border-radius:8px;overflow:hidden;margin-bottom:2rem;text-align:left;box-shadow:0 0 60px rgba(184,147,42,0.05);}
+    .cal-header{padding:1.75rem 2rem;border-bottom:1px solid var(--border);}
+    @media(max-width:480px){.cal-header{padding:1.25rem 1.5rem;}}
+    .cal-mono{font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--gold-2);letter-spacing:2px;text-transform:uppercase;margin-bottom:0.75rem;}
+    .cal-header h3{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:1.7rem;margin-bottom:0.4rem;}
+    .cal-header h3 em{font-style:italic;color:var(--gold-2);}
+    .cal-header p{font-size:0.82rem;color:var(--text-mid);line-height:1.75;margin-bottom:1.1rem;}
+    .cal-features{display:flex;flex-wrap:wrap;gap:0.4rem;}
+    .cal-feat{font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--text-mid);border:1px solid var(--border);padding:0.25rem 0.6rem;border-radius:2px;}
+    .cal-embed{min-height:660px;}
+    .calendly-inline-widget{min-height:660px !important;}
+
+    .return{display:inline-block;font-size:0.78rem;color:var(--text-light);text-decoration:none;margin-top:1rem;transition:color 0.2s;}
+    .return:hover{color:var(--gold-2);}
+  </style>
+  <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css"/>
+  <script async src="https://assets.calendly.com/assets/external/widget.js"></script>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">NextUp <span>Capital</span></a>
+</nav>
+
+<div class="page">
+  <span class="badge">🎉</span>
+  <div class="tag">Payment Confirmed</div>
+  <h1>You're officially <em>in.</em></h1>
+  <p class="sub">Welcome to NextUp Capital. Your business is now moving. Book your onboarding call below — this is where we map out your structure, goals, and get started building.</p>
+
+  <div class="steps">
+    <div class="steps-bar"></div>
+    <div class="steps-title">What happens next</div>
+    <div class="step">
+      <div class="step-circle done">✓</div>
+      <div><h5>Payment Confirmed</h5><p>You'll receive a receipt by email shortly.</p></div>
+    </div>
+    <div class="step active">
+      <div class="step-circle current">2</div>
+      <div>
+        <div class="step-here">← You are here</div>
+        <h5>Book Your Onboarding Call</h5>
+        <p>Schedule below. We'll collect everything we need to build your business correctly.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-circle">3</div>
+      <div><h5>We Get to Work</h5><p>LLC filed, EIN obtained, website built, all accounts set up. Done for you.</p></div>
+    </div>
+    <div class="step">
+      <div class="step-circle">4</div>
+      <div><h5>Launch & Get Funded</h5><p>Your business is live and positioned. Now you apply for real funding.</p></div>
+    </div>
+  </div>
+
+  <div class="cal-card">
+    <div class="cal-header">
+      <div class="cal-mono">Next Step — Schedule Now</div>
+      <h3>Book Your <em>Onboarding Call</em></h3>
+      <p>This is where we map everything out — your business name, structure, goals, and exactly how we're going to build it. Don't skip this step.</p>
+      <div class="cal-features">
+        <span class="cal-feat">Free — no charge</span>
+        <span class="cal-feat">30 minutes</span>
+        <span class="cal-feat">Video or phone</span>
+        <span class="cal-feat">No pressure</span>
+      </div>
+    </div>
+    <div class="cal-embed">
+      <div class="calendly-inline-widget"
+           data-url="https://calendly.com/nextupcredit/nextup-capital-onboarding-call?hide_gdpr_banner=1&background_color=161616&text_color=f8f5ef&primary_color=c9a84c"
+           style="min-width:320px;height:660px;">
+      </div>
+    </div>
+  </div>
+
+  <a href="index.html" class="return">← Return to Home</a>
+</div>
+</body>
+</html>
