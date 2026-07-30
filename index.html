@@ -7,567 +7,413 @@
   <meta name="description" content="Everything your business needs to launch properly and qualify for real funding. One package. Done for you."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Inter:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
   <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1553461379770085');fbq('track','PageView');</script>
   <style>
     :root{
-      --black:#080808;--dark:#0f0f0f;--dark-2:#161616;--dark-3:#1e1e1e;
-      --off-white:#f8f5ef;--gold:#b8932a;--gold-2:#c9a84c;--gold-3:#e8c96a;
-      --gold-border:rgba(184,147,42,0.25);--gold-glow:rgba(184,147,42,0.08);
-      --text-light:rgba(248,245,239,0.5);--text-mid:rgba(248,245,239,0.75);
-      --border:rgba(248,245,239,0.07);
+      --white:#ffffff;--off:#f7f7f5;--light:#f0f0ec;--gold:#b8932a;--gold-2:#c9a84c;--gold-bg:#fdf8ee;--gold-border:#f0dfa0;
+      --black:#0a0a0a;--gray-1:#1a1a1a;--gray-2:#333;--gray-3:#555;--gray-4:#888;--gray-5:#ccc;--border:#e8e8e4;
     }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{scroll-behavior:smooth;}
-    body{background:var(--black);color:var(--off-white);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+    body{background:var(--white);color:var(--black);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
 
-    /* ── NAV ── */
-    nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 2rem;height:64px;display:flex;align-items:center;justify-content:space-between;background:rgba(8,8,8,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
-    .nav-logo{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.25rem;color:var(--off-white);text-decoration:none;flex-shrink:0;}
-    .nav-logo span{color:var(--gold-2);}
-    .nav-links{display:flex;align-items:center;gap:2rem;list-style:none;}
-    .nav-links a{font-size:0.78rem;font-weight:500;color:var(--text-mid);text-decoration:none;letter-spacing:0.3px;transition:color 0.2s;}
-    .nav-links a:hover{color:var(--off-white);}
-    .nav-cta{background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#000 !important;font-weight:700 !important;padding:0.5rem 1.25rem;border-radius:3px;}
-    .nav-cta:hover{opacity:0.9;color:#000 !important;}
-    .nav-credit{border:1px solid var(--gold-border);color:var(--gold-2) !important;padding:0.45rem 1rem;border-radius:3px;font-size:0.75rem !important;}
-    .nav-credit:hover{background:rgba(184,147,42,0.08);color:var(--gold-2) !important;}
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,0.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+    .logo{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:900;color:var(--black);text-decoration:none;letter-spacing:-0.02em;}
+    .logo span{color:var(--gold);}
+    .nav-links{display:flex;align-items:center;gap:1.75rem;list-style:none;}
+    .nav-links a{font-size:0.8rem;font-weight:500;color:var(--gray-3);text-decoration:none;transition:color 0.2s;}
+    .nav-links a:hover{color:var(--black);}
+    .nav-credit{color:var(--gold) !important;border:1px solid var(--gold-border);padding:0.35rem 0.9rem;border-radius:20px;font-size:0.75rem !important;background:var(--gold-bg);}
+    .nav-cta{background:var(--black) !important;color:#fff !important;padding:0.4rem 1.1rem;border-radius:4px;font-weight:600 !important;font-size:0.78rem !important;}
     .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
-    .hamburger span{display:block;width:22px;height:2px;background:var(--off-white);border-radius:2px;transition:all 0.3s;}
-    .mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;bottom:0;background:rgba(8,8,8,0.98);z-index:199;padding:2rem;flex-direction:column;gap:0;}
+    .hamburger span{display:block;width:22px;height:2px;background:var(--black);border-radius:2px;transition:all 0.3s;}
+    .mobile-menu{display:none;position:fixed;top:60px;left:0;right:0;bottom:0;background:rgba(255,255,255,0.98);z-index:199;padding:1.5rem;flex-direction:column;}
     .mobile-menu.open{display:flex;}
-    .mobile-menu a{display:block;font-size:1.1rem;color:var(--text-mid);text-decoration:none;padding:1rem 0;border-bottom:1px solid var(--border);font-weight:500;}
-    .mobile-menu a:first-child{border-top:1px solid var(--border);}
-    .mobile-menu .m-cta{margin-top:1.5rem;background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#000;font-weight:700;text-align:center;padding:1rem;border-radius:3px;border:none;font-size:1rem;}
-    .mobile-menu .m-credit{margin-top:0.75rem;border:1px solid var(--gold-border);color:var(--gold-2);text-align:center;padding:0.9rem;border-radius:3px;font-size:0.9rem;}
+    .mobile-menu a{display:block;font-size:1rem;color:var(--gray-2);text-decoration:none;padding:0.9rem 0;border-bottom:1px solid var(--border);font-weight:500;}
+    .mobile-menu .m-cta{margin-top:1.25rem;background:var(--black);color:#fff;font-weight:700;text-align:center;padding:1rem;border-radius:4px;border:none;font-size:0.95rem;}
+    .mobile-menu .m-credit{margin-top:0.75rem;background:var(--gold-bg);color:var(--gold);text-align:center;padding:0.9rem;border-radius:4px;font-size:0.88rem;border:1px solid var(--gold-border);}
     @media(max-width:760px){.nav-links{display:none;}.hamburger{display:flex;}}
 
-    /* ── HERO ── */
-    .hero{min-height:100vh;display:flex;align-items:center;padding:7rem 2rem 4rem;position:relative;overflow:hidden;}
-    .hero::before{content:'';position:absolute;top:-100px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,var(--gold-glow) 0%,transparent 65%);border-radius:50%;pointer-events:none;}
-    .hero::after{content:'';position:absolute;bottom:-100px;left:-200px;width:500px;height:500px;background:radial-gradient(circle,rgba(184,147,42,0.04) 0%,transparent 65%);border-radius:50%;pointer-events:none;}
-    .hero-inner{max-width:1100px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 420px;gap:4rem;align-items:center;}
-    .hero-left{}
-    .hero-tag{font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--gold-2);letter-spacing:2.5px;text-transform:uppercase;display:flex;align-items:center;gap:0.6rem;margin-bottom:1.5rem;}
-    .hero-tag::before{content:'';width:20px;height:1px;background:var(--gold-2);}
-    h1.hero-h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2.8rem,5.5vw,4.5rem);line-height:1.05;margin-bottom:1.5rem;letter-spacing:-0.02em;}
-    h1.hero-h1 em{font-style:italic;color:var(--gold-2);}
-    .hero-sub{font-size:1rem;color:var(--text-mid);line-height:1.8;max-width:480px;margin-bottom:2.5rem;}
-    .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
-    .btn-primary{background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#000;font-weight:700;font-size:0.88rem;letter-spacing:0.3px;padding:0.9rem 2rem;border-radius:3px;text-decoration:none;transition:all 0.2s;display:inline-block;}
-    .btn-primary:hover{box-shadow:0 8px 30px rgba(184,147,42,0.35);transform:translateY(-1px);}
-    .btn-outline{border:1px solid rgba(248,245,239,0.2);color:var(--text-mid);font-size:0.88rem;padding:0.9rem 2rem;border-radius:3px;text-decoration:none;transition:all 0.2s;display:inline-block;}
-    .btn-outline:hover{border-color:var(--gold-border);color:var(--gold-2);}
-    .hero-trust{display:flex;gap:2rem;margin-top:2.5rem;padding-top:2rem;border-top:1px solid var(--border);}
-    .trust-item{display:flex;flex-direction:column;}
-    .trust-num{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:var(--gold-2);line-height:1;}
-    .trust-label{font-size:0.72rem;color:var(--text-light);margin-top:0.2rem;}
+    /* HERO */
+    .hero{padding:7rem 2rem 5rem;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 420px;gap:5rem;align-items:center;}
+    .hero-pill{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.68rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);background:var(--gold-bg);border:1px solid var(--gold-border);padding:0.35rem 0.9rem;border-radius:20px;margin-bottom:1.5rem;}
+    h1{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,5vw,4.2rem);font-weight:900;line-height:1.04;letter-spacing:-0.03em;margin-bottom:1.5rem;color:var(--black);}
+    h1 em{font-style:italic;color:var(--gold);}
+    .hero-sub{font-size:1.05rem;color:var(--gray-3);line-height:1.75;max-width:480px;margin-bottom:2.5rem;}
+    .hero-btns{display:flex;gap:0.85rem;flex-wrap:wrap;margin-bottom:2.5rem;}
+    .btn-black{background:var(--black);color:#fff;font-weight:700;font-size:0.88rem;padding:0.9rem 2rem;border-radius:4px;text-decoration:none;transition:all 0.2s;display:inline-block;letter-spacing:0.2px;}
+    .btn-black:hover{background:var(--gray-1);transform:translateY(-1px);}
+    .btn-ghost{border:1.5px solid var(--border);color:var(--gray-3);font-size:0.88rem;padding:0.9rem 1.75rem;border-radius:4px;text-decoration:none;transition:all 0.2s;display:inline-block;}
+    .btn-ghost:hover{border-color:var(--gray-5);color:var(--black);}
+    .trust-strip{display:flex;gap:2.5rem;padding-top:2rem;border-top:1px solid var(--border);}
+    .trust-num{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:900;color:var(--gold);line-height:1;letter-spacing:-0.02em;}
+    .trust-label{font-size:0.7rem;color:var(--gray-4);margin-top:0.2rem;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;}
 
-    /* Hero price card */
-    .hero-card{background:var(--dark-2);border:1px solid var(--gold-border);border-radius:8px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.5);}
-    .card-top{background:linear-gradient(135deg,#1a1208,#0f0f0f);padding:1.75rem 2rem;border-bottom:1px solid var(--gold-border);}
-    .card-label{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:2px;color:var(--gold-2);text-transform:uppercase;margin-bottom:0.5rem;}
-    .card-name{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;margin-bottom:0.25rem;}
-    .card-desc{font-size:0.78rem;color:var(--text-light);line-height:1.5;}
-    .card-price-row{display:flex;align-items:baseline;gap:0.4rem;margin-top:1rem;}
-    .card-price{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:700;color:var(--gold-2);line-height:1;}
-    .card-price-note{font-size:0.75rem;color:var(--text-light);}
-    .card-body{padding:1.5rem 2rem;}
-    .card-item{display:flex;align-items:flex-start;gap:0.75rem;padding:0.6rem 0;border-bottom:1px solid var(--border);}
-    .card-item:last-of-type{border-bottom:none;}
-    .card-check{width:18px;height:18px;border-radius:50%;background:rgba(184,147,42,0.15);border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
-    .card-check svg{width:9px;height:9px;}
-    .card-item-text{font-size:0.82rem;color:var(--text-mid);line-height:1.4;}
-    .card-item-sub{font-size:0.7rem;color:var(--text-light);margin-top:0.15rem;}
-    .card-footer{padding:1.25rem 2rem;background:rgba(0,0,0,0.2);border-top:1px solid var(--border);}
-    .card-note{font-size:0.68rem;color:var(--text-light);line-height:1.6;margin-bottom:1rem;}
-    .card-btn{display:block;width:100%;background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#000;font-weight:700;font-size:0.88rem;text-align:center;padding:0.9rem;border-radius:3px;text-decoration:none;transition:all 0.2s;}
-    .card-btn:hover{box-shadow:0 6px 20px rgba(184,147,42,0.3);}
+    /* OFFER CARD */
+    .offer-card{background:var(--white);border:1.5px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.06);}
+    .offer-top{background:var(--black);padding:1.75rem 2rem;}
+    .offer-pill{display:inline-block;font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:2px;color:var(--gold-2);text-transform:uppercase;margin-bottom:0.75rem;border:1px solid rgba(201,168,76,0.3);padding:0.25rem 0.6rem;border-radius:2px;}
+    .offer-name{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:#fff;margin-bottom:0.25rem;}
+    .offer-desc{font-size:0.8rem;color:rgba(255,255,255,0.55);line-height:1.5;}
+    .offer-price-row{display:flex;align-items:baseline;gap:0.4rem;margin-top:1.25rem;}
+    .offer-price{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:900;color:var(--gold-2);line-height:1;opacity:0;transition:opacity 0.8s ease 1.5s;}
+    .offer-price.show{opacity:1;}
+    .offer-price-note{font-size:0.75rem;color:rgba(255,255,255,0.45);}
+    .offer-body{padding:1.5rem 2rem;}
+    .offer-item{display:flex;align-items:flex-start;gap:0.75rem;padding:0.6rem 0;border-bottom:1px solid var(--border);}
+    .offer-item:last-of-type{border-bottom:none;}
+    .check{width:18px;height:18px;border-radius:50%;background:var(--gold-bg);border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+    .check svg{width:8px;height:8px;}
+    .oi-main{font-size:0.83rem;font-weight:600;color:var(--black);line-height:1.35;}
+    .oi-sub{font-size:0.7rem;color:var(--gray-4);margin-top:0.1rem;}
+    .offer-footer{padding:1.25rem 2rem;background:var(--off);border-top:1px solid var(--border);}
+    .offer-note{font-size:0.68rem;color:var(--gray-4);line-height:1.6;margin-bottom:1rem;}
+    .offer-btn{display:block;width:100%;background:var(--gold);color:#000;font-weight:700;font-size:0.88rem;text-align:center;padding:0.9rem;border-radius:4px;text-decoration:none;transition:background 0.2s;}
+    .offer-btn:hover{background:var(--gold-2);}
 
-    @media(max-width:900px){
-      .hero-inner{grid-template-columns:1fr;gap:3rem;}
-      .hero{padding:6rem 1.25rem 3rem;min-height:auto;}
-      .hero-card{max-width:480px;}
-    }
-    @media(max-width:480px){
-      .hero-trust{gap:1.25rem;}
-      .trust-num{font-size:1.5rem;}
-      .hero-btns{flex-direction:column;}
-      .btn-primary,.btn-outline{text-align:center;}
-      .card-top{padding:1.25rem 1.5rem;}
-      .card-body{padding:1.25rem 1.5rem;}
-      .card-footer{padding:1rem 1.5rem;}
-    }
+    @media(max-width:940px){.hero{grid-template-columns:1fr;gap:3rem;padding:6rem 1.5rem 4rem;}.offer-card{max-width:480px;}}
+    @media(max-width:500px){.hero{padding:5.5rem 1.25rem 3rem;}.trust-strip{gap:1.5rem;}.trust-num{font-size:1.5rem;}.hero-btns{flex-direction:column;}.btn-black,.btn-ghost{text-align:center;}.offer-top{padding:1.5rem;}.offer-body{padding:1.25rem 1.5rem;}.offer-footer{padding:1rem 1.5rem;}}
 
-    /* ── WHAT'S INCLUDED ── */
-    .included{padding:6rem 2rem;background:var(--dark);}
-    .section-inner{max-width:1100px;margin:0 auto;}
-    .section-tag{font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--gold-2);letter-spacing:2.5px;text-transform:uppercase;display:flex;align-items:center;gap:0.6rem;margin-bottom:1.25rem;}
-    .section-tag::before{content:'';width:16px;height:1px;background:var(--gold-2);}
-    .section-h2{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2rem,4vw,3rem);margin-bottom:1rem;line-height:1.1;}
-    .section-h2 em{font-style:italic;color:var(--gold-2);}
-    .section-sub{font-size:0.88rem;color:var(--text-mid);max-width:540px;line-height:1.8;margin-bottom:3rem;}
-    .included-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
-    .inc-card{background:var(--dark-2);border:1px solid var(--border);border-radius:6px;padding:1.75rem;transition:all 0.3s;position:relative;overflow:hidden;}
-    .inc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent);opacity:0;transition:opacity 0.3s;}
-    .inc-card:hover{border-color:var(--gold-border);transform:translateY(-3px);}
-    .inc-card:hover::before{opacity:1;}
-    .inc-icon{font-size:1.5rem;margin-bottom:1rem;}
-    .inc-card h4{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;margin-bottom:0.5rem;}
-    .inc-card p{font-size:0.8rem;color:var(--text-light);line-height:1.7;}
-    .inc-badge{display:inline-block;font-family:'DM Mono',monospace;font-size:0.58rem;color:var(--gold-2);border:1px solid var(--gold-border);padding:0.2rem 0.5rem;border-radius:2px;margin-top:0.75rem;letter-spacing:0.5px;}
-    @media(max-width:760px){.included-grid{grid-template-columns:1fr 1fr;}}
-    @media(max-width:500px){.included-grid{grid-template-columns:1fr;}}
+    /* INCLUDED */
+    .included{background:var(--off);padding:5rem 2rem;border-top:1px solid var(--border);}
+    .sec-inner{max-width:1060px;margin:0 auto;}
+    .sec-label{font-size:0.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gray-4);margin-bottom:1rem;display:flex;align-items:center;gap:0.6rem;}
+    .sec-label::before{content:'';width:16px;height:1.5px;background:var(--gold);}
+    h2{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:900;line-height:1.1;letter-spacing:-0.025em;margin-bottom:1rem;}
+    h2 em{font-style:italic;color:var(--gold);}
+    .sec-sub{font-size:0.9rem;color:var(--gray-3);line-height:1.75;max-width:520px;margin-bottom:2.5rem;}
+    .inc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+    .inc-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.5rem;transition:all 0.25s;position:relative;overflow:hidden;}
+    .inc-card:hover{border-color:var(--gold-border);box-shadow:0 4px 20px rgba(184,147,42,0.08);transform:translateY(-2px);}
+    .inc-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);opacity:0;transition:opacity 0.25s;}
+    .inc-card:hover::after{opacity:1;}
+    .inc-icon{font-size:1.4rem;margin-bottom:0.85rem;}
+    .inc-card h4{font-size:0.9rem;font-weight:700;margin-bottom:0.35rem;color:var(--black);}
+    .inc-card p{font-size:0.78rem;color:var(--gray-3);line-height:1.65;}
+    .inc-badge{display:inline-block;font-size:0.6rem;font-weight:600;letter-spacing:0.5px;color:var(--gold);background:var(--gold-bg);border:1px solid var(--gold-border);padding:0.2rem 0.55rem;border-radius:3px;margin-top:0.75rem;text-transform:uppercase;}
+    @media(max-width:760px){.inc-grid{grid-template-columns:1fr 1fr;}}
+    @media(max-width:480px){.inc-grid{grid-template-columns:1fr;}}
 
-    /* ── WHY IT MATTERS ── */
-    .why{padding:6rem 2rem;background:var(--black);}
-    .why-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
-    .why-left{}
+    /* WHY / FUNDING */
+    .why{padding:5rem 2rem;background:var(--white);border-top:1px solid var(--border);}
+    .why-inner{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
     .why-points{display:flex;flex-direction:column;gap:0;}
-    .why-point{display:flex;gap:1.25rem;padding:1.5rem 0;border-bottom:1px solid var(--border);}
-    .why-point:first-child{padding-top:0;}
-    .why-num{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--gold-2);padding-top:2px;flex-shrink:0;}
-    .why-point h4{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:700;margin-bottom:0.3rem;}
-    .why-point p{font-size:0.8rem;color:var(--text-light);line-height:1.7;}
-    .why-right{background:var(--dark-2);border:1px solid var(--border);border-radius:8px;padding:2.5rem;position:relative;}
-    .why-right::before{content:'';position:absolute;inset:-1px;border-radius:8px;background:linear-gradient(135deg,var(--gold-border),transparent,transparent);pointer-events:none;}
-    .funding-tag{font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--gold-2);letter-spacing:2px;text-transform:uppercase;margin-bottom:1.5rem;}
-    .funding-title{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;margin-bottom:0.5rem;line-height:1.1;}
-    .funding-title em{font-style:italic;color:var(--gold-2);}
-    .funding-amount{font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:700;color:var(--gold-2);line-height:1;margin-bottom:0.25rem;}
-    .funding-note{font-size:0.78rem;color:var(--text-light);margin-bottom:2rem;}
-    .funding-req{display:flex;flex-direction:column;gap:0.6rem;}
-    .req-item{display:flex;align-items:center;gap:0.75rem;font-size:0.8rem;color:var(--text-mid);}
-    .req-dot{width:6px;height:6px;border-radius:50%;background:var(--gold-2);flex-shrink:0;}
+    .why-pt{display:flex;gap:1.25rem;padding:1.4rem 0;border-bottom:1px solid var(--border);}
+    .why-pt:last-child{border-bottom:none;}
+    .why-num{font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--gold);flex-shrink:0;padding-top:2px;}
+    .why-pt h4{font-size:0.9rem;font-weight:700;margin-bottom:0.3rem;color:var(--black);}
+    .why-pt p{font-size:0.8rem;color:var(--gray-3);line-height:1.65;}
+    .fund-card{background:var(--black);border-radius:12px;padding:2.5rem;color:#fff;}
+    .fund-tag{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold-2);margin-bottom:1.25rem;}
+    .fund-title{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;line-height:1.1;margin-bottom:0.5rem;}
+    .fund-title em{font-style:italic;color:var(--gold-2);}
+    .fund-amt{font-family:'Playfair Display',serif;font-size:3.2rem;font-weight:900;color:var(--gold-2);line-height:1;margin-bottom:0.25rem;letter-spacing:-0.02em;}
+    .fund-note{font-size:0.78rem;color:rgba(255,255,255,0.45);margin-bottom:2rem;}
+    .fund-reqs{display:flex;flex-direction:column;gap:0.6rem;}
+    .fund-req{display:flex;align-items:center;gap:0.75rem;font-size:0.8rem;color:rgba(255,255,255,0.7);}
+    .req-dot{width:5px;height:5px;border-radius:50%;background:var(--gold-2);flex-shrink:0;}
+    .fund-link{display:block;margin-top:1.75rem;text-align:center;background:var(--gold);color:#000;font-weight:700;font-size:0.85rem;padding:0.85rem;border-radius:4px;text-decoration:none;transition:background 0.2s;}
+    .fund-link:hover{background:var(--gold-2);}
     @media(max-width:800px){.why-inner{grid-template-columns:1fr;gap:3rem;}}
 
-    /* ── PRICING TRANSPARENCY ── */
-    .pricing{padding:6rem 2rem;background:var(--dark);}
-    .pricing-inner{max-width:860px;margin:0 auto;}
-    .price-table{background:var(--dark-2);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-top:2.5rem;}
-    .price-row{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 2rem;border-bottom:1px solid var(--border);}
-    .price-row:last-child{border-bottom:none;}
-    .price-row.header{background:rgba(0,0,0,0.3);padding:0.85rem 2rem;}
-    .price-row.header span{font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--text-light);letter-spacing:1px;text-transform:uppercase;}
-    .price-label{font-size:0.85rem;color:var(--off-white);font-weight:500;}
-    .price-label small{display:block;font-size:0.72rem;color:var(--text-light);font-weight:400;margin-top:0.15rem;}
-    .price-val{font-family:'DM Mono',monospace;font-size:0.82rem;color:var(--gold-2);text-align:right;}
-    .price-val.included{color:#7ecb7e;}
-    .price-total-row{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 2rem;background:rgba(184,147,42,0.05);border-top:1px solid var(--gold-border);}
-    .price-total-label{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;}
-    .price-total-val{font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--gold-2);}
-    .price-footnote{font-size:0.72rem;color:var(--text-light);margin-top:1rem;line-height:1.7;padding:0 0.25rem;}
-    @media(max-width:500px){.price-row{padding:1rem 1.25rem;flex-direction:column;align-items:flex-start;gap:0.25rem;}.price-val{text-align:left;}.price-total-row{padding:1.25rem;}.price-row.header{padding:0.75rem 1.25rem;}}
+    /* PRICING TABLE */
+    .pricing{padding:5rem 2rem;background:var(--off);border-top:1px solid var(--border);}
+    .price-tbl{background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-top:2.5rem;}
+    .ptbl-head{display:flex;justify-content:space-between;padding:0.85rem 2rem;background:var(--black);}
+    .ptbl-head span{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.45);}
+    .ptbl-row{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;border-bottom:1px solid var(--border);}
+    .ptbl-row:last-of-type{border-bottom:none;}
+    .ptbl-label{font-size:0.85rem;font-weight:600;color:var(--black);}
+    .ptbl-sub{font-size:0.72rem;color:var(--gray-4);margin-top:0.15rem;font-weight:400;}
+    .ptbl-val{font-family:'DM Mono',monospace;font-size:0.8rem;color:var(--gray-3);text-align:right;white-space:nowrap;}
+    .ptbl-val.green{color:#2d7d3a;}
+    .ptbl-total{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 2rem;background:var(--gold-bg);border-top:1.5px solid var(--gold-border);}
+    .ptbl-total-label{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:900;color:var(--black);}
+    .ptbl-total-val{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--gold);}
+    .price-note{font-size:0.72rem;color:var(--gray-4);margin-top:1rem;line-height:1.7;padding:0 0.25rem;}
+    @media(max-width:500px){.ptbl-row,.ptbl-head,.ptbl-total{padding:1rem 1.25rem;}.ptbl-row{flex-direction:column;align-items:flex-start;gap:0.25rem;}.ptbl-val{text-align:left;}}
 
-    /* ── PROCESS ── */
-    .process{padding:6rem 2rem;background:var(--black);}
-    .process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3rem;position:relative;}
-    .process-steps::before{content:'';position:absolute;top:28px;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,var(--gold-border),var(--gold-border),transparent);}
-    .step{text-align:center;position:relative;}
-    .step-num{width:56px;height:56px;border-radius:50%;border:1px solid var(--gold-border);background:var(--dark-2);display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--gold-2);position:relative;z-index:1;}
-    .step h4{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:700;margin-bottom:0.4rem;}
-    .step p{font-size:0.78rem;color:var(--text-light);line-height:1.6;}
-    @media(max-width:700px){.process-steps{grid-template-columns:1fr 1fr;}.process-steps::before{display:none;}}
-    @media(max-width:400px){.process-steps{grid-template-columns:1fr;}}
+    /* PROCESS */
+    .process{padding:5rem 2rem;background:var(--white);border-top:1px solid var(--border);}
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;margin-top:3rem;position:relative;}
+    .steps::before{content:'';position:absolute;top:24px;left:12%;right:12%;height:1px;background:var(--border);z-index:0;}
+    .step{text-align:center;position:relative;z-index:1;}
+    .step-n{width:48px;height:48px;border-radius:50%;background:var(--white);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:0.72rem;font-weight:500;color:var(--gold);margin:0 auto 1rem;}
+    .step h4{font-size:0.88rem;font-weight:700;margin-bottom:0.35rem;color:var(--black);}
+    .step p{font-size:0.75rem;color:var(--gray-4);line-height:1.6;}
+    @media(max-width:700px){.steps{grid-template-columns:1fr 1fr;}.steps::before{display:none;}}
+    @media(max-width:420px){.steps{grid-template-columns:1fr;}}
 
-    /* ── FAQ ── */
-    .faq{padding:6rem 2rem;background:var(--dark);}
-    .faq-list{max-width:700px;margin:2.5rem auto 0;}
+    /* FAQ */
+    .faq{padding:5rem 2rem;background:var(--off);border-top:1px solid var(--border);}
+    .faq-wrap{max-width:680px;margin:2.5rem auto 0;}
     .faq-item{border-bottom:1px solid var(--border);}
-    .faq-q{width:100%;background:none;border:none;color:var(--off-white);font-family:'Inter',sans-serif;font-size:0.9rem;font-weight:600;text-align:left;padding:1.25rem 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;}
-    .faq-q .icon{font-size:1.2rem;color:var(--gold-2);flex-shrink:0;transition:transform 0.3s;}
-    .faq-item.open .faq-q .icon{transform:rotate(45deg);}
-    .faq-a{display:none;font-size:0.82rem;color:var(--text-mid);line-height:1.8;padding-bottom:1.25rem;}
+    .faq-q{width:100%;background:none;border:none;color:var(--black);font-family:'Inter',sans-serif;font-size:0.9rem;font-weight:600;text-align:left;padding:1.2rem 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;}
+    .faq-icon{font-size:1.2rem;color:var(--gold);flex-shrink:0;transition:transform 0.25s;font-style:normal;}
+    .faq-item.open .faq-icon{transform:rotate(45deg);}
+    .faq-a{display:none;font-size:0.82rem;color:var(--gray-3);line-height:1.8;padding-bottom:1.2rem;}
+    .faq-a a{color:var(--gold);text-decoration:none;}
     .faq-item.open .faq-a{display:block;}
 
-    /* ── CTA ── */
-    .cta-section{padding:6rem 2rem;background:var(--black);text-align:center;position:relative;overflow:hidden;}
-    .cta-section::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(184,147,42,0.07) 0%,transparent 65%);pointer-events:none;}
-    .cta-inner{max-width:580px;margin:0 auto;position:relative;}
-    .cta-section .section-tag{justify-content:center;}
-    .cta-section .section-h2{margin-bottom:1rem;}
-    .cta-section p{font-size:0.9rem;color:var(--text-mid);line-height:1.8;margin-bottom:2.5rem;}
-    .cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+    /* CTA BAND */
+    .cta-band{padding:5rem 2rem;background:var(--black);text-align:center;}
+    .cta-band .sec-label{justify-content:center;color:rgba(255,255,255,0.4);}
+    .cta-band .sec-label::before{background:var(--gold);}
+    .cta-band h2{color:#fff;margin-bottom:1rem;}
+    .cta-band h2 em{color:var(--gold-2);}
+    .cta-band p{font-size:0.9rem;color:rgba(255,255,255,0.55);max-width:480px;margin:0 auto 2.5rem;line-height:1.75;}
+    .cta-btns{display:flex;gap:0.85rem;justify-content:center;flex-wrap:wrap;}
+    .btn-gold{background:var(--gold);color:#000;font-weight:700;font-size:0.88rem;padding:0.9rem 2rem;border-radius:4px;text-decoration:none;transition:background 0.2s;display:inline-block;}
+    .btn-gold:hover{background:var(--gold-2);}
+    .btn-white{border:1.5px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.7);font-size:0.88rem;padding:0.9rem 1.75rem;border-radius:4px;text-decoration:none;transition:all 0.2s;display:inline-block;}
+    .btn-white:hover{border-color:rgba(255,255,255,0.4);color:#fff;}
 
-    /* ── FOOTER ── */
-    footer{background:var(--dark);border-top:1px solid var(--border);padding:3rem 2rem 2rem;}
-    .footer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem;}
-    .footer-brand .logo{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.2rem;color:var(--off-white);margin-bottom:0.75rem;display:block;}
-    .footer-brand .logo span{color:var(--gold-2);}
-    .footer-brand p{font-size:0.78rem;color:var(--text-light);line-height:1.7;max-width:240px;}
-    .footer-col h5{font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--gold-2);letter-spacing:2px;text-transform:uppercase;margin-bottom:1rem;}
-    .footer-col a{display:block;font-size:0.8rem;color:var(--text-light);text-decoration:none;margin-bottom:0.5rem;transition:color 0.2s;}
-    .footer-col a:hover{color:var(--gold-2);}
-    .footer-bottom{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;}
-    .footer-bottom p{font-size:0.72rem;color:var(--text-light);}
-    .footer-bottom a{font-size:0.72rem;color:var(--text-light);text-decoration:none;}
-    .footer-bottom a:hover{color:var(--gold-2);}
-    @media(max-width:700px){.footer-inner{grid-template-columns:1fr;gap:2rem;}.footer-bottom{flex-direction:column;align-items:flex-start;}}
-
-    /* ── MISC ── */
-    .divider{width:40px;height:2px;background:linear-gradient(90deg,var(--gold),transparent);margin:1.5rem 0;}
+    /* FOOTER */
+    footer{background:var(--off);border-top:1px solid var(--border);padding:3rem 2rem 2rem;}
+    .foot-inner{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem;}
+    .foot-logo{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:900;color:var(--black);margin-bottom:0.75rem;display:block;letter-spacing:-0.02em;}
+    .foot-logo span{color:var(--gold);}
+    .foot-brand p{font-size:0.78rem;color:var(--gray-4);line-height:1.7;max-width:220px;}
+    .foot-col h5{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--gray-4);margin-bottom:1rem;}
+    .foot-col a{display:block;font-size:0.8rem;color:var(--gray-3);text-decoration:none;margin-bottom:0.5rem;transition:color 0.2s;}
+    .foot-col a:hover{color:var(--gold);}
+    .foot-bottom{max-width:1060px;margin:0 auto;border-top:1px solid var(--border);padding-top:1.5rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.75rem;}
+    .foot-bottom p,.foot-bottom a{font-size:0.72rem;color:var(--gray-4);text-decoration:none;}
+    .foot-bottom a:hover{color:var(--gold);}
+    .foot-links{display:flex;gap:1.25rem;}
+    @media(max-width:700px){.foot-inner{grid-template-columns:1fr;gap:2rem;}.foot-bottom{flex-direction:column;}}
   </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <a href="index.html" class="nav-logo">NextUp <span>Capital</span></a>
+  <a href="index.html" class="logo">NextUp <span>Capital</span></a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="contact.html">Contact</a></li>
     <li><a href="https://nextupenterprise.com" target="_blank" class="nav-credit">Credit Repair ↗</a></li>
     <li><a href="https://buy.stripe.com/bJe14p9fQfWJfDog8U5Rm0M" class="nav-cta">Get Started →</a></li>
   </ul>
-  <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+  <button class="hamburger" id="hamburgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
   <a href="index.html">Home</a>
   <a href="contact.html">Contact</a>
   <a href="https://nextupenterprise.com" target="_blank">Credit Repair ↗</a>
-  <a href="https://buy.stripe.com/bJe14p9fQfWJfDog8U5Rm0M" class="m-cta">Get Started — $1,500 →</a>
+  <a href="https://buy.stripe.com/bJe14p9fQfWJfDog8U5Rm0M" class="m-cta">Get Started — $1,500</a>
   <a href="https://nextupenterprise.com" target="_blank" class="m-credit">Fix My Credit First</a>
 </div>
 
 <!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-inner">
-    <div class="hero-left">
-      <div class="hero-tag">Business Formation & Funding Readiness</div>
-      <h1 class="hero-h1">Your business.<br>Built to <em>get funded.</em></h1>
-      <p class="hero-sub">Everything lenders and banks require before they approve you — your LLC, EIN, brand, website, address, phone, and email — done for you in one package. This is what funding-ready looks like.</p>
+<section style="border-bottom:1px solid var(--border);">
+  <div class="hero">
+    <div>
+      <div class="hero-pill">Business Formation & Funding Readiness</div>
+      <h1>Your business.<br>Built to <em>get funded.</em></h1>
+      <p class="hero-sub">Everything lenders and banks require before they approve you — your LLC, EIN, website, address, phone, and email — done for you in one package.</p>
       <div class="hero-btns">
-        <a href="https://buy.stripe.com/bJe14p9fQfWJfDog8U5Rm0M" class="btn-primary">Get Started — $1,500 →</a>
-        <a href="contact.html" class="btn-outline">Ask Us a Question</a>
+        <a href="https://buy.stripe.com/bJe14p9fQfWJfDog8U5Rm0M" class="btn-black">Get Started — $1,500 →</a>
+        <a href="contact.html" class="btn-ghost">Ask a Question</a>
       </div>
-      <div class="hero-trust">
-        <div class="trust-item">
-          <span class="trust-num">150+</span>
-          <span class="trust-label">Clients Helped</span>
-        </div>
-        <div class="trust-item">
-          <span class="trust-num">$1M+</span>
-          <span class="trust-label">In Client Debt Removed</span>
-        </div>
-        <div class="trust-item">
-          <span class="trust-num">2</span>
-          <span class="trust-label">NextUp Brands</span>
-        </div>
+      <div class="trust-strip">
+        <div><div class="trust-num">150+</div><div class="trust-label">Clients Helped</div></div>
+        <div><div class="trust-num">$1M+</div><div class="trust-label">Debt Removed</div></div>
+        <div><div class="trust-num">7–14</div><div class="trust-label">Day Setup</div></div>
       </div>
     </div>
 
-    <!-- PRICE CARD -->
-    <div class="hero-card">
-      <div class="card-top">
-        <div class="card-label">The Starter Package</div>
-        <div class="card-name">Foundation Build</div>
-        <div class="card-desc">Everything required to launch properly and qualify for business funding.</div>
-        <div class="card-price-row">
-          <span class="card-price">$1,500</span>
-          <span class="card-price-note">one-time · done for you</span>
+    <div class="offer-card">
+      <div class="offer-top">
+        <div class="offer-pill">The Package</div>
+        <div class="offer-name">Foundation Build</div>
+        <div class="offer-desc">Everything required to launch and qualify for business funding.</div>
+        <div class="offer-price-row">
+          <span class="offer-price" id="offerPrice">$1,500</span>
+          <span class="offer-price-note">one-time · done for you</span>
         </div>
       </div>
-      <div class="card-body">
-        <div class="card-item">
-          <div class="card-check"><svg viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-          <div><div class="card-item-text">LLC Formation + Registered Agent (1 Year Free)</div></div>
+      <div class="offer-body">
+        <div class="offer-item">
+          <div class="check"><svg viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#b8932a" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+          <div><div class="oi-main">LLC Formation + Operating Agreement</div><div class="oi-sub">Full legal formation for your state</div></div>
         </div>
-        <div class="card-item">
-          <div class="card-check"><svg viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-          <div><div class="card-item-text">EIN Setup & Operating Agreement</div></div>
+        <div class="offer-item">
+          <div class="check"><svg viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#b8932a" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+          <div><div class="oi-main">Registered Agent — 1 Year Free</div></div>
         </div>
-        <div class="card-item">
-          <div class="card-check"><svg viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-          <div><div class="card-item-text">Premium 2–4 Page Website + Domain</div><div class="card-item-sub">First year included — then ~$25–$150/yr</div></div>
+        <div class="offer-item">
+          <div class="check"><svg viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#b8932a" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+          <div><div class="oi-main">EIN Setup</div><div class="oi-sub">Business tax ID — required for banking & funding</div></div>
         </div>
-        <div class="card-item">
-          <div class="card-check"><svg viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-          <div><div class="card-item-text">Business Phone Number</div><div class="card-item-sub">Avg ~$50/mo ongoing · your choice of provider</div></div>
+        <div class="offer-item">
+          <div class="check"><svg viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#b8932a" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+          <div><div class="oi-main">Premium Website + Domain</div><div class="oi-sub">First year included · ~$25–$150/yr after</div></div>
         </div>
-        <div class="card-item">
-          <div class="card-check"><svg viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-          <div><div class="card-item-text">Virtual Business Address</div><div class="card-item-sub">Avg ~$30/mo ongoing · your choice of provider</div></div>
+        <div class="offer-item">
+          <div class="check"><svg viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#b8932a" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+          <div><div class="oi-main">Business Phone Setup</div><div class="oi-sub">Avg ~$50/mo ongoing · your provider</div></div>
         </div>
-        <div class="card-item">
-          <div class="card-check"><svg viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-          <div><div class="card-item-text">Professional Business Email</div><div class="card-item-sub">Avg ~$8–$15/mo ongoing · depends on domain</div></div>
+        <div class="offer-item">
+          <div class="check"><svg viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#b8932a" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+          <div><div class="oi-main">Virtual Business Address</div><div class="oi-sub">Avg ~$30/mo ongoing · your provider</div></div>
+        </div>
+        <div class="offer-item">
+          <div class="check"><svg viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#b8932a" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+          <div><div class="oi-main">Professional Business Email</div><div class="oi-sub">Avg ~$8–$15/mo ongoing</div></div>
         </div>
       </div>
-      <div class="card-footer">
-        <div class="card-note">State LLC filing fee not included — passed to you at cost. Third-party subscriptions billed directly by provider after setup.</div>
-        <a href="https://buy.stripe.com/bJe14p9fQfWJfDog8U5Rm0M" class="card-btn">Get Started →</a>
+      <div class="offer-footer">
+        <div class="offer-note">State LLC filing fee not included — passed to you at cost. Third-party subscriptions billed directly by provider after setup.</div>
+        <a href="https://buy.stripe.com/bJe14p9fQfWJfDog8U5Rm0M" class="offer-btn">Get Started →</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- WHAT'S INCLUDED -->
-<section class="included" id="included">
-  <div class="section-inner">
-    <div class="section-tag">What You Get</div>
-    <h2 class="section-h2">Every piece lenders<br><em>look for — in one package.</em></h2>
-    <p class="section-sub">Banks and lenders have a checklist. We make sure you check every box before you ever apply. This is what we build for you.</p>
-    <div class="included-grid">
-      <div class="inc-card">
-        <div class="inc-icon">🏛️</div>
-        <h4>LLC Formation</h4>
-        <p>We handle your full LLC registration with the state, including your operating agreement, meeting minutes, and company documentation.</p>
-        <span class="inc-badge">Required for Funding</span>
-      </div>
-      <div class="inc-card">
-        <div class="inc-icon">🔢</div>
-        <h4>EIN & Registered Agent</h4>
-        <p>Your EIN is your business's tax ID — required to open a business bank account and apply for credit. Registered agent included free for year one.</p>
-        <span class="inc-badge">Required for Banking</span>
-      </div>
-      <div class="inc-card">
-        <div class="inc-icon">🌐</div>
-        <h4>Premium Website + Domain</h4>
-        <p>A professional 2–4 page website and domain setup. Lenders verify your online presence. First year domain cost included.</p>
-        <span class="inc-badge">Lender Verified</span>
-      </div>
-      <div class="inc-card">
-        <div class="inc-icon">📞</div>
-        <h4>Business Phone</h4>
-        <p>A dedicated business phone number listed under your business name. We set it up — you choose the provider. Avg ~$50/mo ongoing.</p>
-        <span class="inc-badge">Required by Lenders</span>
-      </div>
-      <div class="inc-card">
-        <div class="inc-icon">📍</div>
-        <h4>Virtual Business Address</h4>
-        <p>A professional business address for your LLC — not your home address. Required for mail, licensing, and funding. Avg ~$30/mo ongoing.</p>
-        <span class="inc-badge">Required for LLC</span>
-      </div>
-      <div class="inc-card">
-        <div class="inc-icon">✉️</div>
-        <h4>Professional Business Email</h4>
-        <p>A branded business email (you@yourbusiness.com) that matches your domain. Avg ~$8–$15/mo ongoing, depending on name availability.</p>
-        <span class="inc-badge">Builds Credibility</span>
-      </div>
+<!-- INCLUDED -->
+<section class="included">
+  <div class="sec-inner">
+    <div class="sec-label">What You Get</div>
+    <h2>Every piece lenders look for.<br><em>One package.</em></h2>
+    <p class="sec-sub">Banks and lenders have a checklist. We make sure you check every box before you ever apply.</p>
+    <div class="inc-grid">
+      <div class="inc-card"><div class="inc-icon">🏛️</div><h4>LLC Formation</h4><p>Full LLC registration, operating agreement, meeting minutes, and company documentation handled for you.</p><span class="inc-badge">Required for Funding</span></div>
+      <div class="inc-card"><div class="inc-icon">🔢</div><h4>EIN + Registered Agent</h4><p>Your EIN is required to open a business bank account and apply for credit. Registered agent free for year one.</p><span class="inc-badge">Required for Banking</span></div>
+      <div class="inc-card"><div class="inc-icon">🌐</div><h4>Premium Website + Domain</h4><p>A professional 2–4 page website. Lenders verify your online presence. First year domain cost included.</p><span class="inc-badge">Lender Verified</span></div>
+      <div class="inc-card"><div class="inc-icon">📞</div><h4>Business Phone</h4><p>A dedicated business phone listed under your business name. Setup done — you choose the provider. Avg ~$50/mo.</p><span class="inc-badge">Required by Lenders</span></div>
+      <div class="inc-card"><div class="inc-icon">📍</div><h4>Virtual Business Address</h4><p>A professional address — not your home. Required for mail, licensing, and funding. Avg ~$30/mo ongoing.</p><span class="inc-badge">Required for LLC</span></div>
+      <div class="inc-card"><div class="inc-icon">✉️</div><h4>Professional Email</h4><p>A branded business email matching your domain. Avg ~$8–$15/mo ongoing depending on domain availability.</p><span class="inc-badge">Builds Credibility</span></div>
     </div>
   </div>
 </section>
 
-<!-- WHY IT MATTERS -->
-<section class="why" id="why">
+<!-- WHY -->
+<section class="why">
   <div class="why-inner">
-    <div class="why-left">
-      <div class="section-tag">Why This Matters</div>
-      <h2 class="section-h2">Lenders have<br><em>a checklist.</em></h2>
-      <div class="divider"></div>
-      <p style="font-size:0.88rem;color:var(--text-mid);line-height:1.8;margin-bottom:2rem;">Before any bank or lender approves you for business funding, they verify your business is legitimate. Most entrepreneurs lose funding opportunities because they aren't set up right. We fix that.</p>
+    <div>
+      <div class="sec-label">Why This Matters</div>
+      <h2>Lenders have<br><em>a checklist.</em></h2>
+      <p style="font-size:0.88rem;color:var(--gray-3);line-height:1.75;margin:1rem 0 2rem;">Before any bank or lender approves you, they verify your business is legitimate. Most entrepreneurs lose funding opportunities because they aren't set up right.</p>
       <div class="why-points">
-        <div class="why-point">
-          <span class="why-num">01</span>
-          <div>
-            <h4>Your LLC must be active</h4>
-            <p>Lenders won't fund a sole proprietorship. Your LLC needs to be properly formed with a registered agent on file.</p>
-          </div>
-        </div>
-        <div class="why-point">
-          <span class="why-num">02</span>
-          <div>
-            <h4>Your business must be findable</h4>
-            <p>Lenders Google your business. No website, no phone listing, no address — no funding. Presence is everything.</p>
-          </div>
-        </div>
-        <div class="why-point">
-          <span class="why-num">03</span>
-          <div>
-            <h4>Separation is required</h4>
-            <p>Your business must be completely separate from you personally — separate address, phone, email, and banking.</p>
-          </div>
-        </div>
-        <div class="why-point">
-          <span class="why-num">04</span>
-          <div>
-            <h4>Structure = fundability</h4>
-            <p>A business that's set up correctly from day one qualifies for significantly more funding than one that's been patched together over time.</p>
-          </div>
-        </div>
+        <div class="why-pt"><span class="why-num">01</span><div><h4>Your LLC must be active</h4><p>Lenders won't fund a sole proprietorship. Your LLC needs to be properly formed with a registered agent on file.</p></div></div>
+        <div class="why-pt"><span class="why-num">02</span><div><h4>Your business must be findable</h4><p>Lenders Google your business. No website, no phone listing, no address — no funding.</p></div></div>
+        <div class="why-pt"><span class="why-num">03</span><div><h4>Separation is required</h4><p>Your business must be completely separate — separate address, phone, email, and banking.</p></div></div>
+        <div class="why-pt"><span class="why-num">04</span><div><h4>Structure = fundability</h4><p>A business set up correctly from day one qualifies for significantly more funding than one patched together over time.</p></div></div>
       </div>
     </div>
-    <div class="why-right">
-      <div class="funding-tag">Available After Setup</div>
-      <div class="funding-title">Business funding<br><em>you can actually get.</em></div>
-      <div class="funding-amount">$10K–$100K</div>
-      <div class="funding-note">0% APR for 12 months · available once properly set up</div>
-      <div class="funding-req">
-        <div class="req-item"><span class="req-dot"></span>Active LLC in good standing</div>
-        <div class="req-item"><span class="req-dot"></span>EIN registered with the IRS</div>
-        <div class="req-item"><span class="req-dot"></span>Business bank account open</div>
-        <div class="req-item"><span class="req-dot"></span>Business phone & address on file</div>
-        <div class="req-item"><span class="req-dot"></span>Online presence verified</div>
-        <div class="req-item"><span class="req-dot"></span>Personal credit in good standing*</div>
+    <div class="fund-card">
+      <div class="fund-tag">Available After Setup</div>
+      <div class="fund-title">Business funding<br><em>you can actually get.</em></div>
+      <div class="fund-amt">$10K–$100K</div>
+      <div class="fund-note">0% APR for 12 months · once properly set up</div>
+      <div class="fund-reqs">
+        <div class="fund-req"><span class="req-dot"></span>Active LLC in good standing</div>
+        <div class="fund-req"><span class="req-dot"></span>EIN registered with the IRS</div>
+        <div class="fund-req"><span class="req-dot"></span>Business bank account open</div>
+        <div class="fund-req"><span class="req-dot"></span>Business phone & address on file</div>
+        <div class="fund-req"><span class="req-dot"></span>Online presence verified</div>
+        <div class="fund-req"><span class="req-dot"></span>Personal credit in good standing*</div>
       </div>
-      <p style="font-size:0.68rem;color:var(--text-light);margin-top:1.5rem;line-height:1.6;">*Personal credit repair handled separately by NextUp Enterprise. <a href="https://nextupenterprise.com" target="_blank" style="color:var(--gold-2);text-decoration:none;">Learn more →</a></p>
+      <a href="https://buy.stripe.com/bJe14p9fQfWJfDog8U5Rm0M" class="fund-link">Build Your Foundation →</a>
+      <p style="font-size:0.67rem;color:rgba(255,255,255,0.3);margin-top:1rem;line-height:1.6;">*Personal credit repair handled separately by <a href="https://nextupenterprise.com" target="_blank" style="color:var(--gold-2);text-decoration:none;">NextUp Enterprise →</a></p>
     </div>
   </div>
 </section>
 
-<!-- PRICING TRANSPARENCY -->
-<section class="pricing" id="pricing">
-  <div class="pricing-inner">
-    <div class="section-tag">Full Pricing Breakdown</div>
-    <h2 class="section-h2">No surprises.<br><em>Full transparency.</em></h2>
-    <p class="section-sub" style="margin-bottom:0;">Here's exactly what's included in the $1,500 package and what you'll pay ongoing directly to third-party providers.</p>
-    <div class="price-table">
-      <div class="price-row header">
-        <span>What's Included</span>
-        <span>Cost</span>
-      </div>
-      <div class="price-row">
-        <div class="price-label">LLC Formation + Operating Agreement + Meeting Minutes<small>Full legal formation for your state</small></div>
-        <div class="price-val included">✓ Included</div>
-      </div>
-      <div class="price-row">
-        <div class="price-label">Registered Agent — 1 Year Free<small>Required in every state for your LLC</small></div>
-        <div class="price-val included">✓ Included</div>
-      </div>
-      <div class="price-row">
-        <div class="price-label">EIN Setup<small>Your business tax ID number</small></div>
-        <div class="price-val included">✓ Included</div>
-      </div>
-      <div class="price-row">
-        <div class="price-label">Premium Website (2–4 Pages) + Domain<small>First year domain registration included</small></div>
-        <div class="price-val included">✓ Included</div>
-      </div>
-      <div class="price-row">
-        <div class="price-label">Business Phone Setup<small>We set it up — avg ~$50/mo ongoing, your provider</small></div>
-        <div class="price-val included">✓ Setup Included</div>
-      </div>
-      <div class="price-row">
-        <div class="price-label">Virtual Business Address Setup<small>We set it up — avg ~$30/mo ongoing, your provider</small></div>
-        <div class="price-val included">✓ Setup Included</div>
-      </div>
-      <div class="price-row">
-        <div class="price-label">Professional Business Email<small>Avg ~$8–$15/mo ongoing, depends on domain</small></div>
-        <div class="price-val included">✓ Setup Included</div>
-      </div>
-      <div class="price-row">
-        <div class="price-label">Website Maintenance — Optional<small>Security updates, content changes, price updates</small></div>
-        <div class="price-val">$49/mo or Free*</div>
-      </div>
-      <div class="price-row">
-        <div class="price-label">State LLC Filing Fee<small>Varies by state — passed to you at cost, no markup</small></div>
-        <div class="price-val">At Cost</div>
-      </div>
-      <div class="price-total-row">
-        <span class="price-total-label">Your Investment</span>
-        <span class="price-total-val">$1,500</span>
-      </div>
+<!-- PRICING -->
+<section class="pricing">
+  <div class="sec-inner" style="max-width:820px;">
+    <div class="sec-label">Full Breakdown</div>
+    <h2>No surprises.<br><em>Full transparency.</em></h2>
+    <div class="price-tbl">
+      <div class="ptbl-head"><span>What's Included</span><span>Cost</span></div>
+      <div class="ptbl-row"><div><div class="ptbl-label">LLC Formation + Operating Agreement + Meeting Minutes</div><div class="ptbl-sub">Full legal formation for your state</div></div><div class="ptbl-val green">✓ Included</div></div>
+      <div class="ptbl-row"><div><div class="ptbl-label">Registered Agent — 1 Year Free</div><div class="ptbl-sub">Required in every state</div></div><div class="ptbl-val green">✓ Included</div></div>
+      <div class="ptbl-row"><div><div class="ptbl-label">EIN Setup</div><div class="ptbl-sub">Business tax ID number</div></div><div class="ptbl-val green">✓ Included</div></div>
+      <div class="ptbl-row"><div><div class="ptbl-label">Premium Website + Domain</div><div class="ptbl-sub">First year domain registration included</div></div><div class="ptbl-val green">✓ Included</div></div>
+      <div class="ptbl-row"><div><div class="ptbl-label">Business Phone Setup</div><div class="ptbl-sub">Avg ~$50/mo ongoing · your provider</div></div><div class="ptbl-val green">✓ Setup Included</div></div>
+      <div class="ptbl-row"><div><div class="ptbl-label">Virtual Business Address Setup</div><div class="ptbl-sub">Avg ~$30/mo ongoing · your provider</div></div><div class="ptbl-val green">✓ Setup Included</div></div>
+      <div class="ptbl-row"><div><div class="ptbl-label">Professional Business Email</div><div class="ptbl-sub">Avg ~$8–$15/mo ongoing</div></div><div class="ptbl-val green">✓ Setup Included</div></div>
+      <div class="ptbl-row"><div><div class="ptbl-label">Website Maintenance — Optional</div><div class="ptbl-sub">Security updates, content & price changes</div></div><div class="ptbl-val">$49/mo or Free*</div></div>
+      <div class="ptbl-row"><div><div class="ptbl-label">State LLC Filing Fee</div><div class="ptbl-sub">Varies by state · no markup</div></div><div class="ptbl-val">At Cost</div></div>
+      <div class="ptbl-total"><span class="ptbl-total-label">Your Investment</span><span class="ptbl-total-val">$1,500</span></div>
     </div>
-    <p class="price-footnote">*Website maintenance is $49/month for ongoing security updates and content changes (price updates, service changes, etc.). If you prefer no changes after launch, your site is yours free for life — no monthly fee required. Third-party subscriptions (phone, address, email, domain renewal) are billed directly by your chosen provider after the first year.</p>
+    <p class="price-note">*Website maintenance is $49/month for ongoing updates (price changes, service changes, security). If you prefer no changes after launch, your site is yours free for life. Third-party subscriptions billed directly by your provider after the first year.</p>
     <div style="text-align:center;margin-top:2.5rem;">
-      <a href="https://buy.stripe.com/bJe14p9fQfWJfDog8U5Rm0M" class="btn-primary">Get Started — $1,500 →</a>
+      <a href="https://buy.stripe.com/bJe14p9fQfWJfDog8U5Rm0M" class="btn-black">Get Started — $1,500 →</a>
     </div>
   </div>
 </section>
 
 <!-- PROCESS -->
-<section class="process" id="process">
-  <div class="section-inner">
-    <div class="section-tag" style="justify-content:center;">How It Works</div>
-    <h2 class="section-h2" style="text-align:center;">Simple process.<br><em>Real results.</em></h2>
-    <p class="section-sub" style="margin:0 auto 3rem;text-align:center;">From payment to fully launched — we handle everything. You focus on your business.</p>
-    <div class="process-steps">
-      <div class="step">
-        <div class="step-num">01</div>
-        <h4>You Get Started</h4>
-        <p>Complete checkout. We receive your order and reach out within 1 business day to schedule your onboarding call.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">02</div>
-        <h4>Onboarding Call</h4>
-        <p>We learn about your business, goals, and collect everything we need to build it right.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">03</div>
-        <h4>We Build Everything</h4>
-        <p>LLC filed, EIN registered, website built, email set up, address and phone configured. Done for you.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">04</div>
-        <h4>Launch & Get Funded</h4>
-        <p>Your business is live, structured, and positioned. Now you're ready to apply for real business funding.</p>
-      </div>
+<section class="process">
+  <div class="sec-inner">
+    <div class="sec-label" style="justify-content:center;">How It Works</div>
+    <h2 style="text-align:center;">Simple process.<br><em>Done in 7–14 days.</em></h2>
+    <div class="steps">
+      <div class="step"><div class="step-n">01</div><h4>Get Started</h4><p>Complete checkout. We reach out within 1 business day to schedule your onboarding call.</p></div>
+      <div class="step"><div class="step-n">02</div><h4>Onboarding Call</h4><p>We learn about your business and collect everything needed to build it right.</p></div>
+      <div class="step"><div class="step-n">03</div><h4>We Build It</h4><p>LLC filed, EIN registered, website built, all accounts configured. Done for you.</p></div>
+      <div class="step"><div class="step-n">04</div><h4>Launch & Get Funded</h4><p>Your business is live, structured, and positioned to apply for real funding.</p></div>
     </div>
   </div>
 </section>
 
 <!-- FAQ -->
-<section class="faq" id="faq">
-  <div class="section-inner" style="max-width:700px;">
-    <div class="section-tag" style="justify-content:center;">Questions</div>
-    <h2 class="section-h2" style="text-align:center;"><em>Common questions</em><br>answered.</h2>
-    <div class="faq-list">
-      <div class="faq-item">
-        <button class="faq-q">Is credit repair included? <span class="icon">+</span></button>
-        <div class="faq-a">No — credit repair is handled separately by our sister brand, NextUp Enterprise. If your personal credit needs work before you're ready for funding, we recommend starting there. <a href="https://nextupenterprise.com" target="_blank" style="color:var(--gold-2);">Visit NextUp Enterprise →</a></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">What does "done for you" mean exactly? <span class="icon">+</span></button>
-        <div class="faq-a">We handle every step — filing the LLC, obtaining the EIN, building the website, setting up the business email, configuring the phone and address. You provide the information and we do the work. You'll have an onboarding call with us where we gather everything we need.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">How long does it take? <span class="icon">+</span></button>
-        <div class="faq-a">Typically 7–14 business days depending on your state's LLC processing time. Some states process same-day, others take longer. We'll let you know the timeline during your onboarding call.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">What's the website maintenance fee for? <span class="icon">+</span></button>
-        <div class="faq-a">The optional $49/month maintenance plan covers ongoing security updates and content changes — things like updating your pricing, services, or business info. If you don't want ongoing changes, your website is yours free for life. No monthly fee required.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">What are the ongoing costs after setup? <span class="icon">+</span></button>
-        <div class="faq-a">After your first year, you'll have: domain renewal (~$25–$150/yr depending on name), business address (~$30/mo), business phone (~$50/mo), and business email (~$8–$15/mo). All billed directly by your chosen providers — no markup from us.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Do I need good credit to get started? <span class="icon">+</span></button>
-        <div class="faq-a">No — you can start forming your business at any point. However, for the best funding results, your personal credit score matters. If you need credit repair first, visit <a href="https://nextupenterprise.com" target="_blank" style="color:var(--gold-2);">NextUp Enterprise</a> to get started there before or alongside this package.</div>
-      </div>
+<section class="faq">
+  <div class="sec-inner">
+    <div class="sec-label" style="justify-content:center;">Questions</div>
+    <h2 style="text-align:center;"><em>Common questions</em><br>answered.</h2>
+    <div class="faq-wrap">
+      <div class="faq-item"><button class="faq-q">Is credit repair included? <span class="faq-icon">+</span></button><div class="faq-a">No — credit repair is handled separately by our sister brand, NextUp Enterprise. <a href="https://nextupenterprise.com" target="_blank">Visit NextUp Enterprise →</a></div></div>
+      <div class="faq-item"><button class="faq-q">What does "done for you" mean exactly? <span class="faq-icon">+</span></button><div class="faq-a">We handle every step — filing the LLC, obtaining the EIN, building the website, setting up the business email, configuring the phone and address. You provide the information, we do all the work during your onboarding call.</div></div>
+      <div class="faq-item"><button class="faq-q">How long does it take? <span class="faq-icon">+</span></button><div class="faq-a">Typically 7–14 business days depending on your state's LLC processing time. Some states are same-day, others take longer. We'll let you know the timeline during your onboarding call.</div></div>
+      <div class="faq-item"><button class="faq-q">What are the ongoing costs after setup? <span class="faq-icon">+</span></button><div class="faq-a">After your first year: domain renewal (~$25–$150/yr), business address (~$30/mo), business phone (~$50/mo), and business email (~$8–$15/mo). All billed directly by your chosen providers — no markup from us.</div></div>
+      <div class="faq-item"><button class="faq-q">What's the website maintenance fee for? <span class="faq-icon">+</span></button><div class="faq-a">The optional $49/month plan covers security updates and content changes — things like updating your pricing or services. If you don't need ongoing changes, your website is yours free for life. No monthly fee required.</div></div>
+      <div class="faq-item"><button class="faq-q">Do I need good credit to get started? <span class="faq-icon">+</span></button><div class="faq-a">No — you can start forming your business at any point. For the best funding results, personal credit matters. If you need credit repair, visit <a href="https://nextupenterprise.com" target="_blank">NextUp Enterprise</a> before or alongside this package.</div></div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="cta-section">
-  <div class="cta-inner">
-    <div class="section-tag" style="justify-content:center;">Ready to Build?</div>
-    <h2 class="section-h2" style="text-align:center;">Your business starts<br><em>right now.</em></h2>
-    <p>One investment. Every piece lenders require — your LLC, EIN, website, address, phone, and email — done for you. This is what funding-ready looks like.</p>
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div style="max-width:560px;margin:0 auto;">
+    <div class="sec-label" style="justify-content:center;">Ready to Build?</div>
+    <h2>Your business starts<br><em>right now.</em></h2>
+    <p>One investment. Every piece lenders require — LLC, EIN, website, address, phone, and email — done for you.</p>
     <div class="cta-btns">
-      <a href="https://buy.stripe.com/bJe14p9fQfWJfDog8U5Rm0M" class="btn-primary">Get Started — $1,500 →</a>
-      <a href="contact.html" class="btn-outline">Talk to Us First</a>
+      <a href="https://buy.stripe.com/bJe14p9fQfWJfDog8U5Rm0M" class="btn-gold">Get Started — $1,500 →</a>
+      <a href="contact.html" class="btn-white">Talk to Us First</a>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <span class="logo">NextUp <span>Capital</span></span>
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <span class="foot-logo">NextUp <span>Capital</span></span>
       <p>Business formation and funding readiness — done for you. We build the foundation so you can get funded.</p>
     </div>
-    <div class="footer-col">
+    <div class="foot-col">
       <h5>Navigate</h5>
       <a href="index.html">Home</a>
       <a href="contact.html">Contact</a>
       <a href="https://buy.stripe.com/bJe14p9fQfWJfDog8U5Rm0M">Get Started</a>
       <a href="https://nextupenterprise.com" target="_blank">Credit Repair ↗</a>
     </div>
-    <div class="footer-col">
+    <div class="foot-col">
       <h5>Contact</h5>
       <a href="mailto:support@nextupcapitalgroup.com">support@nextupcapitalgroup.com</a>
-      <a href="tel:5706093593">570-609-3593</a>
+      <a href="tel:5702031530">570-203-1530</a>
     </div>
   </div>
-  <div class="footer-bottom" style="max-width:1100px;margin:0 auto;">
+  <div class="foot-bottom">
     <p>© 2026 NextUp Capital LLC. All rights reserved.</p>
-    <div style="display:flex;gap:1.5rem;">
+    <div class="foot-links">
       <a href="privacy-policy.html">Privacy Policy</a>
       <a href="terms.html">Terms of Service</a>
     </div>
@@ -576,14 +422,11 @@
 
 <script>
 // Hamburger
-const hamburger = document.getElementById('hamburgerBtn');
-const mobileMenu = document.getElementById('mobileMenu');
-hamburger.addEventListener('click', () => {
-  mobileMenu.classList.toggle('open');
-});
-mobileMenu.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => mobileMenu.classList.remove('open'));
-});
+document.getElementById('hamburgerBtn').addEventListener('click', () => document.getElementById('mobileMenu').classList.toggle('open'));
+document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('open')));
+
+// Reveal price after delay
+setTimeout(() => document.getElementById('offerPrice').classList.add('show'), 1800);
 
 // FAQ
 document.querySelectorAll('.faq-q').forEach(btn => {
